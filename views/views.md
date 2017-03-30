@@ -1,4 +1,4 @@
-#**Views**
+# **Views**
 This directory contains view files that are rendered/sent to the client.
 _This folder should therefore only contain **.html**, **.ejs** or **.jade** files._
 
