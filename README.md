@@ -6,7 +6,7 @@ Is the root of this website. All subdirectories of the root have their own markd
 These are files related to Node.JS, do not mind them until node has been implemented.
 
 > ## **Node.JS**
-The node.js application should follow the standard MVC (Model, View, Controller) structure.
+> The node.js application should follow the standard MVC (Model, View, Controller) structure.
 >
 > ### _Models:_
 > * Handle database and data structures.
