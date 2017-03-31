@@ -8,7 +8,7 @@ const fs = require('fs');
 let app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views/ejs');
-app.use(express.static('./assets'));
+app.use(express.static('./views/assets'));
 
 function index (request, response) {
 	response.render('index');
