@@ -14,3 +14,9 @@ These are files related to Node.JS, do not mind them until node has been impleme
 > * Are rendered and sent to the client browser.
 > ### _Controllers:_
 > * Contain business logic and handle data between models and views.
+>
+> ### **How to use node**
+> * Go to [nodejs.org](https://nodejs.org/en/download/), download Node.JS and follow the installation process.
+> * Use the command line tool (cmd on windows/terminal on mac) to navigate to the project folder and type 'npm install'.
+> * Then type 'npm start' to start the Node.JS server.
+> * In your browser type '127.0.0.1:3000' to view the page locally.
