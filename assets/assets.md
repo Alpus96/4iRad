@@ -1,7 +1,7 @@
-#**Assets**
+# **Assets**
 This directory contains static content that is bound to the views or that belong to the project(/projectfiles).
 
-> ##**The Directories**
+> ## **The Directories**
 > ### _CSS_
 > * _.css_ files goes in the '/css' subdirectory.
 > ### _JS_
