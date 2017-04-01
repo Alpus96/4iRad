@@ -6,7 +6,14 @@ Is the root of this website. All subdirectories of the root have their own markd
 These are files related to Node.JS, do not mind them until node has been implemented.
 
 > ## **Node.JS**
-> The node.js application should follow the standard MVC (Model, View, Controller) structure.
+> ### **How to start using node**
+> * Go to [nodejs.org](https://nodejs.org/en/download/), download Node.JS and follow the installation process.
+> * Use the command line tool (cmd on windows/terminal on mac) to navigate to the project folder and type 'npm install'.
+> * Then type 'npm start' to start the Node.JS server.
+> * In your browser type '127.0.0.1:3000' to view the page locally.
+> * I recommend watching this [youtube tutorial series](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_) which also explains the installation process and some of the basics of NodeJS.
+>
+> This Node.JS application should follow the standard MVC (Model, View, Controller) structure.
 >
 > ### _Models:_
 > * Handle database and data structures.
@@ -16,10 +23,3 @@ These are files related to Node.JS, do not mind them until node has been impleme
 > * Contain business logic and manipulates data to be sent from models to views.
 >
 > ![Image of MVC flow model](https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg)
->
-> ### **How to start using node**
-> * Go to [nodejs.org](https://nodejs.org/en/download/), download Node.JS and follow the installation process.
-> * Use the command line tool (cmd on windows/terminal on mac) to navigate to the project folder and type 'npm install'.
-> * Then type 'npm start' to start the Node.JS server.
-> * In your browser type '127.0.0.1:3000' to view the page locally.
-> * I recommend watching this [youtube tutorial series](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_) which also explains the installation process and some of the basics of NodeJS.
