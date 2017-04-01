@@ -8,14 +8,14 @@ These are files related to Node.JS, do not mind them until node has been impleme
 > ## **Node.JS**
 > The node.js application should follow the standard MVC (Model, View, Controller) structure.
 >
-> <img style="float: right;" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg">
->
 > ### _Models:_
 > * Handle database and data structures.
 > ### _Views:_
 > * Are rendered and sent to the client browser.
 > ### _Controllers:_
 > * Contain business logic and manipulates data to be sent from models to views.
+>
+> ![Image of MVC flow model](https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg)
 >
 > ### **How to start using node**
 > * Go to [nodejs.org](https://nodejs.org/en/download/), download Node.JS and follow the installation process.
