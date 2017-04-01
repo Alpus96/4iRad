@@ -8,7 +8,7 @@ These are files related to Node.JS, do not mind them until node has been impleme
 > ## **Node.JS**
 > The node.js application should follow the standard MVC (Model, View, Controller) structure.
 >
->![Image of MVC flow model](https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg)
+> <img style="float: right;" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg">
 >
 > ### _Models:_
 > * Handle database and data structures.
