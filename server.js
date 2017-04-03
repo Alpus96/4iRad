@@ -5,15 +5,18 @@ const path = require('path');
 const url = require('url');
 const fs = require('fs');
 
+//	Set app to express framework, and give it the 'file configuration'.
 let app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views/ejs');
 app.use(express.static('./views/assets'));
 
+//	Responde with index page
 function index (request, response) {
 	response.render('index');
 }
 
+//	Send 404.
 function send404 (request, response) {
 	response.writeHead(404, {"Content-Type": "text/plain"});
 	response.write("Error 404! Page not found.");
@@ -21,19 +24,22 @@ function send404 (request, response) {
 	console.log("404 response.");
 }
 
+//	Handle url requests.
 function urlRequest (request, response) {
 	console.log('Request made.');
 	if (request.method == 'GET') {
-		let path = '.' + request.url; //"./site" +
+		let path = '.' + request.url;
 		console.log(path);
-		if (path == "./") {
+		if (path == "./" || path == './index') {
 			index(request, response);
 		} else {
+			// Check if the request is a file on the server.
 			fs.stat(path, function (err, stat) {
+				//	If there
 				if (err == null) {
-					if (path == "./site/") {
+					/*if (path == "./site/") {
 						index(request, response);
-					} else {
+					} else {*/
 						//	Implement sorting of files that should
 						//	or should not be accessed through here.
 						if (path.indexOf(".html") != -1) {
@@ -54,7 +60,7 @@ function urlRequest (request, response) {
 						//	Add more file types here...
 
 						fs.createReadStream(path).pipe(response);
-					}
+					//}
 				} else if (err == 'ENOENT') {
 					console.log("ENOENT error occured.");
 					console.log("Request path: " + path);
@@ -67,11 +73,13 @@ function urlRequest (request, response) {
 			});
 		}
 	} else {
-		send404Response(response);
+		send404(request, response);
 	}
 }
 
+//	Use urlRequest function for handeling requests in '/'.
 app.use('/', urlRequest);
 
+//	Listen at localhost:3000.
 http.createServer(app).listen(3000);
 console.log("Running server...");
