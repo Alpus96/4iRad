@@ -1,2 +1,35 @@
 /*    Main CSS file    */
 /*Massa css här test */
+
+.blue{
+	background-color:#f4f441; !important;
+}
+.img-responsive{
+
+	max-width: 600%;
+	height: auto;
+	display: block;
+}
+h1{
+	font-size: 20;
+	font-family:Times;
+	font-weight: 10;
+	color: blue;
+}
+
+btn-primary{
+
+
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.pull-right{
+
+    float: right !important;
+
+}
