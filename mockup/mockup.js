@@ -22,12 +22,23 @@ function switchPage() {
 //  Changes the active menu item after
 //  the page content has been changed.
 function menuItemActive (l) {
-    $(`header nav a#start`).html("Spela").attr('href', '#start');
+    $(`header nav a#names`).html("Spela").attr('href', '#start');
 
     $('header nav li').removeClass('active');
-    $(`header nav a[href = "${l}"]`).parent().addClass('active');
 
     if (l === "#start" || l === "#play") {
-        $(`header nav a[href = "${l}"]`).html("Avbryt").attr('href', '#home');
+        $(`header nav a#names`).html("Avbryt").attr('href', '#home');
+        $(`header nav a#names`).parent().addClass('active');
+    } else {
+        $(`header nav a[href = "${l}"]`).parent().addClass('active');
     }
+
+    $('#button').on('click', function () {
+        window.location.hash = '#play'
+    });
+
+    /*
+        Add $#play.on(click, show "du vann!")
+    */
+    
 }

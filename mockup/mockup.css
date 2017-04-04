@@ -30,20 +30,62 @@ img {
     margin: 0;
 }
 
-html, body {
+/*html, body {
     height: 100%;
 }
-.main {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -10px;
+main {
+    min-height: 90vh;
+    margin: 0 auto;
 }
+
 footer, .push {
-    height: 10px;
+    height: 70px;
     text-align: center;
 }
 
 footer {
-    padding-bottom: 30px;
+}*/
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after
+{
+  box-sizing: inherit;
+}
+
+body
+{
+	position: relative;
+	margin: 0 auto;
+	padding-bottom: 60px;
+	clear: both;
+	min-height: 100%;
+}
+
+main {
+    margin-bottom: 20px;
+}
+
+footer
+{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 80px;
+	text-align: center;
+    padding: 0;
+}
+
+footer p
+{
+    padding-top: 10px;
+	padding-bottom: 0;
+}
+
+.ph {
+    margin-top: 50px;
 }
