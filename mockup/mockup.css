@@ -1,0 +1,49 @@
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.placeHolder {
+    width: 90%;
+    margin: 0 auto;
+    clear: both;
+}
+
+.noPadding {
+    padding: 0;
+}
+
+.noMargin {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+.main {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -10px;
+}
+footer, .push {
+    height: 10px;
+    text-align: center;
+}
+
+footer {
+    padding-bottom: 30px;
+}
