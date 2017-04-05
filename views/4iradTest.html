@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml-transitional.dtd">
+<html>
+
+	<head>
+		<!--    Page title for tab    -->
+		<title>4iRad - Test</title>
+
+		<!--    Bootstrap, jQuery and other assets    -->
+		<script src="assets/lib/jquery.js"></script>
+		<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css">
+
+		<!--    CSS document link    -->
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+		<!--    JS document link    -->
+		<script src="assets/js/staticScripts.js"></script>
+
+		<!--    Meta page settings    -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	</head>
+
+	<body>
+
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#home">4iRad</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#home">Hem</a></li>
+                        <li><a href="#start" id="names">Spela</a></li>
+                        <li><a href="#rules">Regler</a></li>
+                        <li><a href="#highscore">Toplista</a></li>
+						<li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-xs-12">
+                        <h1>4 i rad!</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" id="start">
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+
+                    <div class="col-md-6">
+                        <form>
+                            <div class="form-group">
+                                <label>Spelare 1:</label>
+                                <input type="text" name="player1" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Spelare 2:</label>
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <div class="checkbox">
+                                <label><input type="checkbox"> Datorspelare</label>
+                            </div>
+
+                            <button id="button" class="btn btn-default">Starta!</button>
+                        </form>
+                    </div>
+            </div>
+
+            <div class="container" id="game">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <canvas></canvas>
+                    </div>
+                </div>
+        </main>
+
+	</body>
+
+</html>
