@@ -1,5 +1,44 @@
 
 
+@media (max-width: 768px) {
+  .kant .player  {
+    
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}
+@media (min-width: 768px) {
+  .white-and-round  {
+
+  	width: 50px !important;
+  	height: 50px !important;
+    
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}
+@media (min-width: 992px) {
+ .white-and-round  {
+
+  	width: 55px !important;
+  	height: 55px !important;
+    
+   padding-right: 10%;
+ 	padding-left:  10%;
+ 	margin-right: 10px;
+  }
+}
+@media (min-width: 1200px) {
+  .white-and-round  {
+
+  	width: 60px !important;
+  	height: 60px !important;
+    
+    padding-right: 10%;
+ 	padding-left:  10%;
+ 	margin-right: 10px;
+  }
+}
 
 
 .kant{
@@ -10,8 +49,7 @@
 padding-top: 10px;
  align-items: center;
  position: relative;
- padding-right: 10%;
- padding-left:  10%;
+ 
  margin-bottom: 10px;
  
 }
@@ -20,9 +58,8 @@ padding-top: 10px;
 	width: 40px;
 	height: 40px;
 	padding: 10px;
-	padding-right: 20px;
-	padding-left: 20px;
-	margin-right: 20px;
+	padding-right: 10px;
+	padding-left: 10px;
 	margin-right: 20px;
 	border-radius: 50px;
 	box-shadow: 10px 10px 5px #1E1D26 ;
@@ -35,4 +72,8 @@ padding-top: 10px;
 	height: 40%;
 	width: 60%
 	background-color: white;
+	
+}
+.well {
+	box-shadow: 10px 10px 5px #1E1D26 ;
 }
