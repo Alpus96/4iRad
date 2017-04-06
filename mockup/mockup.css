@@ -102,3 +102,10 @@ ol > li{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.pageCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-70%);
+}

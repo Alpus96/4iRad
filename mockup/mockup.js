@@ -1,3 +1,4 @@
+let won;
 //  Run start when pahe is loaded.
 $(switchPage);
 
@@ -40,5 +41,13 @@ function menuItemActive (l) {
     /*
         Add $#play.on(click, show "du vann!")
     */
-    
+    $('#play img').on('click', function () {
+        if (!won) {
+            won = true;
+            $('#won').show();
+        } else {
+            won = false;
+            $('#won').hide();
+        }
+    });
 }
