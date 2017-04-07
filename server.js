@@ -8,7 +8,7 @@ const fs = require('fs');
 //	Set app to express framework, and give it the 'file configuration'.
 let app = express();
 app.set('view engine', 'ejs');
-app.set('views', './views/ejs');
+app.set('views', './views');
 app.use(express.static('./views/assets'));
 
 //	Responde with index page
@@ -28,11 +28,13 @@ function send404 (request, response) {
 function urlRequest (request, response) {
 	console.log('Request made.');
 	if (request.method == 'GET') {
-		let path = '.' + request.url;
+		let path = './views' + request.url;
 		console.log(path);
-		if (path == "./" || path == './index') {
-			index(request, response);
-		} else {
+		if (path == "./views/") {
+			path += 'index.html';
+			//index(request, response);
+		}
+		if (path) {
 			// Check if the request is a file on the server.
 			fs.stat(path, function (err, stat) {
 				//	If there
