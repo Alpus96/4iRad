@@ -20,8 +20,6 @@ $(document).ready(function () {
         if (!player2.ai) {
             $('#start').hide();
             $('#game').show();
-
-            const Game = require('./game');
             new Game($('canvas#4irad'), player1, player2);
         } else {
             console.log('There is no AI.');
