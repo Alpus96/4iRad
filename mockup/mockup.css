@@ -87,7 +87,7 @@ footer p
 }
 
 .ph {
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 .noListStyle {
@@ -101,4 +101,11 @@ ol > li{
 .extraMargin {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.pageCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-70%);
 }

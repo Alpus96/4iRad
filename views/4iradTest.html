@@ -10,11 +10,9 @@
 		<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css">
 
-		<!--    CSS document link    -->
-		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
 		<!--    JS document link    -->
 		<script src="assets/js/staticScripts.js"></script>
+        <script src="assets/js/games/4irad/4irad.js"></script>
 
 		<!--    Meta page settings    -->
 		<meta charset="UTF-8">
@@ -55,22 +53,22 @@
                     </div>
 
                     <div class="col-md-6">
-                        <form>
+                        <form id="startForm">
                             <div class="form-group">
                                 <label>Spelare 1:</label>
-                                <input type="text" name="player1" class="form-control">
+                                <input type="text" id="player1" name="player1" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label>Spelare 2:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="player2" name="player2" class="form-control">
                             </div>
 
                             <div class="checkbox">
-                                <label><input type="checkbox"> Datorspelare</label>
+                                <label><input type="checkbox" id="ai" name="ai"> Datorspelare</label>
                             </div>
 
-                            <button id="button" class="btn btn-default">Starta!</button>
+                            <input type="submit" name="submit" value="Starta!" class="btn btn-default">
                         </form>
                     </div>
             </div>
@@ -78,7 +76,7 @@
             <div class="container" id="game">
                 <div class="row">
                     <div class="col-xs-12">
-                        <canvas></canvas>
+                        <canvas id="4irad"></canvas>
                     </div>
                 </div>
         </main>

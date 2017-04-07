@@ -4,12 +4,14 @@
 .blue{
 	background-color:#f4f441; !important;
 }
+
 .img-responsive{
 
 	max-width: 600%;
 	height: auto;
 	display: block;
 }
+
 h3{
 	font-size: 20;
 	font-family:Times;
@@ -19,17 +21,16 @@ h3{
 
 btn-primary{
 
-
 }
 
-
 .navbar-nav{
-
 	background-color:#f4f441;
 }
 
 .pull-right{
-
     float: right !important;
+}
 
+.link-img {
+  width: 90%;
 }
