@@ -5,11 +5,11 @@ const path = require('path');
 const url = require('url');
 const fs = require('fs');
 
-//	Set app to express framework, and give it the 'file configuration'.
-let app = express();
-app.set('view engine', 'ejs');
-app.set('views', './views');
-app.use(express.static('./views/assets'));
+//	Set server to express framework, and give it the 'file configuration'.
+let server = express();
+server.set('view engine', 'ejs');
+server.set('views', './views');
+server.use(express.static('./views/assets'));
 
 //	Responde with index page
 function index (request, response) {
@@ -79,9 +79,12 @@ function urlRequest (request, response) {
 	}
 }
 
+//	Require ejsRequest
+//	Use for '/ejs/*' requests
+
 //	Use urlRequest function for handeling requests in '/'.
-app.use('/', urlRequest);
+server.use('/', urlRequest);
 
 //	Listen at localhost:3000.
-http.createServer(app).listen(3000);
+http.createServer(server).listen(3000);
 console.log("Running server...");
