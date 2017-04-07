@@ -5,11 +5,11 @@ const path = require('path');
 const url = require('url');
 const fs = require('fs');
 
-//	Set app to express framework, and give it the 'file configuration'.
-let app = express();
-app.set('view engine', 'ejs');
-app.set('views', './views/ejs');
-app.use(express.static('./views/assets'));
+//	Set server to express framework, and give it the 'file configuration'.
+let server = express();
+server.set('view engine', 'ejs');
+server.set('views', './views');
+server.use(express.static('./views/assets'));
 
 //	Responde with index page
 function index (request, response) {
@@ -28,11 +28,13 @@ function send404 (request, response) {
 function urlRequest (request, response) {
 	console.log('Request made.');
 	if (request.method == 'GET') {
-		let path = '.' + request.url;
+		let path = './views' + request.url;
 		console.log(path);
-		if (path == "./" || path == './index') {
-			index(request, response);
-		} else {
+		if (path == "./views/") {
+			path += 'index.html';
+			//index(request, response);
+		}
+		if (path) {
 			// Check if the request is a file on the server.
 			fs.stat(path, function (err, stat) {
 				//	If there
@@ -77,9 +79,12 @@ function urlRequest (request, response) {
 	}
 }
 
+//	Require ejsRequest
+//	Use for '/ejs/*' requests
+
 //	Use urlRequest function for handeling requests in '/'.
-app.use('/', urlRequest);
+server.use('/', urlRequest);
 
 //	Listen at localhost:3000.
-http.createServer(app).listen(3000);
+http.createServer(server).listen(3000);
 console.log("Running server...");
