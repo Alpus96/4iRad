@@ -18,6 +18,7 @@ function switchPage() {
     }
     $('.page').hide();
     $(l).show();
+    console.log(l);
     menuItemActive(l);
 }
 

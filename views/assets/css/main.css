@@ -49,3 +49,13 @@ a:hover {
     text-decoration: none;
 
 }
+
+label {
+  width:100px;
+  display: inline-block;
+}
+
+
+
+
+
