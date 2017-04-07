@@ -31,6 +31,21 @@ btn-primary{
     float: right !important;
 }
 
-.link-img {
-  width: 90%;
+
+img {
+  width: 100%;
+
+}
+
+a:active {
+	color:none;
+	text-decoration: none;
+}
+
+a:hover {
+
+    color:blue;
+    background-color: transparent;
+    text-decoration: none;
+
 }
