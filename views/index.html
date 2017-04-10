@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 	<head>
@@ -30,7 +30,7 @@
 
           <ul class="nav navbar-nav">
             <li><a href="#home">Hem</a></li>
-            <li><a href="#start" id="names">Spela</a></li>
+            <li><a href="#start">Spela</a></li>
             <li><a href="#rules">Regler</a></li>
             <li><a href="#highscore">Toplista</a></li>
             <li><a href="#faq">FAQ</a></li>
@@ -48,21 +48,53 @@
             <div class="col-xs-8 noPadding">
               <img class="center-block" src="assets/img/image1.jpg" style="width:100%">
             </div>
+            <br></br>
             <div class="col-xs-4">
               <form>
                 <div class="form-group">
-                  <label for="inputUsername" class="control-label">UserName</label>
-                  <input type="text" class="form-control" id="inputUsername" placeholder="UserName">
+                  <label for="inputUsername" class="control-label">AnvänderNamn</label>
+                  <input type="text" class="form-control" id="inputUsername" placeholder="AnvänderNamn">
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail" class="control-label">Email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                  <label for="inputEmail" class="control-label">Epost</label>
+                  <input type="email" class="form-control" id="inputEmail" placeholder="Epost">
                 </div>
-                 <button class="btn btn-danger btn-lg" type="spela">Login</button>
-              </form><!-- Close previus form before openeinga new  -->
+                <div class="form-group">
+                  <label for="inputPassword" class="control-label">Lösenord</label>
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Lösenord">
+                </div>
+                 <button class="btn btn-danger btn-lg noPadding" type="spela" id ="#Reg">Register</button>
+                 <button class="btn btn-danger btn-lg noPadding" type="spela" id ="#login">Login</button>
+              </form><!-- Close previous form before opening a new  -->
             </div>
           </div>
         </div><!-- end of container -->
+
+    <script>
+       $(document).ready(function()){
+               $("#login").click(function(){
+                 myFunction();
+               });
+       });
+    
+
+   function myFunction() {
+
+    // Get the value of the input field with name = "name"
+    let nameInputEl = document.querySelector('input[name="name"]');
+     let nameVal = nameInputEl.value;
+   
+    // Get the value of the input field with name = "name"
+    let passwordInputEl = document.querySelector('input[name="password"]');
+    let passwordVal = passwordInputEl.value;
+
+    alert("The user name and pass word is"+ nameVal +"&"+passwordVal);
+     
+
+   }
+
+    </script>
+
 
         <div class="container">
 
@@ -93,6 +125,42 @@
         </div><!-- end of container -->
       </div> <!-- #home ends here -->
 
+       
+
+  <div class="page" id="start">
+        <div class="row">
+          <div class="container-fluid">
+             <img src="assets/img/images.jpg">
+            </div>
+          </div><!---image-->
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            </div>
+            <div class="col-md-2">
+              <form>
+                <div class="form-group">
+                  <label>Spelare 1:</label>
+                    <input type="text" class="form-control">
+                   </div>
+       <div class="form-group">
+          <select>
+          <option value="Spelare på annan dator">Spelare på annan dator</option>
+          <option value="Spelare på samma dator">Spelare på samma dator</option>
+          <option value="Dator">Dator</option>
+          <option value="Spelare2" selected>Spelare på samma dator</option>
+          </select>
+        <br></br>
+         <button id="button" class="btn btn-danger">Starta!</button>
+              </form>
+            </div>
+          </div>
+         </div>
+        
+
+
+
       <div class="page" id="faq">
         <div class="container">
           <div class="row">
@@ -118,17 +186,6 @@
      </div> 
 
 
-
-<!--Here is the button>
-   <!--div class="container">
-        <div class="row">
-           <div class="col-xs-4">
-              <button class="btn btn-danger btn-lg" type="spela">Spel med dator</button><br></br>
-                <button class="btn btn-danger btn-lg" type="spelaannan">Spel med annan</button>
-
-               </div>
-        </div>
-    </div-->
 
       <br></br>
 
