@@ -107,12 +107,7 @@ $(document).ready(function(){
         });
     }
   
-    /*$(".white-and-round").hover(function(){
-        $(this).css("background-color", "yellow");},
-          function(){
-        $(this).css("background-color", "white");
-    
-    });*/
+   
     $(".col-md-1").click(function(){
     	console.log(
     		$(this).find('.white-and-round').css('background-color')
