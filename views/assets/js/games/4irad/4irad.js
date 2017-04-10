@@ -1,62 +1,125 @@
 $(document).ready(function () {
-    $('#startForm').on('submit', function(e) {
-        e.preventDefault();
+    $('#startForm').on('submit', function(submitEvent) {
+        submitEvent.preventDefault();
         let data = $("#startForm :input").serializeArray();
-        console.log(data);
-
-        let player1 = data[0];
-
-        let player2 = data[1];
-        if (data[2]) {
-            player2.ai = true;
-        }
-
-        player1.name = player1.value;
-        delete player1.value;
-
-        player2.name = player2.value;
-        delete player2.value;
-
-        if (!player2.ai) {
-            $('#start').hide();
-            $('#game').show();
-            new Game($('canvas#4irad'), player1, player2);
-        } else {
-            console.log('There is no AI.');
-        }
+        $('#startForm').hide();
+        $('#game').show();
+        const canvas = $('#4irad');
+        const game = new Game(canvas);
+        game.start(data, canvas);
+        canvas.on("click", function (event) {
+        	const scale = event.offsetY / event.target.getBoundingClientRect().height;
+        	pong.players[0].pos.y = canvas.height * scale;
+        });
     });
 });
 
 class Game {
-    constructor(canvas, player1, player2) {
-        this.players = {new Player(player1), new Player(player2)};
+    constructor(canvas) {
+        this.canvas = canvas;
+        //this.context = this.canvas.getContext("2d");
+
+        this.boardSize = {
+            width: $('#gbc').width(),
+            height: Math.round($('#gbc').width() * 6/7 + 200)
+        };
+        this.canvas.width = this.boardSize.width;
+        this.canvas.heigth = this.boardSize.height;
+
+        this.context.beginPath();
+        this.context.rect(0, 0, this.canvas.width, this.canvas.height);
+        this.context.fillStyle = "black";
+        this.context.fill();
+
+        /*
+    		this._canvas.width = this.browserSize.width * .6;
+    		this._canvas.height = (this._canvas.width * .6);
+
+    		this._context = this._canvas.getContext("2d");
+
+    		this.ball = new Ball;
+
+    		this.players = [
+    			new Player,
+    			new Ai(this.ball, this._canvas)
+    		];
+
+    		this.players[0].pos.x = 40;
+    		this.players[1].pos.x = this._canvas.width - 40;
+
+    		for (let player in this.players)
+    		{
+    			this.players[player].pos.y = (Number(this._canvas.height) / 2)
+    		}
+
+    		this.reset();
+
+    		let lastTime;
+
+    		const callback= (millis) => {
+    			if (lastTime)
+    			{
+    				this.update((millis - lastTime) / 1000);
+    			}
+    			lastTime = millis;
+    			requestAnimationFrame(callback);
+    		};
+
+    		if(!this.GO)
+    		{
+    			callback();
+    		}
+
+    		this.GO = false;
+
+    		this.CHAR_PIXEL = 10;
+    		this.CHARS = [
+    			"111101101101111",
+    			"110010010010111",
+    			"111001111100111",
+    			"111001111001111",
+    			"101101111001001",
+    			"111100111001111",
+    			"111001111101111",
+    			"111001011001001",
+    			"111101111101111",
+    			"111101111001001"
+    		].map(str => {
+    			const canvas = document.createElement("canvas");
+    			canvas.height = this.CHAR_PIXEL * 5;
+    			canvas.width = this.CHAR_PIXEL * 3;
+
+    			const context = canvas.getContext("2d");
+    			context.fillStyle = "#EEE";
+
+    			for (let fill in str.split(""))
+    			{
+    				if (str[fill] === "1")
+    				{
+    					context.fillRect((fill % 3) * this.CHAR_PIXEL, (fill / 3 | 0) * this.CHAR_PIXEL, this.CHAR_PIXEL, this.CHAR_PIXEL);
+    				}
+    			}
+
+    			return canvas;
+    		});*/
     }
+
+    start () {
+        console.log('start');
+    }
+
 }
 
 class Player {
-    constructor(player) {
-        this.player = player;
+    constructor(name, color) {
+        this.name = name;
+        this.color = color;
     }
 }
 
 
 
-/*
-const canvas = document.getElementById("pong");
-const pong = new Pong(canvas);
-
-canvas.addEventListener("mousemove", event =>
-{
-	const scale = event.offsetY / event.target.getBoundingClientRect().height;
-	pong.players[0].pos.y = canvas.height * scale;
-});
-
-canvas.addEventListener("click", event =>
-{
-	pong.start();
-});
-
-class Pong
+/*class Pong
 {
 	constructor(canvas)
 	{
