@@ -28,7 +28,7 @@
             <a class="navbar-brand" href="#home">4iRad</a>
           </div>
 
-          <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
             <li><a href="#home">Hem</a></li>
             <li><a href="#start">Spela</a></li>
             <li><a href="#rules">Regler</a></li>
@@ -37,11 +37,9 @@
           </ul>
         </div>
       </nav>
-
     </header>
 
     <main>
-
       <div class="page" id="home">
         <div class="container">
           <div class="row">
@@ -63,40 +61,17 @@
                   <label for="inputPassword" class="control-label">Lösenord</label>
                   <input type="password" class="form-control" id="inputPassword" placeholder="Lösenord">
                 </div>
-                 <button class="btn btn-danger btn-lg noPadding" type="spela" id ="#Reg">Register</button>
-                 <button class="btn btn-danger btn-lg noPadding" type="spela" id ="#login">Login</button>
+                <button class="btn btn-danger btn-lg noPadding" type="spela" id ="#Reg">Register</button>
+                <button class="btn btn-danger btn-lg noPadding" type="spela" id ="#login">Login</button>
               </form><!-- Close previous form before opening a new  -->
             </div>
           </div>
-        </div><!-- end of container -->
+        
 
     <script>
-       $(document).ready(function()){
-               $("#login").click(function(){
-                 myFunction();
-               });
-       });
-    
+       
 
-   function myFunction() {
-
-    // Get the value of the input field with name = "name"
-    let nameInputEl = document.querySelector('input[name="name"]');
-     let nameVal = nameInputEl.value;
-   
-    // Get the value of the input field with name = "name"
-    let passwordInputEl = document.querySelector('input[name="password"]');
-    let passwordVal = passwordInputEl.value;
-
-    alert("The user name and pass word is"+ nameVal +"&"+passwordVal);
-     
-
-   }
-
-    </script>
-
-
-        <div class="container">
+    </script><!-- do not mix javascript and html in the same document -->
 
           <div class="row">
             <div class="col-xs-4">
@@ -121,45 +96,94 @@
               </a>
             </div>
           </div>
-
         </div><!-- end of container -->
       </div> <!-- #home ends here -->
 
-       
-
-  <div class="page" id="start">
-        <div class="row">
-          <div class="container-fluid">
-             <img src="assets/img/images.jpg">
+      <div class="page" id="start">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12">
+              <img src="assets/img/images.jpg">
             </div>
           </div><!---image-->
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-5">
             </div>
             <div class="col-md-2">
               <form>
                 <div class="form-group">
                   <label>Spelare 1:</label>
-                    <input type="text" class="form-control">
-                   </div>
-       <div class="form-group">
-          <select>
-          <option value="Spelare på annan dator">Spelare på annan dator</option>
-          <option value="Spelare på samma dator">Spelare på samma dator</option>
-          <option value="Dator">Dator</option>
-          <option value="Spelare2" selected>Spelare på samma dator</option>
-          </select>
-        <br></br>
-         <button id="button" class="btn btn-danger">Starta!</button>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <select>
+                    <option value="Spelare på annan dator">Spelare på annan dator</option>
+                    <option value="Spelare på samma dator">Spelare på samma dator</option>
+                    <option value="Dator">Dator</option>
+                    <option value="Spelare2" selected>Spelare på samma dator</option>
+                  </select>
+                </div>
+                <br></br>
+                <button id="button" class="btn btn-danger">Starta!</button>
               </form>
             </div>
           </div>
-         </div>
-        
+        </div>
+      </div>
 
+      <div class="page" id="rules">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-9 text-center">
+              <div class="page-header">
+                <h1 id="zuhra">Spel Regler</h1>
+              </div>
+            </div>
+          </div>
 
+          <div class="rules">
+            <div class="row">
+              <div class="col-xs-9">
+                <div class="jumbotron">
+
+                  <ul style="list-style-type: square;">
+
+                    <p><li>Om du letar efter ett enkelt strategispel som kan spelas med bara om någon, inklusive barn,
+                    är Connect Four för dig. Connect Four är ett enkelt spel som liknar Tre i rad. Endast i stället för tre
+                    i rad, måste vinnaren ansluta fyra i rad.</li></p>
+
+                    <p><li>För att vinna Connect Four måste du vara den första spelaren att få fyra av dina färgade pjäser
+                    i rad antingen horisontellt , vertikalt eller diagonalt.</li></p>
+
+                    <p><li>Kom ihåg att den officiella Connect Four barns regler och instruktioner kan vara olika beroende
+                    på spelet version du har. Reglerna nedan är några av de exakta anvisningar om hur man spelar Connect Four.</li></p>
+
+                    <p><li>Om du får ansluta fyra och inte ser det eller ring det och sedan motståndaren får ansluta fyra nästa vem som vinner.</li></p>
+
+                    <p><li>Anslut Four (även känd som kapten Mistress, fyra upp, Plot fyra, hitta fyra, Fourplay [stämningen
+                    behövde], Fyra i rad, Fyra i en linje och Gravitrips (i Sovjetunionen )) är en två-spelare anslutning spel
+                    där spelarna först välja en färg och sedan turas släppa färgade skivor uppifrån i en sju-kolonn, sex rader
+                    vertikalt upphängda nätet.</li></p>
+
+                    <p><li>Bitarna faller rakt ner, ockuperar nästa tillgängliga utrymmet i kolonnen. Målet med spelet är att vara
+                    den första att bilda en horisontell, vertikal eller diagonal linje av fyra av sina egna skivor. Connect Four är
+                    ett löst spel. Den första spelaren kan alltid vinna genom att spela rätt drag.</li></p>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-md-3">
+                <img id="you">
+                <a href="assets/img/4irad.jpg" class="thumbnail">
+                  <img src="assets/img/4irad.jpg" class="thumbnail">
+                  <img src="assets/img/fyra-1.jpg" class="thumbnail">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="page" id="faq">
         <div class="container">
@@ -172,18 +196,18 @@
                   <img src="assets/img/Connect_Four.gif">
                 </div>
               </div>
-            <div class="col-xs-12">
-              <h3>Can I install this game from Appstores?</h3>
-              <h4>Yes, this game is available in Appstores.It is easy to install. The steps are specified.  </h4>
-              <h3> Can this game include more than two players?</h3>
-              <h4>This game can be played by two players minimum.If you want to choose one or more players then they play as partners.</h4>
-              <h3>Can I download from the internet?</h3>
-              <h4>This game can be downloaded from the internet.</h4>
+              <div class="col-xs-12">
+                <h3>Can I install this game from Appstores?</h3>
+                <h4>Yes, this game is available in Appstores.It is easy to install. The steps are specified.  </h4>
+                <h3> Can this game include more than two players?</h3>
+                <h4>This game can be played by two players minimum.If you want to choose one or more players then they play as partners.</h4>
+                <h3>Can I download from the internet?</h3>
+                <h4>This game can be downloaded from the internet.</h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
-     </div> 
 
 
 

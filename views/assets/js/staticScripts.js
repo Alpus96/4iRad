@@ -1,4 +1,24 @@
 //  Static js script main file.
+$(document).ready(function()){
+    $("#login").click(function(){
+        myFunction();
+    });
+});
+
+function myFunction() {
+
+    // Get the value of the input field with name = "name"
+    let nameInputEl = document.querySelector('input[name="name"]');
+    let nameVal = nameInputEl.value;
+
+    // Get the value of the input field with name = "name"
+    let passwordInputEl = document.querySelector('input[name="password"]');
+    let passwordVal = passwordInputEl.value;
+
+    alert("The user name and pass word is"+ nameVal +"&"+passwordVal);
+}
+
+
 let won;
 //  Run start when pahe is loaded.
 $(switchPage);
