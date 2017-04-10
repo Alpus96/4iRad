@@ -55,7 +55,8 @@ label {
   display: inline-block;
 }
 
-
-
-
-
+.rules {
+	background-color: #324DE6;
+	color: black;
+	padding: 20px;
+}
