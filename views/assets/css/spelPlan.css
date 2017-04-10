@@ -16,6 +16,9 @@
     padding-left: 0%;
     padding-right: 0%;
   }
+  .player{
+  	float: left;
+  }
 }
 @media (min-width: 992px) {
  .white-and-round  {
@@ -27,6 +30,9 @@
  	padding-left:  10%;
  	margin-right: 10px;
   }
+  .player{
+  	float: left;
+  }
 }
 @media (min-width: 1200px) {
   .white-and-round  {
@@ -37,6 +43,10 @@
     padding-right: 10%;
  	padding-left:  10%;
  	margin-right: 10px;
+
+  }
+  .player{
+  	float: left;
   }
 }
 
@@ -68,13 +78,31 @@ padding-top: 10px;
 	box-shadow: 10px 10px 5px #1E1D26 ;
 }
 .player{
-	height: 40%;
-	width: 60%
+	position: relative;
+	float: right;
+	height: 100%;
+	width: 100%
 	
 	background-color: white;
 	
 }
+.col{
+	width: 14.28%;
+	padding: 1.5%;
+	float:left;
+}
+.floatleft{
+	position: relative;
+	float: left;
+}
 .well {
 	box-shadow: 10px 10px 5px #1E1D26 ;
 	margin-left: 10px;
+}
+.addcoin1{
+  background-color: orange;
+}
+.addCoin2{
+	background-color: yellow;
+
 }
