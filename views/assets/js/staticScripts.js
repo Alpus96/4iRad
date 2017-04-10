@@ -1,5 +1,5 @@
 //  Static js script main file.
-$(document).ready(function()){
+$(document).ready(function(){
     $("#login").click(function(){
         myFunction();
     });
