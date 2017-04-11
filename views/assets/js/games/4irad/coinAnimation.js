@@ -3,6 +3,8 @@ $(document).ready(function(){
     resizer();
     $(window).resize(resizer);
     columnClick();
+    startClick();
+    
 
 
     // create the board
@@ -16,7 +18,9 @@ $(document).ready(function(){
     let i =5;  
     let counter =0;
     let player1 = new Player(10,"Björn","green",24,1);
-    let player2 = new Player(50,"Nisse","yellow",24,2);
+    let player2= new Player(50,"Nisse","yellow",24,2);
+
+    //adding coins
 
     function addCoin(column){
          counter++;
@@ -25,12 +29,12 @@ $(document).ready(function(){
         let coinColor;
         let id;
 
-        if(value===0)
+        if(value===1)
         {
              id = player1.id;
              coinColor = player1.colore;
         }
-        else if(value===1){
+        else if(value===0){
              id = player2.id;
             coinColor = player2.colore;
         }
@@ -91,10 +95,6 @@ $(document).ready(function(){
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
             }
-           
-            
-        
-
     }
 
     // click on a column (really on a slot)
@@ -107,13 +107,26 @@ $(document).ready(function(){
         });
     }
   
-   
-    $(".col-md-1").click(function(){
-    	console.log(
-    		$(this).find('.white-and-round').css('background-color')
-    	);
-    });
-
+   function startClick(){
+    $("#startBtn").click(function(){
+                player1 = new Player1(0, $('#Player1').val());
+              player2 = new Player2(0, $('#Player2').val());
+            console.log(player1);
+            window.location.replace("spel.html");
+            
+            
+         });
+    }
+    
+        $("#p1").html(
+            '<h1>Player1: '+ player1.name + '!</h1>' +
+                '<p>Antal coins: ' + player1.coins + '!</p>'
+            ).css("background-color", player1.colore);
+         $("#p2").html(
+            '<h1>Player2: '+ player2.name + '!</h1>' +
+                '<p>Antal coins: ' + player2.coins + '!</p>'
+            ).css("background-color", player2.colore);
+    
 
 
     function resizer(){

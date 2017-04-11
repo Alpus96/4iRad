@@ -15,6 +15,28 @@ class Player{
 	}
 	
 }
+class Player1 extends Player{
+	
+	constructor(score,name,colore="green",id=1, coins=21){
+		super(name, score);
+		this.id=id;
+		this.colore= colore;
+		this.name= name;
+		this.score=score;
+		this.coins= coins;
+	}
+}
+class Player2 extends Player{
+	
+	constructor(score, name,colore="reed",id=2, coins=21){
+		super(name, score)
+		this.id=id;
+		this.colore= colore;
+		this.name= name;
+		this.score=score;
+		this.coins= coins;
+	}
+}
 class Computer extends Player{
 
 	constructor(difficulty){
