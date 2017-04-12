@@ -11,11 +11,20 @@
 
 		<!--    CSS document link    -->
 		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/spelPlan.css">
 
+
+  <!--    CSS document link    -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    
 		<!--    JS document link    -->
+   
+    <script src="assets/js/staticScripts.js"></script>
     <script src="assets/js/games/4irad/playerClass.js"></script>
     <script src="assets/js/games/4irad/coinAnimation.js"></script>
-		<script src="assets/js/staticScripts.js"></script>
+    <script src="assets/js/games/4irad/game.js"></script>
+
+		
 
 		<!--    Meta page settings    -->
 		<meta charset="UTF-8">
@@ -75,7 +84,7 @@
             <div class="col-xs-4">
               <a href="https://www.miniclip.com/games/agar-io/en/" class="utanstrek">
                 <h1>Agar.io</h1>
-                <p>Agario är ett spel inom genren casual game och action.</p>
+                  <p>Agario är ett spel inom genren casual game och action.</p>
                 <img src="assets/img/icee.jpg" alt="imgs/icee.jpg" class="img-rounded">
               </a>
             </div>
@@ -83,7 +92,7 @@
             <div class="col-xs-4">
               <a href="http://www.games-4-free.com/elvenar/?c=2840">
                 <h1>Elvenar</h1>
-                <p>Elvenar är en stad-byggnad strategi MMO där spelare hantera resurser och utbildning upp en armé för att växa en stor ny imperium.</p>
+                  <p>Elvenar är en stad-byggnad strategi MMO där spelare hantera resurser och utbildning upp en armé för att växa en stor ny imperium.</p>
                 <img src="assets/img/elv1.jpg" alt="imgs/elv1.jpg" class="img-rounded">
               </a>
             </div>
@@ -91,7 +100,7 @@
             <div class="col-xs-4">
               <a href="https://www.miniclip.com/games/ice-temple/en/#t-w-c-H">
                 <h1>Ice Empire</h1>
-                <p>The Ice Temple, förde en gratis online äventyrsspel till dig av Armor Games. Hjälp FireBoy och Watergirl i detta nya äventyr! kontroll både</p>
+                  <p>The Ice Temple, förde en gratis online äventyrsspel till dig av Armor Games. Hjälp FireBoy och Watergirl i detta nya äventyr! kontroll både</p>
                 <img src="assets/img/ice1.jpg" alt="imgs/ice1.jpg" class="img-circle">
               </a>
             </div>
@@ -105,7 +114,7 @@
             <div class="col-xs-12">
               <img src="assets/img/images.jpg">
             </div>
-          </div><!---image-->
+      </div>
 
           <div class="row">
             <div class="col-md-5">
@@ -116,10 +125,10 @@
                   <label>Spelare 1:</label>
                   <input type="text" name="player1" class="form-control" id="Player1">
                 </div>
-				<div class="form-group">
+				      <div class="form-group">
                   <label>Spelare 2:</label>
                   <input type="text" name="player2" class="form-control" id="Player2">
-                </div>
+              </div>
                 <div class="form-group">
                   <select>
                     <option value="Spelare på samma dator">Spelare på samma dator</option>
@@ -127,14 +136,39 @@
                     <option value="Dator">Spela mot datorn</option>
                   </select>
                 </div>
+<<<<<<< HEAD
                 <button id="button" class="btn btn-danger">Replay</button>
                 <input type="button"id="startBtn" href="spel.htmml" name="submit" class="btn btn-danger" value="Starta!">
+=======
+                <input type="button"id="startBtn"  name="submit" class="btn btn-danger" value="Starta!">
+>>>>>>> 14ab522c1c69314cf6213731b02298bd6cad553a
               </form>
             </div>
           </div>
         </div>
       </div>
-
+    <div class="page" id="play">
+      <div class="container" >
+        <div class="row kant">
+          <div class="col-xs-12">
+            <div id="Bord"></div>
+          </div>
+        </div>
+      </div>
+        
+      <div class="row">
+        <div class="col-xs-10 col-md-10 player">
+            <div id="p1" class="well floatleft ">
+                <h2 >Player1</h2>
+                <p> Coins left:</p>
+            </div>
+            <div id="p2" class="well floatleft">
+                <h2>Player2</h2>
+                <p> Coins left:</p>
+            </div>
+        </div>
+      </div>
+    </div>
       <div class="page" id="rules">
         <div class="container">
           <div class="row">
@@ -209,8 +243,8 @@
 
                 <h3>Please Leave your questions here</h3>
                 <div class="col-md-12">
-                <input type = "text" placeholder = "Enter your Queries" name = "Quest">
-                <br></br>
+                  <input type = "text" placeholder = "Enter your Queries" name = "Quest">
+                 <br></br>
                 <a href="#"><input type="submit" name="dsubmit" id="commentSubmit" value="Submit Query"></a>
                 <input style="width: 30px" type="checkbox" value="1" name="subscribe" id="subscribe" checked="checked">
                 <p1><b>Notify Me for new question.</b></p1>
