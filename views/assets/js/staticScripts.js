@@ -1,21 +1,60 @@
 //  Static js script main file.
 $(document).ready(function(){
-    $("#login").click(function(){
+    addClickHandlersForButtons();
+    /*$("#login").click(function(){
         myFunction();
-    });
+    });*/
 });
 
-function myFunction() {
+function addClickHandlersForButtons(){
 
-    // Get the value of the input field with name = "name"
-    let nameInputEl = document.querySelector('input[name="name"]');
-    let nameVal = nameInputEl.value;
+    $('#button').click(function() {
+        window.location.hash = '#start';
+        alert('Spelare 1 vann!');
+    });
 
-    // Get the value of the input field with name = "name"
-    let passwordInputEl = document.querySelector('input[name="password"]');
-    let passwordVal = passwordInputEl.value;
+    $('#Reg').click(function(){
+        let name = $('#inputUsername').val();
+        let mail = $('#inputMail').val();
+        let password = $('#inputPassword').val();
+        
+        if(!isNaN(name)){
+              alert("Name is not valid");
 
-    alert("The user name and pass word is"+ nameVal +"&"+passwordVal);
+            }
+        if(password.length<8 || !isNaN(password)){
+
+            alert("Password is not valid");
+            }
+     });        
+
+    $('#login').click(function(){
+        let name = $('#inputUsername').val();
+        let mail = $('#inputMail').val();
+        let password = $('#inputPassword').val();
+        
+        if(!isNaN(name)){
+              alert("Name is not valid");
+
+            }
+        if(password.length<8 || !isNaN(password)){
+
+            alert("Password is not valid");
+            }
+        
+    });
+
+    /*
+    function register(){
+        let name = $('#inputUsername').val();
+        let mail = $('#inputMail').val();
+        let password = $('#inputPassword"]').val();
+
+        alert('Name: ' + name + '\nMail: ' + mail + '\nPassword: '  + password);
+    }
+    $('#Reg').click(register);
+    */
+
 }
 
 
@@ -73,3 +112,6 @@ function menuItemActive (l) {
         }
     });
 }
+
+    
+
