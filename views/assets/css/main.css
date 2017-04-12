@@ -5,11 +5,20 @@
 	background-color:#f4f441; !important;
 }
 
+
+/* THOMAS SAYS
+   NEVER EVER OVERRIDE BOOTSTRAPS OWN CLASSES!!!
+
 .img-responsive{
 
 	max-width: 600%;
 	height: auto;
 	display: block;
+}
+`*/
+
+.scale-brand-img {
+	height:20px;
 }
 
 h3{
@@ -33,8 +42,13 @@ btn-primary{
 
 
 img {
+  /* THOMAS SAYS:
+     NEVER EVER SET A RULE LIKE THIS FOR ALL IMAGES
+     (YOU WILL AFFECT THE WORK OF EVERYONE TRYING TO USE IMAGES)
+     CREATE YOUR OWN CLASS FOR SUCH A RULE
+     AND ADD IT TO IMAGES WHEN NEEDED	
   width: 100%;
-
+  */
 }
 
 a:active {

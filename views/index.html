@@ -2,6 +2,7 @@
 <html>
 
 	<head>
+		<title>4 I Rad</title>
 
 		<!--    Bootstrap, jQuery and other assets    -->
 		<script src="assets/lib/jquery.js"></script>
@@ -12,6 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
 		<!--    JS document link    -->
+    <script src="assets/js/games/4irad/playerClass.js"></script>
+    <script src="assets/js/games/4irad/coinAnimation.js"></script>
 		<script src="assets/js/staticScripts.js"></script>
 
 		<!--    Meta page settings    -->
@@ -25,10 +28,11 @@
       <nav class="navbar navbar-collapse blue">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#home">4iRad</a>
+            <a class="navbar-brand" href="#home"><img src="assets/img/icon.jpg" class="scale-brand-img"></a>
           </div>
 
         <ul class="nav navbar-nav">
+            <!--i class="material-icons"></i--> 
             <li><a href="#home">Hem</a></li>
             <li><a href="#start">Spela</a></li>
             <li><a href="#rules">Regler</a></li>
@@ -50,8 +54,8 @@
             <div class="col-xs-4">
               <form>
                 <div class="form-group">
-                  <label for="inputUsername" class="control-label">AnvänderNamn</label>
-                  <input type="text" class="form-control" id="inputUsername" placeholder="AnvänderNamn">
+                  <label for="inputUsername" class="control-label">AnvändareNamn</label>
+                  <input type="text" class="form-control" id="inputUsername" placeholder="AnvändareNamn">
                 </div>
                 <div class="form-group">
                   <label for="inputEmail" class="control-label">Epost</label>
@@ -110,18 +114,21 @@
               <form>
                 <div class="form-group">
                   <label>Spelare 1:</label>
-                  <input type="text" class="form-control">
+                  <input type="text" name="player1" class="form-control" id="Player1">
+                </div>
+				<div class="form-group">
+                  <label>Spelare 2:</label>
+                  <input type="text" name="player2" class="form-control" id="Player2">
                 </div>
                 <div class="form-group">
                   <select>
-                    <option value="Spelare på annan dator">Spelare på annan dator</option>
                     <option value="Spelare på samma dator">Spelare på samma dator</option>
-                    <option value="Dator">Dator</option>
-                    <option value="Spelare2" selected>Spelare på samma dator</option>
+					         <option value="Spelare på annan dator">Spelare på annan dator</option>
+                    <option value="Dator">Spela mot datorn</option>
                   </select>
                 </div>
-                <button id="button" class="btn btn-danger noPadding">Starta</button>
                 <button id="button" class="btn btn-danger">Replay</button>
+                <input type="button"id="startBtn" href="spel.htmml" name="submit" class="btn btn-danger" value="Starta!">
               </form>
             </div>
           </div>
@@ -199,14 +206,14 @@
                 <h4>This game can be played by two players minimum.If you want to choose one or more players then they play as partners.</h4>
                 <h3>Can I download from the internet?</h3>
                 <h4>This game can be downloaded from the internet.</h4>
-                
-                <h3>Please Leave your questions here</h3>  
+
+                <h3>Please Leave your questions here</h3>
                 <div class="col-md-12">
                 <input type = "text" placeholder = "Enter your Queries" name = "Quest">
                 <br></br>
                 <a href="#"><input type="submit" name="dsubmit" id="commentSubmit" value="Submit Query"></a>
                 <input style="width: 30px" type="checkbox" value="1" name="subscribe" id="subscribe" checked="checked">
-                <p1><b>Notify Me for new question.</b></p1> 
+                <p1><b>Notify Me for new question.</b></p1>
                  </div>
 
                 </div>

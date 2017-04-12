@@ -1,17 +1,14 @@
 //  Static js script main file.
 $(document).ready(function(){
     addClickHandlersForButtons();
-    /*$("#login").click(function(){
-        myFunction();
-    });*/
 });
 
 function addClickHandlersForButtons(){
 
-    $('#button').click(function() {
+   /* $('#button').click(function() {
         window.location.hash = '#start';
         alert('Spelare 1 vann!');
-    });
+    });*/
 
     $('#Reg').click(function(){
         let name = $('#inputUsername').val();

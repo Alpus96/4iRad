@@ -16,8 +16,10 @@
 
 		<!--    JS document link    -->
 		<script src="assets/js/staticScripts.js"></script>
-    	<script src="assets/js/games/4irad/coinAnimation.js"></script>
+    <script src="assets/js/games/4irad/playerClass.js"></script>
+    <script src="assets/js/games/4irad/coinAnimation.js"></script>
 		<script src="assets/js/games/4irad/game.js"></script>
+
 
 		<!--    Meta page settings    -->
 		<meta charset="UTF-8">
@@ -56,232 +58,33 @@
   </header>
 
  <main class="container">
-
-    <div class="jumbotron kant">
-
-
-	      <div class="row kant" id="Bord" >
-			  <div id="field">
-	        <div class="col-xs-1 col-md-1">
-
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-
-	        </div>
-
-
-
-	        <div class="col-xs-1 col-md-1" >
-
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-
-	        </div>
-
-
-
-
-	         <div class="col-xs-1 col-md-1">
-
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-
-	        </div>
-
-
-
-	        <div class="col-xs-1 col-md-1">
-
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-
-	        </div>
-
-	      <div class="col-xs-1 col-md-1">
-
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-
-	        </div>
-
-	        <div class=" col-xs-1 col-md-1">
-
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-
-	        </div>
-	        <div class=" col-xs-1 col-md-1">
-
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
-
-	          </div>
-	          <div class="well white-and-round">
-
+    <div class="row kant">
+      <div class="col-xs-12">
+        <div id="Bord"></div>
+      </div>
+    </div>
+  </main>
+        
+        <div class="row">
+         <div class="col-xs-10 col-md-10 player">
+              <div id="p1" class="well floatleft ">
+                <h2 >Player1</h2>
+                 <p> Coins left:</p>
+              </div>
+              <div id="p2" class="well floatleft">
+                <h2>Player2</h2>
+                <p> Coins left:</p>
+              </div>
 
 	          </div>
 	        </div>
 		</div>
 
-          <div class="col-xs-4 col-md-4 player">
-              <div class="well ">
-                <h3>Player1</h3>
-                <p> Coins left:</p>
-              </div>
-              <div class="well ">
-                <h3>Player2</h3>
-                <p> Coins left:</p>
-              </div>
+         
+
+               
           </div>
-        </div>
+          </div>
      </main>
 	</body>
 
