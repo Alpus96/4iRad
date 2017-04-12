@@ -21,6 +21,12 @@
 	height:20px;
 }
 
+.you{
+	width:100%;
+	
+}
+
+
 h3{
 	font-size: 20;
 	font-family:Times;
@@ -70,3 +76,4 @@ a:hover {
 	color: black;
 	padding: 20px;
 }
+

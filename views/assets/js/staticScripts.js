@@ -30,7 +30,7 @@ function addClickHandlersForButtons(){
 
     $('#login').click(function(){
         let name = $('#inputUsername').val();
-        let mail = $('#inputMail').val();
+        let mail = $('#inputEmail').val();
         let password = $('#inputPassword').val();
         
         if(!isNaN(name)){
