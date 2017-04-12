@@ -45,7 +45,9 @@ btn-primary{
 .pull-right{
     float: right !important;
 }
-
+.you{
+	width: 100%;
+}
 
 img {
   /* THOMAS SAYS:
