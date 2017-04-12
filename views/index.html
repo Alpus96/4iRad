@@ -11,11 +11,20 @@
 
 		<!--    CSS document link    -->
 		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/spelPlan.css">
 
+
+  <!--    CSS document link    -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    
 		<!--    JS document link    -->
+   
+    <script src="assets/js/staticScripts.js"></script>
     <script src="assets/js/games/4irad/playerClass.js"></script>
     <script src="assets/js/games/4irad/coinAnimation.js"></script>
-		<script src="assets/js/staticScripts.js"></script>
+    <script src="assets/js/games/4irad/game.js"></script>
+
+		
 
 		<!--    Meta page settings    -->
 		<meta charset="UTF-8">
@@ -115,7 +124,7 @@
                   <label>Spelare 1:</label>
                   <input type="text" name="player1" class="form-control" id="Player1">
                 </div>
-				<div class="form-group">
+				        <div class="form-group">
                   <label>Spelare 2:</label>
                   <input type="text" name="player2" class="form-control" id="Player2">
                 </div>
@@ -126,13 +135,34 @@
                     <option value="Dator">Spela mot datorn</option>
                   </select>
                 </div>
-                <input type="button"id="startBtn" href="spel.htmml" name="submit" class="btn btn-danger" value="Starta!">
+                <input type="button"id="startBtn"  name="submit" class="btn btn-danger" value="Starta!">
               </form>
             </div>
           </div>
         </div>
       </div>
-
+    <div class="page" id="play">
+      <div class="container" >
+        <div class="row kant">
+          <div class="col-xs-12">
+            <div id="Bord"></div>
+          </div>
+        </div>
+      </div>
+        
+      <div class="row">
+        <div class="col-xs-10 col-md-10 player">
+            <div id="p1" class="well floatleft ">
+                <h2 >Player1</h2>
+                <p> Coins left:</p>
+            </div>
+            <div id="p2" class="well floatleft">
+                <h2>Player2</h2>
+                <p> Coins left:</p>
+            </div>
+        </div>
+      </div>
+    </div>
       <div class="page" id="rules">
         <div class="container">
           <div class="row">

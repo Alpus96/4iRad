@@ -109,25 +109,25 @@ $(document).ready(function(){
   
    function startClick(){
     $("#startBtn").click(function(){
-                player1 = new Player1(0, $('#Player1').val());
-              player2 = new Player2(0, $('#Player2').val());
+            player1 = new Player1(0, $('#Player1').val());
+            player2 = new Player2(0, $('#Player2').val());
             console.log(player1);
-            window.location.replace("spel.html");
-            
-            
-         });
-    }
-    
-        $("#p1").html(
+            /*window.location.replace("spel.html");*/
+            window.location.hash = '#play';
+           
+             $("#p1").html(
             '<h1>Player1: '+ player1.name + '!</h1>' +
                 '<p>Antal coins: ' + player1.coins + '!</p>'
             ).css("background-color", player1.colore);
-         $("#p2").html(
+            $("#p2").html(
             '<h1>Player2: '+ player2.name + '!</h1>' +
                 '<p>Antal coins: ' + player2.coins + '!</p>'
             ).css("background-color", player2.colore);
     
-
+    
+         });
+    }
+          
 
     function resizer(){
     	// Set the height of white-and-round to its witdh

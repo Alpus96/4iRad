@@ -28,7 +28,7 @@ class Player1 extends Player{
 }
 class Player2 extends Player{
 	
-	constructor(score, name,colore="reed",id=2, coins=21){
+	constructor(score, name,colore="red",id=2, coins=21){
 		super(name, score)
 		this.id=id;
 		this.colore= colore;
