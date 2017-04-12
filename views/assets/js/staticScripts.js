@@ -12,7 +12,7 @@ function addClickHandlersForButtons(){
 
     $('#Reg').click(function(){
         let name = $('#inputUsername').val();
-        let mail = $('#inputMail').val();
+        let mail = $('#inputEmail').val();
         let password = $('#inputPassword').val();
         
         if(!isNaN(name)){
@@ -23,6 +23,9 @@ function addClickHandlersForButtons(){
 
             alert("Password is not valid");
             }
+        if(!isNaN(mail)){
+            alert("Enter valid email-Id");
+        }    
      });        
 
     $('#login').click(function(){
@@ -38,6 +41,10 @@ function addClickHandlersForButtons(){
 
             alert("Password is not valid");
             }
+        if(!isNaN(mail)){
+
+            alert("Enter valid email-Id");
+           }     
         
     });
 
