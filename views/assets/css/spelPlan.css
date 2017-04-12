@@ -53,13 +53,15 @@
 
 .kant{
  border: 1px;
+ width: 60%;
+ height: 60%;
  border-color: #02010D;
  color:#1F0F4A;
  background-color: #2914B3;
 padding-top: 10px;
  align-items: center;
  position: relative;
- 
+ box-shadow: 10% 10% 5% #1E1D26 ;
  margin-bottom: 10px;
  
 }
@@ -75,6 +77,8 @@ padding-top: 10px;
 	
 }
 .jumbotron{
+  position:relative;
+  align-items: center;
 	box-shadow: 10px 10px 5px #1E1D26 ;
 }
 .player{
