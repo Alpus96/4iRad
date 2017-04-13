@@ -117,5 +117,12 @@ function menuItemActive (l) {
     });
 }
 
+function showWhoWon(){
+    let winningPlayerName = "Justa Test";
+    $('#who-won-modal .title').text(winningPlayerName + ' vann...');
+    $('#who-won-modal .message').text('Grattis ' + winningPlayerName + '! Du vann!');
+    $('#who-won-modal').modal('show'); 
+}
+
     
 
