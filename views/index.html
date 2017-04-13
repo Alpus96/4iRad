@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 	<head>
@@ -81,8 +81,8 @@
                   <label for="inputPassword" class="control-label">Lösenord</label>
                   <input type="password" class="form-control" id="inputPassword" placeholder="Lösenord">
                 </div>
-                <button class="btn btn-danger btn-lg noPadding" type="spela" id="Reg">Register</button>
-                <button class="btn btn-danger btn-lg noPadding" type="spela" id="login">Login</button>
+                <button class="btn btn-primary btn-lg noPadding" type="spela" id="Reg">Register</button>
+                <button class="btn btn-primary btn-lg noPadding" type="spela" id="login">Login</button>
               </form><!-- Close previous form before opening a new  -->
             </div>
           </div>
@@ -149,15 +149,32 @@
             </div>
           </div>
         </div-->
-      <div class="page" id="annan">
-        <div id="game">Next player : <i id="color"></i>
-          <div id="messages">
-             <span id="p1">Red</span>
-                <span id="p2">Yellow</span>
-                 <span id="newgame">Are you sure you want to start a new game?</span>
+      
+<div class="page" id="annan">
+  <div class="row">
+    <div class="col-md-5">
+  </div>  
+      <div class="col-md-2">
+        <form>
+          <div class="form-group">
+            <label>Spelare 1:</label>
+            <input type="text" name="player1" class="form-control" id="Player1">
+          </div>
+          <div class="form-group">
+                  <label>Spelare 2:</label>
+                  <input type="text" name="player2" class="form-control" id="Player2">
+                  <br>
+                <input type="button" id="startB" name="start" class="btn-primary" value="Save">
+          </div>
+
+      <div id="game">Next player : <i id="color"></i>
+        <div id="messages">
+            <span id="p1">Red</span>
+               <span id="p2">Yellow</span>
+                  <span id="newgame">Are you sure you want to start a new game?</span>
                    <span id="won">The %s player won.Do you want to play a new game?</span>
-               </div>
-            <table>
+        </div>
+           <table class="slideDownOne" id ="Hidetable">
                 <tr>
                     <td id="color11"></td>
                     <td id="color12"></td>
@@ -215,10 +232,14 @@
             </table>
             <div class="left leg"></div>
             <div class="right leg"></div>
-            <button id="restart">New game</button>
-        </div>
+            <button id="restart">Spel igen</button>
+            </div>
         <script src="assets/js/code.min.js"></script>
+          
+        </div>
       </div>
+    </div>
+  </div>
 
 
     <div class="page" id="play">
@@ -284,23 +305,18 @@
                 </div>
               </div>
 
-<<<<<<< HEAD
-              <div class="col-xs-6 col-md-3 ">
-=======
+
+              <div class="col-xs-6 col-md-3" >
 
               <div class="col-xs-6 col-md-3">
               <br></br>
->>>>>>> e605ece4562b646f3621bf9eda0b8ebf8b03ede8
+
               <br>
                 <img id="you">
                 <a href="assets/img/4irad.jpg" class="thumbnail">
                   <img src="assets/img/4irad.jpg" class="thumbnail">
                   <img src="assets/img/fyra-1.jpg" class="thumbnail">
-<<<<<<< HEAD
-=======
 
-
->>>>>>> e605ece4562b646f3621bf9eda0b8ebf8b03ede8
                 </a>
               </div>
             </div>
