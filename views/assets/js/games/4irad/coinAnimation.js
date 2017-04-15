@@ -15,6 +15,8 @@ $(document).ready(function(){
             }
         }
     }
+   /* var width = $(window).width() - 25; 
+$("#mydiv").width(width);*/
     let i =5;  
     let counter =0;
     let player1 = new Player(10,"Björn","green",24,1);
@@ -96,7 +98,11 @@ $(document).ready(function(){
                i=5;
             }
     }
-
+function replayClick(){
+        $('#replayBtn').click(function(){
+            location.reload();
+        });
+    }
     // click on a column (really on a slot)
     function columnClick(){
         $('#Bord .col').click(function(){
