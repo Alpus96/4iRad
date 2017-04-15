@@ -1,94 +1,120 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Regler</title>
   <meta charset="utf8">
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.min.css">
-  <!-- My own CSS -->
   <link rel="stylesheet" href="assets/css/main.css">
-  <!-- JavaScript libraries -->
+
   <script src="assets/lib/jquery.js"></script>
-  <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
-  <!-- My own JS -->
-  <script src="assets/js/main.js"></script>
-  <!-- Don't allow scaling on mobile devices -->
+  <script src="assets/lib/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script type="assets/js/main.js"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
 
-<header>
+  <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
                   <a class="navbar-brand" href="#home">4iRad</a>
-                  <ul class="nav navbar-nav">
-                  <li><a href="#home">Hem</a></li>
-                  <li><a href="#start" id="names">Spela</a></li>
-                  <li><a href="#rules">Regler</a></li>
-                  <li><a href="#highscore">Topplista</a></li>
-                  <li><a href="#fact">FAQs</a></li>
+                    <ul class="nav navbar-nav">
+                      <li><a href="#home">Hem</a></li>
+                      <li><a href="#start" id="names">Spela</a></li>
+                      <li><a href="#rules">Regler</a></li>
+                      <li><a href="#highscore">Topplista</a></li>
+                      <li><a href="#fact">FAQs</a></li>
                   </ul>
               </div>
             </div>
           </nav>
-    </header>
+  
+  </header>
 
-    <div class="page" id="rules">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-3 col-md-9 text-center">
-                    <div class="page-header">
-                        <h1 id="zuhra">Spel Regler</h1>
-                    </div>
-                </div>
-            </div>
+  <main class="container">
 
-            <div class="rules">
-                <div class="row">
-                    <div class="col-sm-3 col-md-9">
-                        <div class="jumbotron">
+    <div id="start" class="page">
 
-                            <ul style="list-style-type: square;">
+      <div class="row">
 
-                                <p><li>Om du letar efter ett enkelt strategispel som kan spelas med bara om någon, inklusive barn,
-                                    är Connect Four för dig. Connect Four är ett enkelt spel som liknar Tre i rad. Endast i stället för tre
-                                    i rad, måste vinnaren ansluta fyra i rad.</li></p>
+        <div class="col-md-8">
+          
+          <div class="jumbotron">
+            <h1>Regler</h1>
+            
+               <ul style="list-style-type: square;">
 
-                                <p><li>För att vinna Connect Four måste du vara den första spelaren att få fyra av dina färgade pjäser
-                                    i rad antingen horisontellt , vertikalt eller diagonalt.</li></p>
+                  <p><li>Om du letar efter ett enkelt strategispel som kan spelas med bara om någon, inklusive barn,
+                  är Connect Four för dig. Connect Four är ett enkelt spel som liknar Tre i rad. Endast i stället för tre
+                  i rad, måste vinnaren ansluta fyra i rad.</li></p>
 
-                                <p><li>Kom ihåg att den officiella Connect Four barns regler och instruktioner kan vara olika beroende
-                                    på spelet version du har. Reglerna nedan är några av de exakta anvisningar om hur man spelar Connect Four.</li></p>
+                  <p><li>För att vinna Connect Four måste du vara den första spelaren att få fyra av dina färgade pjäser
+                  i rad antingen horisontellt , vertikalt eller diagonalt.</li></p>
 
-                                <p><li>Om du får ansluta fyra och inte ser det eller ring det och sedan motståndaren får ansluta fyra
-                                    nästa vem som vinner.</li></p>
+                  <p><li>Kom ihåg att den officiella Connect Four barns regler och instruktioner kan vara olika beroende
+                  på spelet version du har. Reglerna nedan är några av de exakta anvisningar om hur man spelar Connect Four.</li></p>
 
-                                <p><li>Anslut Four (även känd som kapten Mistress, fyra upp, Plot fyra, hitta fyra, Fourplay [stämningen
-                                    behövde], Fyra i rad, Fyra i en linje och Gravitrips (i Sovjetunionen )) är en två-spelare anslutning spel
-                                    där spelarna först välja en färg och sedan turas släppa färgade skivor uppifrån i en sju-kolonn, sex rader
-                                    vertikalt upphängda nätet.</li></p>
+                  <p><li>Om du får ansluta fyra och inte ser det eller ring det och sedan motståndaren får ansluta fyra
+                  nästa vem som vinner.</li></p>
 
-                                <p><li>Bitarna faller rakt ner, ockuperar nästa tillgängliga utrymmet i kolonnen. Målet med spelet är att vara
-                                    den första att bilda en horisontell, vertikal eller diagonal linje av fyra av sina egna skivor. Connect Four är
-                                    ett löst spel. Den första spelaren kan alltid vinna genom att spela rätt drag.</li></P>
-                            </ul>
-                        </div>
-                    </div>
+                  <p><li>Anslut Four (även känd som kapten Mistress, fyra upp, Plot fyra, hitta fyra, Fourplay [stämningen
+                  behövde], Fyra i rad, Fyra i en linje och Gravitrips (i Sovjetunionen )) är en två-spelare anslutning spel
+                  där spelarna först välja en färg och sedan turas släppa färgade skivor uppifrån i en sju-kolonn, sex rader
+                  vertikalt upphängda nätet.</li></p>
+                  
+                  <P><li>Bitarna faller rakt ner, ockuperar nästa tillgängliga utrymmet i kolonnen. Målet med spelet är att vara
+                  den första att bilda en horisontell, vertikal eller diagonal linje av fyra av sina egna skivor. Connect Four är
+                  ett löst spel. Den första spelaren kan alltid vinna genom att spela rätt drag.</li></P>
+                </ul>
+          </div>
 
-                    <div class="col-xs-6 col-md-3">
-                        <img id="you">
-                        <a href="assets/img/4irad.jpg" class="thumbnail">
-                            <img src="assets/img/4irad.jpg" class="thumbnail">
-                            <img src="assets/img/fyra-1.jpg" class="thumbnail">
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
+    <div class="row">
 
-   </body>
-  </html>
+        <div class="col-md-4">
+          <a href="#" class="thumbnail">
+            <img src="assets/img/4irad.jpg" class="img-responsive 4irad-img">
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="#" class="thumbnail">
+            <img src="assets/img/fyra-1.jpg" class="img-responsive 4row-img">
+          </a>
+        </div>
+
+  </main>
+
+  <footer class="container-fluid bg-primary">
+    <div class="row">
+
+      <div class="col-md-4">
+       <h4>Adress</h4>
+            <p>Mälardalsvägen 21</p>
+            <p>312 22 Småstad</p>
+      </div>
+
+      <div class="col-md-4">
+        <h4>E-post</h4>
+            <p>info@fourinarow.se</p>
+            <p>support@fourinarow.se</p>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Telefon</h4>
+          <p>HjälpDesk: 095-12 34 56</p>
+          <p>Service: 096-13 14 15</p>
+      </div>
+
+    </div>
+  </footer>
+
 </body>
 </html>
+
+
+
+
+
+
