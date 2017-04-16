@@ -53,8 +53,6 @@
 
 .kant{
  border: 1px;
- width: 100%;
- 
  border-color: #02010D;
  color:#1F0F4A;
  background-color: #2914B3;
@@ -73,13 +71,16 @@ padding-top: 10px;
 	padding-left: 5px;
 	margin-right: 10px;
 	border-radius: 50%;
-	box-shadow: 10% 10% 5% #1E1D26 ;
+	/*box-shadow: 10% 10% 5% #1E1D26 ;*/
 	
 }
 .jumbotron{
-  position:relative;
-  align-items: center;
-	box-shadow: 10px 10px 5px #1E1D26 ;
+ 
+}
+.lysa{
+  -moz-box-shadow: 0 0 5px #fff;
+-webkit-box-shadow: 0 0 5px #fff;
+box-shadow: 0px 0px 5px #fff;
 }
 .player{
 	position: relative;
@@ -91,17 +92,21 @@ padding-top: 10px;
 	
 }
 .col{
-	width: 14.28%;
+	width: 16.66%;
 	padding: 1.5%;
 	float:left;
 }
-.floatleft{
+.floatright{
 	position: relative;
-	float: left;
+	float: right;
 }
-.well {
+.well-sm {
+  background-color: white;
+  word-wrap: break-word;
 	box-shadow: 10px 10px 5px #1E1D26 ;
-	margin-left: 10px;
+  margin-bottom: 20px; 
+  margin-top: 10px;
+  margin-right: 30px;
 }
 .addcoin1{
   background-color: orange;
