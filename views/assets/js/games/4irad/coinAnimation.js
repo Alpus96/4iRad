@@ -225,6 +225,10 @@ $("#mydiv").width(width);*/
             createBord();
             resizer();
             $(window).resize(resizer);
+            columnClick();
+            startClick();
+            replayClick ();
+            cancelClick();
             updatePlayer();
          });
     }
