@@ -2,7 +2,7 @@
 /*Massa css här test */
 
 .blue{
-	background-color:#f4f441; !important;
+	background-color:blue; !important;
 }
 
 
@@ -82,3 +82,4 @@ a:hover {
 	padding-left: 9%;
 	padding-right: 9%;
 }
+
