@@ -6,6 +6,7 @@ $(document).ready(function(){
     columnClick();
     startClick();
     replayClick ();
+    cancelClick();
     
 
 
@@ -25,6 +26,15 @@ $(document).ready(function(){
             }
         }
     }
+function cancelClick(){
+    $('#cancel').click(function() 
+    { 
+        deleteBord();
+        window.location.replace("index.html");
+
+    });
+}
+
    /* var width = $(window).width() - 25; 
 $("#mydiv").width(width);*/
     let i =6;  
@@ -99,7 +109,6 @@ $("#mydiv").width(width);*/
                 
                 val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
-               vinstKoll(column);
                speladeCoins();
                
             }
@@ -211,8 +220,6 @@ $("#mydiv").width(width);*/
     $("#startBtn").click(function(){
             player1 = new Player1(0, $('#Player1').val());
             player2 = new Player2(0, $('#Player2').val());
-            console.log(player1);
-            /*window.location.replace("spel.html");*/
             window.location.hash = '#play';
             deleteBord();
             createBord();
