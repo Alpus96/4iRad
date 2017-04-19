@@ -32,6 +32,7 @@ $("#mydiv").width(width);*/
     let player1 = new Player(10,"Björn","green",24,1);
     let player2= new Player(50,"Nisse","yellow",24,2);
     let value =1;
+    let idval = [];
 
      function runEffect() {
       // Most effect types need no options passed by default
@@ -44,6 +45,19 @@ $("#mydiv").width(width);*/
         $(this).css( "border",'' );
       }, 1000 );
     };
+
+   /* function vinstKoll(column){
+
+         for(let i = 0; i <= 6; i++){
+            for(let j = 0; j <= 5; j++){
+                if($(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
+                {
+                 idval =  $('.row-'+i+'-col-'+column).find(".white-and-round").attr("id");
+                 console.log(idval[2]);
+                }
+            }
+        }
+    }*/
 
     
     //adding coins
@@ -65,10 +79,7 @@ $("#mydiv").width(width);*/
             "border-width": "5px"
             }, 500);
              $("#p1").css('border','');
-             
-             
-             
-             
+                
         }
         else if(value===0){
              id = player2.id;
@@ -81,13 +92,14 @@ $("#mydiv").width(width);*/
             $("#p2").css('border','');
             
         }
-      console.log(coinColor);
+      
 
              if(i ===6 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
                 
                 val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
+               vinstKoll(column);
                speladeCoins();
                
             }
@@ -202,6 +214,10 @@ $("#mydiv").width(width);*/
             console.log(player1);
             /*window.location.replace("spel.html");*/
             window.location.hash = '#play';
+            deleteBord();
+            createBord();
+            resizer();
+            $(window).resize(resizer);
             updatePlayer();
          });
     }

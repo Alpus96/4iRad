@@ -12,4 +12,6 @@ class Databese {
     connect () {
         return MySQL.createConnection({dbConf});
     }
+
+    
 }
