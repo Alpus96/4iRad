@@ -51,16 +51,9 @@ function addClickHandlersForButtons(){
         
     });
 
-    /*
-    function register(){
-        let name = $('#inputUsername').val();
-        let mail = $('#inputMail').val();
-        let password = $('#inputPassword"]').val();
-
-        alert('Name: ' + name + '\nMail: ' + mail + '\nPassword: '  + password);
-    }
-    $('#Reg').click(register);
-    */
+    $('#logout').click(function() {
+        window.location.hash = '#home';
+    });
 
 }
 
