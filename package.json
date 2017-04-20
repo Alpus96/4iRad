@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Alpus96/4iRad#readme",
   "dependencies": {
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mysql": "^2.13.0"
   }
 }
