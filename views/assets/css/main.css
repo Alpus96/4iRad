@@ -81,5 +81,19 @@ a:hover {
 .center{
 	padding-left: 9%;
 	padding-right: 9%;
+
+
 }
 
+@media (min-width: 992px) {
+  .center{
+  		padding-right: 15%;
+  		padding-left: 20%;
+  }
+
+
+  }
+
+  footer{
+  	margin-top: 8%;
+  }
