@@ -10,7 +10,7 @@ new RunSqlQuery(
 // Adding player1 to highscore list
 new RunSqlQuery(
   'addToHighscore',
-  {name:'.player1.name',score:'player1.score',playerid:'player1.id'},
+  {Name:'.player1.name',score:'player1.score',userid:'player1.id'},
   function(response){
     console.log('addToHighscore',response);
   }
