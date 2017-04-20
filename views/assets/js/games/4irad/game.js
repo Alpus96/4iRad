@@ -29,8 +29,8 @@ class Game {
                 }
             }
 
-            for (rows in this.gameBoard[0]) {
-
+            for (let i = 0; i < this.gameBoard[0].length; i++) {
+                
             }
         }
     }

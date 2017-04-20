@@ -74,7 +74,7 @@ $("#mydiv").width(width);*/
     }*/
 
 
-    addCoin(coin, column) {
+    /*addCoin(coin, column) {
         if (!this.gameBoard[column].length > 6 && coin instanceof Coin) {
             //  If the column is not ful place a Coin in it and return tue.
             this.gameBoard[column].push(coin);
@@ -83,7 +83,7 @@ $("#mydiv").width(width);*/
             //  If the column was ful or the coin was not a Coin return false.
             return false;
         }
-    }
+    }*/
 
     //adding coins
 
