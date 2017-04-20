@@ -1,8 +1,8 @@
 /*    Main CSS file    */
 /*Massa css här test */
 
-.blue{
-	background-color:blue; !important;
+.farga{
+	background-color:#337ab7;
 }
 
 
@@ -38,7 +38,7 @@ btn-primary{
 }
 
 .navbar-nav{
-	background-color:#f4f441;
+	background-color:#337ab7;
 }
 
 .pull-right{
@@ -110,6 +110,11 @@ body {
   margin-bottom: 120px;
 }
 
+<<<<<<< HEAD
+.farga a {
+	color:white;
+}
+=======
 footer {
   position: absolute;
   bottom: 0;
@@ -134,3 +139,4 @@ footer {
 	text-align: center;
 }
 
+>>>>>>> 3f0ea658ba106535a6b1b01f8e5eac4b826e83b4
