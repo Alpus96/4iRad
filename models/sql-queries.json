@@ -1,7 +1,13 @@
-
 {
 
- "getUserById": 
+  "getNameAndScore": 
+  "SELECT Name, score FROM highscore order by score desc",
+
+
+  "addToHighscore":
+  "INSERT INTO highscore SET ?",
+
+  "getUserById": 
   "SELECT * FROM users where users.id=?",
 
   "getUserByMail":
@@ -12,6 +18,5 @@
 
   "addUsers":
   "INSERT INTO users SET ?"
-
 
 }

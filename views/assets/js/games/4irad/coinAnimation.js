@@ -12,16 +12,16 @@ $(document).ready(function(){
 
     // create the board
     function createBord(){
-        for(let i = 0; i <= 6; i++){
-            for(let j = 0; j <= 5; j++){
+        for(let i = 0; i <= 5; i++){
+            for(let j = 0; j <= 6; j++){
                   $('#Bord').append(' <div class="col row-'+i+'-col-'+j+'"><div class="white-and-round"></div></div>');
             }
         }
     }
     // delete the board
     function deleteBord(){
-        for(let i = 0; i <= 6; i++){
-            for(let j = 0; j <= 5; j++){
+        for(let i = 0; i <= 5; i++){
+            for(let j = 0; j <= 6; j++){
                   $('.row-'+i+'-col-'+j).remove();
             }
         }
@@ -37,7 +37,7 @@ function cancelClick(){
 
    /* var width = $(window).width() - 25; 
 $("#mydiv").width(width);*/
-    let i =6;  
+    let i =5;  
     let counter =0;
     let player1 = new Player(10,"Björn","green",24,1);
     let player2= new Player(50,"Nisse","yellow",24,2);
@@ -74,6 +74,7 @@ $("#mydiv").width(width);*/
 
     function addCoin(column){
          counter++;
+         i=5;
         
         value = counter%2;
         let coinColor;
@@ -104,7 +105,7 @@ $("#mydiv").width(width);*/
         }
       
 
-             if(i ===6 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
+            /* if(i ===6 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
                 
                 val=i+column+id;
@@ -114,14 +115,14 @@ $("#mydiv").width(width);*/
             }
             else if(i===6){
                  i--;   
-            }
+            }*/
        
             if(i ===5 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
                 
                 val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
-               i=6;
+               i=5;
                speladeCoins();
             }
             else if(i===5){
@@ -132,7 +133,7 @@ $("#mydiv").width(width);*/
                 
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
-               i=6;
+               i=5;
                speladeCoins();
             }
             else if(i===4){
@@ -143,7 +144,7 @@ $("#mydiv").width(width);*/
                 
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
-               i=6;
+               i=5;
                speladeCoins();
             }
             else if(i===3){
@@ -153,7 +154,7 @@ $("#mydiv").width(width);*/
                 
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
-               i=6;
+               i=5;
                speladeCoins();
             }
             else if(i===2){
@@ -164,7 +165,7 @@ $("#mydiv").width(width);*/
                 
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
-               i=6;
+               i=5;
                speladeCoins();
             }
             else if(i===1){
@@ -174,7 +175,7 @@ $("#mydiv").width(width);*/
                 
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
-               i=6;
+               i=5;
                speladeCoins();
             }
     }
@@ -223,8 +224,15 @@ $("#mydiv").width(width);*/
             window.location.hash = '#play';
             deleteBord();
             createBord();
-            resizer();
-            $(window).resize(resizer);
+            i=5;
+            setTimeout(function(){ resizer() },0);
+            // only connect the resizer to window resize
+            // events ONCE - otherwise it will run several times
+            // for each resize
+            if(!window.resizerOn){
+                $(window).resize(resizer);
+                window.resizerOn = true;
+            }
             columnClick();
             startClick();
             replayClick ();

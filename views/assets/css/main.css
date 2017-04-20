@@ -81,8 +81,59 @@ a:hover {
 .center{
 	padding-left: 9%;
 	padding-right: 9%;
+
+
 }
 
+@media (min-width: 992px) {
+  .center{
+  		padding-right: 15%;
+  		padding-left: 20%;
+  }
+
+
+  }
+
+  /*footer{
+  	margin-top: 8%;
+  }*/
+
+ 
+
+ html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  
+  margin-bottom: 120px;
+}
+
+<<<<<<< HEAD
 .farga a {
 	color:white;
 }
+=======
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+}
+
+
+@media screen and (max-width: 969px) {
+
+    body {
+      margin-bottom:300px;
+    }
+
+    footer {
+      height: 280px;
+    }
+
+}
+
+
+>>>>>>> 3f0ea658ba106535a6b1b01f8e5eac4b826e83b4
