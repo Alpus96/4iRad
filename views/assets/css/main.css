@@ -1,8 +1,8 @@
 /*    Main CSS file    */
 /*Massa css här test */
 
-.blue{
-	background-color:blue; !important;
+.farga{
+	background-color:#337ab7;
 }
 
 
@@ -38,7 +38,7 @@ btn-primary{
 }
 
 .navbar-nav{
-	background-color:#f4f441;
+	background-color:#337ab7;
 }
 
 .pull-right{
@@ -83,3 +83,6 @@ a:hover {
 	padding-right: 9%;
 }
 
+.farga a {
+	color:white;
+}
