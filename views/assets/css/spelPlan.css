@@ -67,8 +67,8 @@ padding-top: 10px;
 	background-color: #F3F2F7;
 	width: 100%;
 	padding: 10px;
-	padding-right: 5px;
-	padding-left: 5px;
+	/*padding-right: 5px;
+	padding-left: 5px;*/
 	margin-right: 10px;
 	border-radius: 50%;
 	/*box-shadow: 10% 10% 5% #1E1D26 ;*/
@@ -92,7 +92,7 @@ box-shadow: 0px 0px 5px #fff;
 	
 }
 .col{
-	width: 16.66%;
+	width: 12.66%;
 	padding: 1.5%;
 	float:left;
 }

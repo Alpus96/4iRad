@@ -24,7 +24,7 @@ new RunSqlQuery(
   }
 );
 
-//Addin users
+//Hämtar alla users
 new RunSqlQuery(
   'getAllUsers',
   function(response){

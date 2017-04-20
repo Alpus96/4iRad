@@ -4,12 +4,23 @@ const http = require('http');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
 
 //	Set server to express framework, and give it the 'file configuration'.
 let server = express();
 server.set('view engine', 'ejs');
 server.set('views', './views');
 server.use(express.static('./views/assets'));
+
+
+// Let us use Express with url post data
+server.use(bodyParser.urlencoded({ extended: true }));
+
+// Connect to mysql, read queries from sql-queries.json
+// and automatically set up routes for them
+let SqlConnector = require('./sql-connector.class.js');
+new SqlConnector(server,mysql);
 
 //	Responde with index page
 function index (request, response) {
