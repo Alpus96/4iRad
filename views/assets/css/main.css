@@ -23,7 +23,7 @@
 
 .you{
 	width:100%;
-	
+
 }
 
 h3{
@@ -53,7 +53,7 @@ img {
      NEVER EVER SET A RULE LIKE THIS FOR ALL IMAGES
      (YOU WILL AFFECT THE WORK OF EVERYONE TRYING TO USE IMAGES)
      CREATE YOUR OWN CLASS FOR SUCH A RULE
-     AND ADD IT TO IMAGES WHEN NEEDED	
+     AND ADD IT TO IMAGES WHEN NEEDED
   width: 100%;
   */
 }
@@ -138,5 +138,8 @@ footer {
 .jumbotron h1{
 	text-align: center;
 }
+<<<<<<< faed8e453e1069dc526641f382fc2869263b185b
 
 >>>>>>> 3f0ea658ba106535a6b1b01f8e5eac4b826e83b4
+=======
+>>>>>>> added addCoin function to coinAnimation
