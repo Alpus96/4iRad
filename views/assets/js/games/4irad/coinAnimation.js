@@ -127,15 +127,10 @@ $("#mydiv").width(width);*/
 
             }
             else if(i===6){
-<<<<<<< faed8e453e1069dc526641f382fc2869263b185b
+
                  i--;
             }*/
 
-=======
-                 i--;
-            }
-
->>>>>>> added addCoin function to coinAnimation
             if(i ===5 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
 
