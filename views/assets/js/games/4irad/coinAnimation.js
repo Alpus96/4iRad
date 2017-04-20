@@ -7,7 +7,7 @@ $(document).ready(function(){
     startClick();
     replayClick ();
     cancelClick();
-    
+
 
 
     // create the board
@@ -27,17 +27,21 @@ $(document).ready(function(){
         }
     }
 function cancelClick(){
-    $('#cancel').click(function() 
-    { 
+    $('#cancel').click(function()
+    {
         deleteBord();
         window.location.replace("index.html");
 
     });
 }
 
-   /* var width = $(window).width() - 25; 
+   /* var width = $(window).width() - 25;
 $("#mydiv").width(width);*/
-    let i =5;  
+<<<<<<< faed8e453e1069dc526641f382fc2869263b185b
+    let i =5;
+=======
+    let i =6;
+>>>>>>> added addCoin function to coinAnimation
     let counter =0;
     let player1 = new Player(10,"Björn","green",24,1);
     let player2= new Player(50,"Nisse","yellow",24,2);
@@ -69,13 +73,22 @@ $("#mydiv").width(width);*/
         }
     }*/
 
-    
+
+    /*addCoin(coin, column) {
+        if (!this.gameBoard[column].length > 6 && coin instanceof Coin) {
+            //  If the column is not ful place a Coin in it and return tue.
+            this.gameBoard[column].push(coin);
+            return true;
+        } else {
+            //  If the column was ful or the coin was not a Coin return false.
+            return false;
+        }
+    }*/
+
     //adding coins
 
     function addCoin(column){
          counter++;
-         i=5;
-        
         value = counter%2;
         let coinColor;
         let id;
@@ -90,7 +103,7 @@ $("#mydiv").width(width);*/
             "border-width": "5px"
             }, 500);
              $("#p1").css('border','');
-                
+
         }
         else if(value===0){
              id = player2.id;
@@ -101,78 +114,79 @@ $("#mydiv").width(width);*/
             "border-width": "5px"
             }, 500);
             $("#p2").css('border','');
-            
+
         }
-      
+
 
             /* if(i ===6 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
-                
+
                 val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                speladeCoins();
-               
+
             }
             else if(i===6){
-                 i--;   
+
+                 i--;
             }*/
-       
+
             if(i ===5 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
-                
+
                 val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
             }
             else if(i===5){
-                 i--;   
+                 i--;
             }
-            
+
              if(i===4 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id")){
-                
+
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
             }
             else if(i===4){
-                 i--;   
+                 i--;
             }
-            
+
              if(i===3 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id")){
-                
+
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
             }
             else if(i===3){
-                 i--;   
+                 i--;
             }
              if(i===2 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id")){
-                
+
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
             }
             else if(i===2){
-                 i--;   
+                 i--;
             }
-          
+
              if(i===1 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id")){
-                
+
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
             }
             else if(i===1){
-                 i--;   
+                 i--;
             }
               if(i===0 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id")){
-                
+
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
@@ -203,7 +217,7 @@ $("#mydiv").width(width);*/
             player1 = new Player1(0, $('#Player1').val());
             player2 = new Player2(0, $('#Player2').val());
             updatePlayer();
-            
+
             console.log(player1);
         });
     }
@@ -216,7 +230,7 @@ $("#mydiv").width(width);*/
             addCoin(column);
         });
     }
-  
+
    function startClick(){
     $("#startBtn").click(function(){
             player1 = new Player1(0, $('#Player1').val());
@@ -248,7 +262,7 @@ $("#mydiv").width(width);*/
             $("#p2").html(
             '<h4>Spelare1: '+ player2.name + '</h4>' +
                 '<p>Antal mynt kvar: ' + player2.coins + '</p>'
-            ).css("background-color", player2.colore); 
+            ).css("background-color", player2.colore);
     }
 
     function resizer(){
