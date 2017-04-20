@@ -222,9 +222,9 @@ $("#mydiv").width(width);*/
             player2 = new Player2(0, $('#Player2').val());
             window.location.hash = '#play';
             deleteBord();
-            createBord();
+           /* createBord();
             resizer();
-            $(window).resize(resizer);
+            $(window).resize(resizer);*/
             columnClick();
             startClick();
             replayClick ();
