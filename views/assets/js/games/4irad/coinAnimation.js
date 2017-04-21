@@ -323,6 +323,13 @@ checkForWinner(players) {
                     while (this.gameBoard[i+k][j+k].owner === player.id) {
                         inARow++;
                     }
+                    while (this.gameBoard[i+k][j-k].owner === player.id) {
+                        inARow++;
+                    }
+                    inARowCheck(player, inARow);
+                    while (this.gameBoard[i-k][j+k].owner === player.id) {
+                        inARow++;
+                    }
                     inARowCheck(player, inARow);
                 }
             }

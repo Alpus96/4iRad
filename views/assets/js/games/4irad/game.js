@@ -44,10 +44,6 @@ class Game {
                 inARowCheck(player, inARow);
             }
 
-<<<<<<< 3c6a4522dbc603ca0993ad1ab09ce3ffd40748fb
-            for (rows in this.gameBoard[0]) {
-
-=======
             for (let i = 0; i < this.gameBoard.length; i++) {
                 last = 0;
                 for (let j = 0; i < this.gameBoard[j].length; j++) {
@@ -61,7 +57,6 @@ class Game {
                     }
                 }
                 inARowCheck(player, inARow);
->>>>>>> Wrote check for winner function
             }
 
             for (let i = 0; i < this.gameBoard.length; i++) {
@@ -73,6 +68,13 @@ class Game {
                             inARow++;
                         }
                         while (this.gameBoard[i+k][j+k].owner === player.id) {
+                            inARow++;
+                        }
+                        inARowCheck(player, inARow);
+                        while (this.gameBoard[i+k][j-k].owner === player.id) {
+                            inARow++;
+                        }
+                        while (this.gameBoard[i-k][j+k].owner === player.id) {
                             inARow++;
                         }
                         inARowCheck(player, inARow);
