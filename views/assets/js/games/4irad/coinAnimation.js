@@ -37,11 +37,7 @@ function cancelClick(){
 
    /* var width = $(window).width() - 25;
 $("#mydiv").width(width);*/
-<<<<<<< faed8e453e1069dc526641f382fc2869263b185b
-    let i =5;
-=======
     let i =6;
->>>>>>> added addCoin function to coinAnimation
     let counter =0;
     let player1 = new Player(10,"Björn","green",24,1);
     let player2= new Player(50,"Nisse","yellow",24,2);
@@ -279,3 +275,63 @@ $("#mydiv").width(width);*/
     });
 
 });
+
+
+checkForWinner(players) {
+    for (player of players) {
+        let inARow;
+        let last;
+        for (column of this.gameBoard) {
+            inARow = 1;
+            last = 0;
+            for (let i = 0; i < column.length; i++) {
+                if (column[i].owner === player.id) {
+                    if (last === i - 1) {
+                        inARow++;
+                    } else {
+                        inARow = 1;
+                    }
+                    last = i;
+                }
+            }
+            inARowCheck(player, inARow);
+        }
+
+        for (let i = 0; i < this.gameBoard.length; i++) {
+            last = 0;
+            for (let j = 0; i < this.gameBoard[j].length; j++) {
+                if(this.gameBoard[j][i].owner === player.id) {
+                    if (last = j -1) {
+                        inARow++;
+                    } else {
+                        inARow = 1;
+                    }
+                    last = j;
+                }
+            }
+            inARowCheck(player, inARow);
+        }
+
+        for (let i = 0; i < this.gameBoard.length; i++) {
+            for (let j = 0; i < this.gameBoard[i].length; j++) {
+                if (this.gameBoard[i][j].owner === player.id) {
+                    let k = 0;
+                    let inARow = 1;
+                    while (this.gameBoard[i-k][j-k].owner === player.id) {
+                        inARow++;
+                    }
+                    while (this.gameBoard[i+k][j+k].owner === player.id) {
+                        inARow++;
+                    }
+                    inARowCheck(player, inARow);
+                }
+            }
+        }
+    }
+}
+
+inARowCheck (player, inARow) {
+    if (inARow > 3) {
+        player.wins();
+    }
+}
