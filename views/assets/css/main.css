@@ -136,6 +136,13 @@ footer {
 
 }
 .well {
-  color: blue;
+  color:#ffd700 !important;
 }
 
+.gold{
+  color:#ffd700 !important;
+}
+.centerText{
+  text-align: center;
+  
+}
