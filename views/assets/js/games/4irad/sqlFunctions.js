@@ -4,6 +4,7 @@ new RunSqlQuery(
   'getNameAndScore',
   function(response){
     console.log('getNameAndScore',response);
+    writeHighScore(response);
   }
 );
 
