@@ -1,6 +1,5 @@
 class Config {
     database () {
-        console.log('database config');
         return {
         	host: 'localhost',
         	user: '4irad',
@@ -9,3 +8,5 @@ class Config {
         };
     }
 }
+
+module.exports = new Config();
