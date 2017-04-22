@@ -8,6 +8,8 @@ $(document).ready(function(){
     replayClick ();
     cancelClick();
 
+    const game = new Game();
+
     // create the board
     function createBord(){
         for(let i = 0; i <= 5; i++){
@@ -82,7 +84,7 @@ $("#mydiv").width(width);*/
     //adding coins
 
     function addCoin(column){
-         counter++;
+        counter++;
         value = counter%2;
         let coinColor;
         let id;
@@ -186,6 +188,9 @@ $("#mydiv").width(width);*/
                i=5;
                speladeCoins();
             }
+            console.log(Number(column));
+            game.addCoin(new Coin(value+1), Number(column));
+            game.checkForWinner({id: value+1});
     }
     function speladeCoins(){
                 if(value===1){
