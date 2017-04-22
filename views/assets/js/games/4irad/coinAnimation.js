@@ -112,7 +112,8 @@ $("#mydiv").width(width);*/
             $("#p2").css('border','');
 
         }
-
+            let e= new Eesy()
+            e.makeMove();
 
             /* if(i ===6 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
@@ -234,6 +235,8 @@ $("#mydiv").width(width);*/
     $("#startBtn").click(function(){
             player1 = new Player1(0, $('#Player1').val());
             player2 = new Player2(0, $('#Player2').val());
+            let selected =$( "#myselect option:selected" );
+            console.log(selected);
             window.location.hash = '#play';
             deleteBord();
             createBord();
