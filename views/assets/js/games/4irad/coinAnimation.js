@@ -37,10 +37,12 @@ function cancelClick(){
 
    /* var width = $(window).width() - 25;
 $("#mydiv").width(width);*/
-    let i =6;
+    let e= new Eesy()
+    let i =5;
+    let selected;
     let counter =0;
-    let player1 = new Player(10,"Björn","green",24,1);
-    let player2= new Player(50,"Nisse","yellow",24,2);
+    let player1 = new Player(10,"Björn","green",21,1);
+    let player2= new Player(50,"Nisse","yellow",21,2);
     let value =1;
     let idval = [];
 
@@ -112,8 +114,7 @@ $("#mydiv").width(width);*/
             $("#p2").css('border','');
 
         }
-            let e= new Eesy()
-            e.makeMove();
+            
 
             /* if(i ===6 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
@@ -188,6 +189,12 @@ $("#mydiv").width(width);*/
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
+               if(selected==="Dator")
+                {
+                column=e.makeMove();
+                addCoin(column);
+                console.log(column);
+                }
             }
             console.log(Number(column));
             game.addCoin(new Coin(value+1), Number(column));
@@ -230,30 +237,63 @@ $("#mydiv").width(width);*/
             addCoin(column);
         });
     }
+    
+            
+    $(function(ready){
+        $('#selectedVal').change(function() {
+                selected=$(this).val();
+                if ($(this).val() === 'Dator') {
+                 $('#Player2').hide(); 
+                }
+                else{
+                    $('#Player2').show(); 
+                }  
+                     
+        });
+    });
+         
+    
 
    function startClick(){
     $("#startBtn").click(function(){
             player1 = new Player1(0, $('#Player1').val());
-            player2 = new Player2(0, $('#Player2').val());
-            let selected =$( "#myselect option:selected" );
-            console.log(selected);
-            window.location.hash = '#play';
-            deleteBord();
-            createBord();
-            i=5;
-            setTimeout(function(){ resizer() },0);
-            // only connect the resizer to window resize
-            // events ONCE - otherwise it will run several times
-            // for each resize
-            if(!window.resizerOn){
-                $(window).resize(resizer);
-                window.resizerOn = true;
+            if(selected==="Dator"){
+                player2= new Player(0,"Dator","yellow",21,2);
+                window.location.hash = '#play';
+                deleteBord();
+                createBord();
+                i=5;
+                setTimeout(function(){ resizer() },0);
+                // only connect the resizer to window resize
+                // events ONCE - otherwise it will run several times
+                // for each resize
+                if(!window.resizerOn){
+                    $(window).resize(resizer);
+                    window.resizerOn = true;
+                }
+                let comColumn = e.makeMove();
+                console.log(comColumn);
+                updatePlayer();
+                addCoin(comColumn);
             }
-            columnClick();
-            startClick();
-            replayClick ();
-            cancelClick();
-            updatePlayer();
+            else{
+                player2 = new Player2(0, $('#Player2').val());
+                window.location.hash = '#play';
+                deleteBord();
+                createBord();
+                i=5;
+                setTimeout(function(){ resizer() },0);
+                // only connect the resizer to window resize
+                // events ONCE - otherwise it will run several times
+                // for each resize
+                if(!window.resizerOn){
+                    $(window).resize(resizer);
+                    window.resizerOn = true;
+                }
+                columnClick();
+                updatePlayer();
+            }
+            
          });
     }
     function updatePlayer(){
@@ -275,8 +315,4 @@ $("#mydiv").width(width);*/
    	 // run resizer each time the window changes size
    	 // and run it once initially too
 
-    $('#field').on('click', function (e) {
-        console.log($('#field').width(), $('#field').height());
-        alert(e.pageX + ' , ' + e.pageY);
-    });
 });

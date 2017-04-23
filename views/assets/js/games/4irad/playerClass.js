@@ -58,7 +58,9 @@ class Eesy extends Computer{
 	 makeMove(){
 
 		let column = Math.random();
-		let c= column*7
+		let c= column*7;
+		Math.round(c);
+		return c;
 		console.log(c);
 	}
 }
