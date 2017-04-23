@@ -8,7 +8,7 @@ $(document).ready(function(){
     replayClick ();
     cancelClick();
 
-
+    const game = new Game();
 
     // create the board
     function createBord(){
@@ -37,11 +37,7 @@ function cancelClick(){
 
    /* var width = $(window).width() - 25;
 $("#mydiv").width(width);*/
-<<<<<<< faed8e453e1069dc526641f382fc2869263b185b
-    let i =5;
-=======
     let i =6;
->>>>>>> added addCoin function to coinAnimation
     let counter =0;
     let player1 = new Player(10,"Björn","green",24,1);
     let player2= new Player(50,"Nisse","yellow",24,2);
@@ -88,7 +84,7 @@ $("#mydiv").width(width);*/
     //adding coins
 
     function addCoin(column){
-         counter++;
+        counter++;
         value = counter%2;
         let coinColor;
         let id;
@@ -116,7 +112,8 @@ $("#mydiv").width(width);*/
             $("#p2").css('border','');
 
         }
-
+            let e= new Eesy()
+            e.makeMove();
 
             /* if(i ===6 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
@@ -192,6 +189,9 @@ $("#mydiv").width(width);*/
                i=5;
                speladeCoins();
             }
+            console.log(Number(column));
+            game.addCoin(new Coin(value+1), Number(column));
+            game.checkForWinner({id: value+1});
     }
     function speladeCoins(){
                 if(value===1){
@@ -235,6 +235,8 @@ $("#mydiv").width(width);*/
     $("#startBtn").click(function(){
             player1 = new Player1(0, $('#Player1').val());
             player2 = new Player2(0, $('#Player2').val());
+            let selected =$( "#myselect option:selected" );
+            console.log(selected);
             window.location.hash = '#play';
             deleteBord();
             createBord();
@@ -277,5 +279,4 @@ $("#mydiv").width(width);*/
         console.log($('#field').width(), $('#field').height());
         alert(e.pageX + ' , ' + e.pageY);
     });
-
 });

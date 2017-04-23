@@ -97,5 +97,8 @@ function urlRequest (request, response) {
 server.use('/', urlRequest);
 
 //	Listen at localhost:3000.
-http.createServer(server).listen(3000);
-console.log("Running server...");
+/*http.createServer(server).listen(3000);
+console.log("Running server...");*/
+server.listen(3000, function() {
+	console.log('Server running...');
+});

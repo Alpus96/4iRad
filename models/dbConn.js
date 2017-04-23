@@ -3,9 +3,9 @@ const MySQL = require('mysql');
 const Config = require('./../config');
 const dbConf = Config.database();
 
-class Databese {
+class DBConn {
     constructor() {
-        this.connection = connect();
+        this.connection = this.connect();
         //this.connection.on('disconnect', this.connection = connect());
     }
 
@@ -14,3 +14,5 @@ class Databese {
     }
 
 }
+
+module.exports = new DBConn();

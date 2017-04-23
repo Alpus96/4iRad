@@ -43,16 +43,23 @@ class Player2 extends Player{
 		this.password =password;
 	}
 }
-class Computer extends Player{
+class Computer {
 
 	constructor(difficulty){
-		this.difficulty = difficulty
+		this.difficulty = difficulty;
 	}
 }
 class Eesy extends Computer{
 
-	easyCalculate(){
+	easyCalculate(difficulty= Eesy){
+		this.difficulty = difficulty;
 		
+	}
+	 makeMove(){
+
+		let column = Math.random();
+		let c= column*7
+		console.log(c);
 	}
 }
 class Medium extends Computer{

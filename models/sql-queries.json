@@ -1,7 +1,7 @@
 {
 
   "getNameAndScore": 
-  "SELECT Name, score FROM highscore order by score desc",
+  "SELECT Name, score FROM highscore order by score asc",
 
 
   "addToHighscore":
