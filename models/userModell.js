@@ -197,7 +197,7 @@ class User {
 	*	A function to delete an existing user.
 	*
 	*	@params		cridentials: {name: 'username', password: 'password'}
-	*						  callback: (error, result) => {...}, a function to call then done.
+	*						  callback: (error, result) => {...}, a function to call when done.
 	* */
 	delete (cridentials, callback) {
 		//	Validate the cridentals to aprove delete of user.
@@ -263,4 +263,5 @@ class User {
 
 }
 
+//  Export new instance of the User model class on require.
 module.exports = new User();
