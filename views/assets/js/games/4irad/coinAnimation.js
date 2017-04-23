@@ -37,7 +37,7 @@ function cancelClick(){
 
    /* var width = $(window).width() - 25;
 $("#mydiv").width(width);*/
-    let e= new Eesy()
+    let e= new Eesy();
     let i =5;
     let selected;
     let player1 = new Player(10,"Björn","green",21,1);
@@ -301,6 +301,7 @@ $("#mydiv").width(width);*/
 
    function startClick(){
     $("#startBtn").click(function(){
+            audioElement.play();
             turn = true;
             player1 = new Player1(0, $('#Player1').val());
             if(selected==="Dator"){

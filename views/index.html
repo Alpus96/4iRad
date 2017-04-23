@@ -9,6 +9,7 @@
     	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     	<script src="http://www.google.com/jsapi" ></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css">
@@ -26,6 +27,7 @@
 	    <script src="assets/js/staticScripts.js"></script>
 	    <script src="assets/js/games/4irad/highScoreClass.js"></script>
 	    <script src="assets/js/games/4irad/playerClass.js"></script>
+       <script src="assets/js/games/4irad/ljud.js"></script>
 	    <script src="assets/js/games/4irad/coinAnimation.js"></script>
 	    <script src="assets/js/games/4irad/run-sql-query.js"></script>
 	    <script src="assets/js/games/4irad/sqlFunctions.js"></script>
@@ -187,11 +189,12 @@
         <div class="row kant">
           <div class="col-xs-8 col-md-6">
             <div id="Bord"></div>
-            <button id="restart">Spel igen</button>
+            <button class="btn btn-primary" id="restart">Spel igen</button>
               <br>
               <div class="padding">
-                <button id="cancel">Avbryt</button>
+                <button class="btn btn-primary" id="cancel">Avbryt spelet</button> <button class="btn btn-primary" id="pause">Stoppa musiken</button>
               </div>
+              
           </div>
             <div class="col-xs-4 col-md-6 player">
               <div id="p1" class="well-sm floatright ">
