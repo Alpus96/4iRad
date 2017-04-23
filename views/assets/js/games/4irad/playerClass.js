@@ -58,10 +58,11 @@ class Eesy extends Computer{
 	 makeMove(){
 
 		let column = Math.random();
-		let c= column*7;
-		Math.round(c);
-		return c;
-		console.log(c);
+		let c= column*6;
+		let heltal= Math.round(c);
+		console.log(heltal);
+		return heltal;
+		
 	}
 }
 class Medium extends Computer{

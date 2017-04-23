@@ -40,11 +40,11 @@ $("#mydiv").width(width);*/
     let e= new Eesy()
     let i =5;
     let selected;
-    let counter =0;
     let player1 = new Player(10,"Björn","green",21,1);
     let player2= new Player(50,"Nisse","yellow",21,2);
-    let value =1;
     let idval = [];
+    let turn = true;
+
 
      function runEffect() {
       // Most effect types need no options passed by default
@@ -82,33 +82,41 @@ $("#mydiv").width(width);*/
             return false;
         }
     }*/
+     function runComp(){
+        if(turn===false && selected==="Dator"){
+            column=e.makeMove();
+            turn=false;
+            addCoin(column);
+        }
+     }
+
 
     //adding coins
 
     function addCoin(column){
-        counter++;
-        value = counter%2;
         let coinColor;
         let id;
 
-        if(value===1)
+        if(turn===true)
         {
+            turn=false;
              id = player1.id;
              coinColor = player1.colore;
              $("#p2").css('border','2px solid #E8F558').animate({
             "background-color": player2.colore,
-            "border-color": "32a511",
+            "border-color": "#32a511",
             "border-width": "5px"
             }, 500);
              $("#p1").css('border','');
 
         }
-        else if(value===0){
+         else if(turn===false){
+            turn=true;
              id = player2.id;
             coinColor = player2.colore;
              $("#p1").css('border','2px solid #E8F558').animate({
             "background-color": player1.colore,
-            "border-color": "32a511",
+            "border-color": "#32a511",
             "border-width": "5px"
             }, 500);
             $("#p2").css('border','');
@@ -136,6 +144,7 @@ $("#mydiv").width(width);*/
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
+               runComp();
             }
             else if(i===5){
                  i--;
@@ -147,6 +156,7 @@ $("#mydiv").width(width);*/
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
+               runComp();
             }
             else if(i===4){
                  i--;
@@ -158,6 +168,7 @@ $("#mydiv").width(width);*/
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
+               runComp();
             }
             else if(i===3){
                  i--;
@@ -168,6 +179,7 @@ $("#mydiv").width(width);*/
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
+               runComp();
             }
             else if(i===2){
                  i--;
@@ -179,6 +191,7 @@ $("#mydiv").width(width);*/
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
+               runComp();
             }
             else if(i===1){
                  i--;
@@ -189,19 +202,44 @@ $("#mydiv").width(width);*/
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
                speladeCoins();
-               if(selected==="Dator")
-                {
-                column=e.makeMove();
-                addCoin(column);
-                console.log(column);
+               runComp();
+              
+            }
+            else if(i===0 && selected==="Dator"){
+                if(turn===true){
+                    turn=false;
+                     column=e.makeMove();
+                     i=5;
+                    addCoin(column);
                 }
+                 if(turn===false){
+                    turn=true;
+                    alert("Raden är full!");
+                    columnClick();
+                }
+                 
+                 i=5;
+               
+                
+            }
+            //om man klickar på en full rad
+            else if(i===0){
+                alert("Raden är full!");
+                if(turn===true){
+                    turn=false;
+                }
+                 if(turn===false){
+                    turn=true;
+                }
+                i=5;
             }
             console.log(Number(column));
             game.addCoin(new Coin(value+1), Number(column));
             game.checkForWinner({id: value+1});
+            
     }
     function speladeCoins(){
-                if(value===1){
+                if(turn===false){
                 player2.coins--;
                 updatePlayer();
                }
@@ -214,15 +252,22 @@ $("#mydiv").width(width);*/
 
     function replayClick(){
         $('#restart').click(function(){
+            turn=true;
             deleteBord();
             createBord();
             resizer();
             $(window).resize(resizer);
+            runComp();
             columnClick();
             startClick();
             replayClick ();
             player1 = new Player1(0, $('#Player1').val());
+            if(selected==="Dator"){
+                player2= new player(0,$('Dator',"yellow",21,2))
+            }
+            else{
             player2 = new Player2(0, $('#Player2').val());
+            }
             updatePlayer();
 
             console.log(player1);
@@ -256,28 +301,15 @@ $("#mydiv").width(width);*/
 
    function startClick(){
     $("#startBtn").click(function(){
+            turn = true;
             player1 = new Player1(0, $('#Player1').val());
             if(selected==="Dator"){
                 player2= new Player(0,"Dator","yellow",21,2);
-                window.location.hash = '#play';
-                deleteBord();
-                createBord();
-                i=5;
-                setTimeout(function(){ resizer() },0);
-                // only connect the resizer to window resize
-                // events ONCE - otherwise it will run several times
-                // for each resize
-                if(!window.resizerOn){
-                    $(window).resize(resizer);
-                    window.resizerOn = true;
-                }
-                let comColumn = e.makeMove();
-                console.log(comColumn);
-                updatePlayer();
-                addCoin(comColumn);
+               
             }
             else{
                 player2 = new Player2(0, $('#Player2').val());
+            }
                 window.location.hash = '#play';
                 deleteBord();
                 createBord();
@@ -290,19 +322,20 @@ $("#mydiv").width(width);*/
                     $(window).resize(resizer);
                     window.resizerOn = true;
                 }
+                runComp();
                 columnClick();
                 updatePlayer();
-            }
+            
             
          });
     }
     function updatePlayer(){
            $("#p1").html(
-            '<h4>Spelare2: '+ player1.name + '</h4>' +
+            '<h4>Spelare1: '+ player1.name + '</h4>' +
                 '<p>Antal mynt kvar: ' + player1.coins + '</p>'
             ).css("background-color", player1.colore);
             $("#p2").html(
-            '<h4>Spelare1: '+ player2.name + '</h4>' +
+            '<h4>Spelare2: '+ player2.name + '</h4>' +
                 '<p>Antal mynt kvar: ' + player2.coins + '</p>'
             ).css("background-color", player2.colore);
     }
