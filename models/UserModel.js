@@ -1,46 +1,30 @@
-//	Require the database class to send queries through the connection.
-const DB = require('./dbConn');
-
-//	TODO: remove password encryption from the model, to be done in the controller.
-
 //	Class to handle user-information in database.
 class User {
+
+	constructor () {
+		//	Require the database class to send queries through the connection.
+		this.DB = require('./dbConn');
+	}
 
 	/*
 	*	A function to enter a new user to the database.
 	*
 	*	@params		data: {
-	*								name: 'username',
-	*								password: 'passowrd',
+	*								username: 'username',
+	*								password: 'passowrd'
 	*							}, an object containing the new users information.
 	*						  callback: (error, result) => {...}, function to call when done that takes an error and result argument.
 	* */
 	create (data, callback) {
-		//	Search the database for the passed username.
-		this.read(data.name, (error, result) => {
-			//	Confirm there was no error searching for the user in the database.
+		//	Insert the information for the new user into the database.
+		this.DB.connection.query('INSERT INTO users SET ?', data, (error, result) => {
+			//	Confirm that entering the new user information did not have an error.
 			if (!error) {
-				//	If there was no error check if a user was found.
-				if (result) {
-					//	If a user was found the username is taken.
-					callback(null, false);
-				} else {
-					//	If there was no user found the username is available continue by
-					//	inserting the information for the new user into the database.
-					DB.connection.query('INSERT INTO users SET ?', data, (error, result) => {
-						//	Confirm that entering the new user information did not have an error.
-						if (!error) {
-							//	If no error return result true through the callback function.
-							callback(null, result);
-						} else {
-							//	If there was an error saving the new user information
-							//	return the error as error through the callback function.
-							callback(error, null);
-						}
-					});
-				}
+				//	If no error return result true through the callback function.
+				callback(null, result);
 			} else {
-				//	If there was an error reading the user from the database return the error.
+				//	If there was an error saving the new user information
+				//	return the error as error through the callback function.
 				callback(error, null);
 			}
 		});
@@ -49,12 +33,12 @@ class User {
 	/*
 	*	A function to read user-information from the database selected by username.
 	*
-	*	@params			username: 'string', The username to search the database for.
+	*	@params			identifier: {id: X} / {username: ''}, An object containing an id or a username to search the database for.
 	*							  callback: (error, result) => {...}, a function to handle response when done.
 	* */
-	read (username, callback) {
+	read (identifier, callback) {
 		//	Ask the database to find user by username
-		DB.connection.query('SELECT * FROM users WHERE name = ?', [username], (error, result, fields) => {
+		this.DB.connection.query('SELECT * FROM users WHERE ?', [identifier], (error, result, fields) => {
 			//	Confirm there was no error.
 			if (!error) {
 				//	If there was no error confirm that there was data in the result.
@@ -84,7 +68,7 @@ class User {
 	* */
 	update (data, id, callback) {
 		//	Update the users information.
-		DB.connection.query('UPDATE users SET ? WHERE ?', [data, id], (error, result) => {
+		this.DB.connection.query('UPDATE users SET ? WHERE ?', [data, id], (error, result) => {
 			//	Confirm there was no error updating the users information.
 			if (!error) {
 				//	If there was no error return the result as result through the callback function.
@@ -105,7 +89,7 @@ class User {
 	* */
 	delete (id, callback) {
 		//	If the validation was aproved delete the user from the database.
-		DB.connection.query('DELETE FROM users WHERE ?', [id], (error, result) => {
+		this.DB.connection.query('DELETE FROM users WHERE ?', [id], (error, result) => {
 			//	Confirm there was no error deleting the user from the database.
 			if (!error) {
 				//	If there was no error return the result
