@@ -7,6 +7,7 @@ $(document).ready(function(){
     startClick();
     replayClick ();
     cancelClick();
+    stopMusic();
 
     const game = new Game();
 
@@ -326,6 +327,7 @@ $("#mydiv").width(width);*/
                 runComp();
                 columnClick();
                 updatePlayer();
+                stopMusic();
             
             
          });

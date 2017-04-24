@@ -20,11 +20,11 @@
         audioElement.play();
         $("#status").text("Status: Playing");
     });
-    
-    $('#pause').click(function() {
-        audioElement.pause();
-        $("#status").text("Status: Paused");
-    });
+    function stopMusic(){
+        $('#pause').click(function() {
+            audioElement.pause();
+        });
+    }
     
     $('#restart').click(function() {
         audioElement.currentTime = 0;
