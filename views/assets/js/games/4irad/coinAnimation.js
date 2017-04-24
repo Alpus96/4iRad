@@ -123,7 +123,7 @@ $("#mydiv").width(width);*/
             $("#p2").css('border','');
 
         }
-            
+
 
             /* if(i ===6 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
@@ -204,7 +204,7 @@ $("#mydiv").width(width);*/
                i=5;
                speladeCoins();
                runComp();
-              
+
             }
             else if(i===0 && selected==="Dator"){
                 if(turn===true){
@@ -218,10 +218,10 @@ $("#mydiv").width(width);*/
                     alert("Raden är full!");
                     columnClick();
                 }
-                 
+
                  i=5;
-               
-                
+
+
             }
             //om man klickar på en full rad
             else if(i===0){
@@ -234,10 +234,10 @@ $("#mydiv").width(width);*/
                 }
                 i=5;
             }
-            console.log(Number(column));
-            game.addCoin(new Coin(value+1), Number(column));
-            game.checkForWinner({id: value+1});
-            
+
+            game.addCoin(new Coin(id), Number(column));
+            game.checkForWinner({id: id});
+
     }
     function speladeCoins(){
                 if(turn===false){
@@ -283,22 +283,22 @@ $("#mydiv").width(width);*/
             addCoin(column);
         });
     }
-    
-            
+
+
     $(function(ready){
         $('#selectedVal').change(function() {
                 selected=$(this).val();
                 if ($(this).val() === 'Dator') {
-                 $('#Player2').hide(); 
+                 $('#Player2').hide();
                 }
                 else{
-                    $('#Player2').show(); 
-                }  
-                     
+                    $('#Player2').show();
+                }
+
         });
     });
-         
-    
+
+
 
    function startClick(){
     $("#startBtn").click(function(){
@@ -307,7 +307,7 @@ $("#mydiv").width(width);*/
             player1 = new Player1(0, $('#Player1').val());
             if(selected==="Dator"){
                 player2= new Player(0,"Dator","yellow",21,2);
-               
+
             }
             else{
                 player2 = new Player2(0, $('#Player2').val());
@@ -328,8 +328,6 @@ $("#mydiv").width(width);*/
                 columnClick();
                 updatePlayer();
                 stopMusic();
-            
-            
          });
     }
     function updatePlayer(){

@@ -22,8 +22,8 @@ class Game {
                     this.gameBoard[column][i] = coin;
                     res = true;
                     break;
-                    console.log('addcoin loop');
                 }
+                console.log('addcoin loop');
             }
             return res;
         } else {
