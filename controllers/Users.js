@@ -1,19 +1,19 @@
-// Require the users model to handle database information.
-//  const user = require('./../models/UserModel');
-
-/*  NOTE:
-*   'Bcryptjs' is ~30% slower than 'bcrypt' acording to documentation.
-*   (Since it uses pure javascript and not c++ bcrypt binding.)
-*   [Speeds messured @2GHz]
-* */
-//  const bCrypt = require('bcryptjs');
-
-//  TODO: Mode input validation and password encryption to this class.
-
 class Users {
     constructor () {
+        // Require the users model to handle database information.
         this.user = require('./../models/UserModel');
+
+        //  Require the node module to hash and validate passwords.
         this.bCrypt = require('bcryptjs');
+        /*  NOTE:
+        *   'bcryptjs' is ~30% slower than 'bcrypt' acording to documentation.
+        *   (Since it uses pure javascript and not c++ bcrypt binding.)
+        *   [Speeds messured @2GHz]
+        *
+        *   NOTE:
+        *   'bcryptjs' hash takes a string of 72 bytes at most.
+        *   (~18 UTF-8 characters. UTF-8 takes up to 4 bytes / character)
+        * */
     }
     /*
     *   A function to handle user registration.
@@ -22,27 +22,45 @@ class Users {
     *                         callback: (error, result) => {...}, a function to call when done.
     * */
     register (data, callback) {
-        //  Hash the given password before writing it to the database.
-        this.hashPassword(data.password, (error, hash) => {
-            //  Confirm there was no error hashing the password.
+        //  Check the database for the requested username.
+        this.user.read({username: data.username}, (error, result) => {
+            //  Confirm there was no erorr reading from the database.
             if (!error) {
-                //  If there was no error save the hash as the password.
-                data.password = hash;
-                //  Then create the new user in the database.
-                this.user.create(data, (error, result) => {
-                    //  Confirm there was no error writing to the datbase.
-                    if (!error) {
-                        //  If there was no error return the result
-                        //  as result through the callback function.
-                        callback(null, result);
-                    } else {
-                        //  If there was an error writing to the database return
-                        //  the error as error through the callback function.
-                        callback(error, null);
-                    }
-                });
+                //  Check if a user was found.
+                if (result) {
+                    //  If a user was found return false as result through
+                    //  the callback function since the username is taken.
+                    callback(null, false);
+                } else {
+                    //  If there was no user found the username is available continue by
+                    //  hash the given password before writing the info to the database.
+                    this.hashPassword(data.password, (error, hash) => {
+                        //  Confirm there was no error hashing the password.
+                        if (!error) {
+                            //  If there was no error save the hash as the password.
+                            data.password = hash;
+                            //  Then create the new user in the database.
+                            this.user.create(data, (error, result) => {
+                                //  Confirm there was no error writing to the datbase.
+                                if (!error) {
+                                    //  If there was no error return the result
+                                    //  as result through the callback function.
+                                    callback(null, result);
+                                } else {
+                                    //  If there was an error writing to the database return
+                                    //  the error as error through the callback function.
+                                    callback(error, null);
+                                }
+                            });
+                        } else {
+                            //  If there was an error hashing the password return
+                            //  the error as error through the callback function.
+                            callback(error, null);
+                        }
+                    });
+                }
             } else {
-                //  If there was an error hashing the password return
+                //  If there was an error reading the database return
                 //  the error as error through the callback function.
                 callback(error, null);
             }
@@ -62,13 +80,22 @@ class Users {
 			if (!error) {
 				//	If there was no error searching for the user confirm a user was found.
 				if (result) {
-                    //  Save user data
+                    //  Save user data to de returned.
+                    const user = result;
 					//	Compare the passed password with the hash.
 					this.bCrypt.compare(cridentials.password, result[0].password, (error, result) => {
 						//	Confirm there was no error comparing the password and the hash.
 						if (!error) {
-							//	If no error return the result through the callback.
-							callback(null, result);
+                            //	If no error confirm that the user validation was aproved.
+                            if (result) {
+                                //  If validation was aproved return the users information
+                                //  as result through the callback function.
+                                callback(null, user);
+                            } else {
+                                //  If the validation was not aproved return false
+                                //  as result through the callback function.
+                                callback(null, false);
+                            }
 						} else {
 							//	If there was an error camparing the password and
 							//	the hash return an error through the callback.
@@ -147,7 +174,7 @@ class Users {
 	*	@params		cridentials: {name: 'username', password: 'password'}
 	*						  callback: (error, result) => {...}, a function to call when done.
 	* */
-	delete (cridentials, callback) {
+	unregister (cridentials, callback) {
 		//	Validate the cridentals to aprove delete of user.
 		this.user.validate(cridentials, (error, result) => {
 			//	Confirm there was no error validating the user.
@@ -155,7 +182,7 @@ class Users {
 				//	If there was no error confirm the validation was aprved.
 				if (result) {
 					//	If the validation was aproved delete the user from the database.
-					this.user.delete({}, (error, result) => {
+					this.user.delete(result, (error, result) => {
 						//	Confirm there was no error deleting the user from the database.
 						if (!error) {
 							//	If there was no error return the result
