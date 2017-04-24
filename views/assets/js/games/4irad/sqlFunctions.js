@@ -21,7 +21,7 @@ new RunSqlQuery(
   'addUsers',
    {name:'.player1.name',score:'player1.score',colore:'player1.colore',Mail:'player1.mail',passwod:'player1.passwod'},
   function(response){
-    console.log('theOwnerOfAnAnimal',response);
+   
   }
 );
 
