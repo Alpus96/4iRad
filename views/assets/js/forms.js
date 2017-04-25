@@ -13,7 +13,8 @@ class Forms {
     /*
     *   A function to send ajax requests with json data to the server.
     *
-    *   @params     data: {username: "", password: ""}, an object containing
+    *   @params     url: '/example', a string containing the url where to send the post request.
+    *                         data: {username: "", password: ""}, an object containing
     *                         the username and password for the new user.
     *                         callback: (error, result) => {...}, a function to call when done.
     * */
