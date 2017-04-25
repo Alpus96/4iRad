@@ -1,7 +1,7 @@
 
     let audioElement = document.createElement('audio');
-    audioElement.setAttribute('src', 'http://www.soundjay.com/free-music/sounds/destination-01.mp3');
-    
+    audioElement.setAttribute('src', 'https://www.soundjay.com/free-music/sounds/heart-of-the-sea-01.mp3');
+    let audio = new Audio('https://www.soundjay.com/button/sounds/button-37.mp3');
     audioElement.addEventListener('ended', function() {
         this.play();
     }, false);
@@ -23,6 +23,7 @@
     function stopMusic(){
         $('#pause').click(function() {
             audioElement.pause();
+            audio.pause();
         });
     }
     
