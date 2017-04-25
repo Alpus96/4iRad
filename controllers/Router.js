@@ -28,18 +28,6 @@ class Router {
         if (request.url === '/') {
             //  If the root url / index was requested call index function.
             this.index(request, response);
-        } else if (request.url === '/register') {
-            //  If register page was requested call the register get function.
-            this.registerGet(request, response);
-        } else if (request.url === '/login') {
-            //  If login page was requested call the login get function.
-            this.loginGet(request, response);
-        } else if (request.url === '/update') {
-            //  If update page was requested call the update get function.
-            this.updateGet(request, response);
-        } else if (request.url === '/unregister') {
-            //  If unregister page was requested call the unregister get function.
-            this.unregisterGet(request, response);
         } else if (request.url === '/highscore') {
             //  If the highscore page was requested call the highscore get function.
             this.highscoreGet(request, response);
@@ -105,85 +93,36 @@ class Router {
     }
 
     /*
-    *   A function to render the register view.
-    *
-    *   @params     request: An object containing data about the request.
-    *                         response: An object to handle response data to the client.
-    * */
-    registerGet (request, response) {
-        //  Check if the user is already logged in.
-        if (request.session.user) {
-            //  If the user is logged in set message to loggedIn message.
-            this.message = this.loggedIn;
-        }
-        //  Render the register view.
-        response.render(
-            'register.ejs',
-            {
-                //  Pass eventual message to be displayed.
-                message: this.message
-            }
-        );
-        //  Reset the messaeg to an empty string.
-        this.message = '';
-    }
-
-    /*
     *   A function handeling registration requests.
     *
     *   @params     request: An object containing data about the request.
     *                         response: An object to handle response data to the client.
     * */
     registerPost (request, response) {
+        //  Save class this in variable as this is not defiend
+        //  as this router class inside callback functions.
+        const router = this;
         //  Send data to user controller for registration.
-        this.users.register(request.body.register, function (error, result) {
+        this.users.register(request.body, function (error, result) {
             //  Confirm there was no error in registration.
             if (!error){
                 //  Confirm the result.
                 if (result){
-                    //  If there was a result set message to success.
-                    this.message = 'You have been registered.';
-                    //  Then redirect to login, where the message will be displayed.
-                    response.redirect('/login');
+                    //  If there was a result send json and set response message to success.
+                    response.writeHead(200, {"Content-Type": "application/json"});  //  Status 200: All OK.
+                    response.end(JSON.stringify({status: true, message: 'You have been registered.'}));
                 } else {
                     //  If there was a false result set message to the username was taken.
-                    this.message = this.taken;
-                    //  Then redirect to register page where the message will be displayed.
-                    response.redirect('/register');
+                    response.writeHead(409, {"Content-Type": "application/json"});  //  Status 409: Conflict.
+                    response.end(JSON.stringify({status: false, message: router.taken}));
                 }
             } else {
                 //  If there was an error registering the user set message to error message.
-                this.message = this.error;
-                //  Log the error object.
+                response.writeHead(500, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
+                response.end(JSON.stringify({status: false, message: router.error}));
                 console.error(error);
-                //  Then redirect to register where the message will be displayed.
-                response.redirect('/register');
             }
         });
-    }
-
-    /*
-    *   A function to render the login view.
-    *
-    *   @params     request: An object containing data about the request.
-    *                         response: An object to handle response data to the client.
-    * */
-    loginGet (request, response) {
-        //  Check if the user is already logged in.
-        if (request.session.user) {
-            //  If the user is logged in set message to loggedIn message.
-            this.message = this.loggedIn;
-        }
-        //  Render the login view.
-        response.render(
-            'login.ejs',
-            {
-                //  Pass eventual message to be displayed.
-                message: this.message
-            }
-        );
-        //  Reset the messaeg to an empty string.
-        this.message = '';
     }
 
     /*
@@ -197,58 +136,29 @@ class Router {
         //  as this router class inside callback functions.
         const router = this;
         //  Send the login cridentials to the user controller login.
-        this.users.login(request.body.login, (error, result) => {
+        this.users.login(request.body, (error, result) => {
             //  Confirm there was no error authenticating the user.
             if (!error) {
                 //  Confirm the authentication was aproved.
                 if (result) {
-                    //  If the authentication was aproved set message to logged in.
-                    router.message = 'You have been logged in!';
-                    //  And save the users data in the session.
+                    //   If the authentication was aproved save the users data in the session.
                     request.session.user = result;
-                    //  Then redirect to the index page where the message will be displayed..
-                    response.redirect('/');
+                    //  Then send message back.
+                    response.writeHead(200, {"Content-Type": "application/json"});  //  Status 200: All OK.
+                    response.end(JSON.stringify({status: true, message: 'You have been logged in!'}));
                 } else {
                     //  If the authentication was not aproved set message to invalid message.
-                    router.message = this.invalid;
-                    //  Then redirect to the login page where the message will be displayed.
-                    response.redirect('/login');
+                    response.writeHead(401, {"Content-Type": "application/json"});  //  Status 401: Unauthorized.
+                    response.end(JSON.stringify({status: false, message: router.invalid}));
                 }
             } else {
-                //  If there was an error authenticating the user set message to error message.
-                router.message = this.error;
-                //  Log the error object.
+                //  If there was an error logging in the user send error message.
+                response.writeHead(500, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
+                response.end(JSON.stringify({status: false, message: router.error}));
+                //  Then log the error object.
                 console.error(error);
-                //  Then redirect to the login page where the message will be displayed.
-                response.redirect('/login');
             }
         });
-    }
-
-    /*
-    *   A function to render the update view.
-    *
-    *   @params     request: An object containing data about the request.
-    *                         response: An object to handle response data to the client.
-    * */
-    updateGet (request, response) {
-        //  Check if the user is not logged in.
-        if (!request.session.user) {
-            //  If the user is not logged in set message to not logged in message.
-            this.message = this.notLoggedIn;
-            //  Redirect to index page.
-            response.redirect('/');
-        }
-        //  Render the update view.
-        response.render(
-            'update.ejs',
-            {
-                //  Pass eventual message to be displayed.
-                message: this.message
-            }
-        );
-        //  Reset the messaeg to an empty string.
-        this.message = '';
     }
 
     /*
@@ -260,41 +170,37 @@ class Router {
     updatePost (request, response) {
         //  Confirm the logged in users name and the currentName
         //  of the user to be updated is the same.
-        if (request.session.user.username === request.body.newInfo.currentName) {
+        if (request.session.user.username === request.body.currentName) {
             //  Save class this in variable as this is not defiend
             //  as this router class inside callback functions.
             const router = this;
             //  If the names are the same send update request to user controller.
-            this.users.update(request.body.newInfo, (error, reslut) => {
+            this.users.update(request.body, (error, reslut) => {
                 //  Confirm there was no error updating the users information.
                 if (!error) {
                     //  If there was no error check the result.
                     if (result) {
-                        //  If there result was OK set message to success.
-                        router.message = 'You information was updated successfully.';
-                        //  Redirect to update where the message will be displayed.
-                        response.redirect('/update');
+                        //  If there was an error registering the user send success message.
+                        response.writeHead(200, {"Content-Type": "application/json"});  //  Status 200: All OK.
+                        response.end(JSON.stringify({status: true, message: 'You information was updated successfully.'}));
                     } else {
                         //  If the result was not OK set message to taken message.
-                        router.message = this.taken;
-                        //  Redirect to update where the message will be displayed.
-                        response.redirect('/update');
+                        response.writeHead(409, {"Content-Type": "application/json"});  //  Status 409: Conflict.
+                        response.end(JSON.stringify({status: false, message: router.taken}));
                     }
                 } else {
                     //  If there was an error updating the users information set message to error message.
-                    router.message = this.error;
+                    response.writeHead(500, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
+                    response.end(JSON.stringify({status: false, message: router.error}));
                     //  Log the error object.
                     console.error(error);
-                    //  Then redirect to update where the message will be displayed.
-                    response.redirect('/update');
                 }
             });
         } else {
             //  If the currentName of the user to update did not match the
             //  username of the logged in user set mesage to unathorized.
-            this.message = 'You can not change information about another user.';
-            //  Redirect to update where the message will be displayed.
-            response.redirect('/update');
+            response.writeHead(401, {"Content-Type": "application/json"});  //  Status 401: Unauthorized.
+            response.end(JSON.stringify({status: false, message: 'You can not change information about another user.'}));
         }
     }
 
@@ -305,36 +211,18 @@ class Router {
     *                         response: An object to handle response data to the client.
     * */
     logout (request, response) {
-        //  Destoy the session where the users data was temporairaly stored.
-        request.session.destroy();
-        //  Then redirect to index.
-        response.redirect('/');
-    }
-
-    /*
-    *   A function to render the unregister view.
-    *
-    *   @params     request: An object containing data about the request.
-    *                         response: An object to handle response data to the client.
-    * */
-    unregisterGet (request, response) {
-        //  Check if the user is not logged in.
-        if (!request.session.user) {
-            //  If the user is not logged in set message to not logged in message.
-            this.message = this.notLoggedIn;
-            //  Redirect to index page.
-            response.redirect('/');
+        //  Confirm the user was logged in.
+        if (request.session) {
+            //  Destoy the session where the users data was temporairaly stored.
+            request.session.destroy();
+            //  Then send response.
+            response.writeHead(200, {"Content-Type": "application/json"});  //  Status 200: All OK.
+            response.end(JSON.stringify({status: true, message: 'You have been logged out.'}));
+        } else {
+            //  If the user was not logged in send bad request response.
+            response.writeHead(400, {"Content-Type": "application/json"});  //  Status 400: Bad request.
+            response.end(JSON.stringify({status: false, message: this.notLoggedIn}));
         }
-        //  Render the unregister view.
-        response.render(
-            'unregister.ejs',
-            {
-                //  Pass eventual message to be displayed.
-                message: this.message
-            }
-        );
-        //  Reset the messaeg to an empty string.
-        this.message = '';
     }
 
     /*
@@ -348,29 +236,26 @@ class Router {
         //  as this router class inside callback functions.
         const router = this;
         //  Send unregister request to the user controller.
-        this.users.unregister(request.body.unregister, (error, result) => {
+        this.users.unregister(request.body, (error, result) => {
             //  Confirm there was no error unregistering the user.
             if (!error) {
                 //  If there was no error check the result of the request.
                 if (result) {
-                    //  If the request was successful set message to unregistered.
-                    router.message = 'You have been unregistered.';
-                    //  Then redirect to the index page where the message will be displayed.
-                    response.redirect('/');
+                    //  If the request was successful send message of unregistered.
+                    response.writeHead(200, {"Content-Type": "application/json"});  //  Status 200: All OK.
+                    response.end(JSON.stringify({status: true, message: 'You have been unregistered.'}));
                 } else {
                     //  If the request was not aproved the cridentials where
-                    //  invalid so set the message to invalid message.
-                    router.message = this.invalid;
-                    // Then redirect to the unregister page where the message will be displayed.
-                    response.redirect('/unregister');
+                    //  invalid so send the message to invalid message.
+                    response.writeHead(401, {"Content-Type": "application/json"});  //  Status 401: Unauthorized.
+                    response.end(JSON.stringify({status: false, message: router.invalid}));
                 }
             } else {
                 //  If there was an error deleting the user ser message to error message.
-                router.message = this.error;
+                response.writeHead(500, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
+                response.end(JSON.stringify({status: false, message: router.error}));
                 //  Log the error object.
                 console.error(error);
-                //  Redirect to the unregister page where the message will be displayed.
-                response.redirect('/unregister');
             }
         });
     }

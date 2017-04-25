@@ -22,6 +22,9 @@ class Users {
     *                         callback: (error, result) => {...}, a function to call when done.
     * */
     register (data, callback) {
+        //  Save class this in variable as this is not defiend
+        //  as this Users class inside callback functions.
+        const users = this;
         //  Check the database for the requested username.
         this.user.read({username: data.username}, (error, result) => {
             //  Confirm there was no erorr reading from the database.
@@ -34,13 +37,13 @@ class Users {
                 } else {
                     //  If there was no user found the username is available continue by
                     //  hash the given password before writing the info to the database.
-                    this.hashPassword(data.password, (error, hash) => {
+                    users.hashPassword(data.password, (error, hash) => {
                         //  Confirm there was no error hashing the password.
                         if (!error) {
                             //  If there was no error save the hash as the password.
                             data.password = hash;
                             //  Then create the new user in the database.
-                            this.user.create(data, (error, result) => {
+                            users.user.create(data, (error, result) => {
                                 //  Confirm there was no error writing to the datbase.
                                 if (!error) {
                                     //  If there was no error return the result
@@ -74,6 +77,9 @@ class Users {
 	*							callback: (error, result) => {...}, a function to handle response when done.
 	* */
 	validate (cridentials, callback) {
+        //  Save class this in variable as this is not defiend
+        //  as this Users class inside callback functions.
+        const users = this;
 		//	Find the username in the database.
 		this.user.read(cridentials.username, (error, result) => {
 			//	Confirm that there was no error searching for the user.
@@ -83,7 +89,7 @@ class Users {
                     //  Save user data to de returned.
                     const user = result;
 					//	Compare the passed password with the hash.
-					this.bCrypt.compare(cridentials.password, result[0].password, (error, result) => {
+					users.bCrypt.compare(cridentials.password, result[0].password, (error, result) => {
 						//	Confirm there was no error comparing the password and the hash.
 						if (!error) {
                             //	If no error confirm that the user validation was aproved.
@@ -126,6 +132,9 @@ class Users {
 	*						  callback: (error, result) => {...}, a function to call when done.
 	* */
 	update (data, callback) {
+        //  Save class this in variable as this is not defiend
+        //  as this Users class inside callback functions.
+        const users = this;
 		//	Read the users current information from the database.
 		this.user.read(data.currentName, (error, result) => {
 			//	Confirm there was no error reading the users information.
@@ -133,7 +142,7 @@ class Users {
 				//	Save the id to use as identifier when updating.
 				const id = {id: result[0].id};
 				//	Search the database for the requested username.
-				this.user.read(data.name, (error, result) => {
+				users.user.read(data.name, (error, result) => {
 					//	Confirm there was no error searching for the user.
 					if (!error) {
 						//	If there was no error check if a user was found.
@@ -143,7 +152,7 @@ class Users {
 						} else {
 							//	If a user was not found the requested username is
 							//	not taken, continue by updating the users information.
-							this.user.update(data, id, (error, result) => {
+							users.user.update(data, id, (error, result) => {
 								//	Confirm there was no error updating the users information.
 								if (!error) {
 									//	If there was no error return the result as result through the callback function.
@@ -175,6 +184,9 @@ class Users {
 	*						  callback: (error, result) => {...}, a function to call when done.
 	* */
 	unregister (cridentials, callback) {
+        //  Save class this in variable as this is not defiend
+        //  as this Users class inside callback functions.
+        const users = this;
 		//	Validate the cridentals to aprove delete of user.
 		this.user.validate(cridentials, (error, result) => {
 			//	Confirm there was no error validating the user.
@@ -182,7 +194,7 @@ class Users {
 				//	If there was no error confirm the validation was aprved.
 				if (result) {
 					//	If the validation was aproved delete the user from the database.
-					this.user.delete(result, (error, result) => {
+					users.user.delete(result, (error, result) => {
 						//	Confirm there was no error deleting the user from the database.
 						if (!error) {
 							//	If there was no error return the result
@@ -212,16 +224,19 @@ class Users {
 	*						  callback. (error, result) => {...}, a function to call when done.
 	* */
 	hashPassword (password, callback) {
+        //  Save class this in variable as this is not defiend
+        //  as this Users class inside callback functions.
+        const users = this;
 		//	Generate a salt to hash the password with.
         /*
 		*	NOTE: 12 rounds ≈ 0.7 seconds per hash with 'bcryptjs'.
         *  (~0.5 secound per hash with 'bcrypt'.)
         * */
-		bCrypt.genSalt(12, (error, salt) => {
+		this.bCrypt.genSalt(12, (error, salt) => {
 			//	Confirm there was no error genereating the salt.
 			if (!error) {
 				//	If there was no error continue with hashing.
-				bCrypt.hash(password, salt, (error, result) => {
+				users.bCrypt.hash(password, salt, (error, result) => {
 					//	Confirm there was no error hashing the password with the salt.
 					if (!error) {
 						//	If there was no error hashing return the hash through the callback result.
@@ -239,3 +254,5 @@ class Users {
 	}
 
 }
+
+module.exports = new Users();
