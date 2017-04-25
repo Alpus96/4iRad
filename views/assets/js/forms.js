@@ -15,7 +15,7 @@ class Forms {
     *
     *   @params     url: '/example', a string containing the url where to send the post request.
     *                         data: {username: "", password: ""}, an object containing
-    *                         the username and password for the new user.
+    *                         the information to send to the server.
     *                         callback: (error, result) => {...}, a function to call when done.
     * */
     ajaxPost (url, data, callback) {
