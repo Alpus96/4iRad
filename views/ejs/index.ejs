@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<% include ../assets/partials/head %>
 	</head>
 
 	<body>
+		<% include ../assets/partials/navbar %>
 
-		<h1>Index</h1>
-		<a href="/views/ejs/viewTemplate.ejs">Test Link</a>
+		<main>
+			<% include ../assets/partials/home %>
 
+			<% include ../assets/partials/login %>
+
+			<% include ../assets/partials/play %>
+
+			<% include ../assets/partials/rules %>
+
+			<% include ../assets/partials/highscore %>
+
+			<% include ../assets/partials/faq %>
+		</main>
+
+		<% include ../assets/partials/footer %>
 	</body>
-
 </html>
