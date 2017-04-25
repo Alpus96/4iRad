@@ -6,15 +6,15 @@ class Router {
         this.highscores = require('./Highscores');
 
         //  Set default message on error.
-        this.error = 'Sorry, an error occured, please try again later.';
+        this.error = 'Ett fel upstod, vänligen försök igen senare.';
         //  Set default message for invalid cridentials.
-        this.invalid = 'Wrong username or password.';
+        this.invalid = 'Fel användarnamn eller lösenord.';
         //  Set default message for taken username.
-        this.taken = 'Requested username is taken.';
+        this.taken = 'Användarnamnet finns redan.';
         //  Set logged in message.
-        this.loggedIn = 'You are logged in.';
+        this.loggedIn = 'Du är redan inloggad.';
         //  Set not logged in message.
-        this.notLoggedIn = 'You are not logged in.';
+        this.notLoggedIn = 'Du är inte inloggad.';
     }
 
     /*
@@ -113,12 +113,12 @@ class Router {
                     response.end(JSON.stringify({status: true, message: 'You have been registered.'}));
                 } else {
                     //  If there was a false result set message to the username was taken.
-                    response.writeHead(409, {"Content-Type": "application/json"});  //  Status 409: Conflict.
+                    response.writeHead(200, {"Content-Type": "application/json"});  //  Status 409: Conflict.
                     response.end(JSON.stringify({status: false, message: router.taken}));
                 }
             } else {
                 //  If there was an error registering the user set message to error message.
-                response.writeHead(500, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
+                response.writeHead(200, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
                 response.end(JSON.stringify({status: false, message: router.error}));
                 console.error(error);
             }
@@ -135,30 +135,37 @@ class Router {
         //  Save class this in variable as this is not defiend
         //  as this router class inside callback functions.
         const router = this;
-        //  Send the login cridentials to the user controller login.
-        this.users.login(request.body, (error, result) => {
-            //  Confirm there was no error authenticating the user.
-            if (!error) {
-                //  Confirm the authentication was aproved.
-                if (result) {
-                    //   If the authentication was aproved save the users data in the session.
-                    request.session.user = result;
-                    //  Then send message back.
-                    response.writeHead(200, {"Content-Type": "application/json"});  //  Status 200: All OK.
-                    response.end(JSON.stringify({status: true, message: 'You have been logged in!'}));
+        //
+        if (!request.session) {
+            //  Send the login cridentials to the user controller login.
+            this.users.validate(request.body, (error, result) => {
+                //  Confirm there was no error authenticating the user.
+                if (!error) {
+                    //  Confirm the authentication was aproved.
+                    if (result) {
+                        //   If the authentication was aproved save the users data in the session.
+                        request.session.user = result;
+                        //  Then send message back.
+                        response.writeHead(200, {"Content-Type": "application/json"});
+                        response.end(JSON.stringify({status: true, message: 'You have been logged in!'}));
+                    } else {
+                        //  If the authentication was not aproved set message to invalid message.
+                        response.writeHead(200, {"Content-Type": "application/json"});
+                        response.end(JSON.stringify({status: false, message: router.invalid}));
+                    }
                 } else {
-                    //  If the authentication was not aproved set message to invalid message.
-                    response.writeHead(401, {"Content-Type": "application/json"});  //  Status 401: Unauthorized.
-                    response.end(JSON.stringify({status: false, message: router.invalid}));
+                    //  If there was an error logging in the user send error message.
+                    response.writeHead(200, {"Content-Type": "application/json"});
+                    response.end(JSON.stringify({status: false, message: router.error}));
+                    //  Then log the error object.
+                    console.error(error);
                 }
-            } else {
-                //  If there was an error logging in the user send error message.
-                response.writeHead(500, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
-                response.end(JSON.stringify({status: false, message: router.error}));
-                //  Then log the error object.
-                console.error(error);
-            }
-        });
+            });
+        } else {
+            //  If there was an error logging in the user send error message.
+            response.writeHead(200, {"Content-Type": "application/json"});
+            response.end(JSON.stringify({status: false, message: router.loggedIn}));
+        }
     }
 
     /*
@@ -185,12 +192,12 @@ class Router {
                         response.end(JSON.stringify({status: true, message: 'You information was updated successfully.'}));
                     } else {
                         //  If the result was not OK set message to taken message.
-                        response.writeHead(409, {"Content-Type": "application/json"});  //  Status 409: Conflict.
+                        response.writeHead(200, {"Content-Type": "application/json"});  //  Status 409: Conflict.
                         response.end(JSON.stringify({status: false, message: router.taken}));
                     }
                 } else {
                     //  If there was an error updating the users information set message to error message.
-                    response.writeHead(500, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
+                    response.writeHead(200, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
                     response.end(JSON.stringify({status: false, message: router.error}));
                     //  Log the error object.
                     console.error(error);
@@ -199,7 +206,7 @@ class Router {
         } else {
             //  If the currentName of the user to update did not match the
             //  username of the logged in user set mesage to unathorized.
-            response.writeHead(401, {"Content-Type": "application/json"});  //  Status 401: Unauthorized.
+            response.writeHead(200, {"Content-Type": "application/json"});  //  Status 401: Unauthorized.
             response.end(JSON.stringify({status: false, message: 'You can not change information about another user.'}));
         }
     }
@@ -220,7 +227,7 @@ class Router {
             response.end(JSON.stringify({status: true, message: 'You have been logged out.'}));
         } else {
             //  If the user was not logged in send bad request response.
-            response.writeHead(400, {"Content-Type": "application/json"});  //  Status 400: Bad request.
+            response.writeHead(200, {"Content-Type": "application/json"});  //  Status 400: Bad request.
             response.end(JSON.stringify({status: false, message: this.notLoggedIn}));
         }
     }
@@ -247,12 +254,12 @@ class Router {
                 } else {
                     //  If the request was not aproved the cridentials where
                     //  invalid so send the message to invalid message.
-                    response.writeHead(401, {"Content-Type": "application/json"});  //  Status 401: Unauthorized.
+                    response.writeHead(200, {"Content-Type": "application/json"});  //  Status 401: Unauthorized.
                     response.end(JSON.stringify({status: false, message: router.invalid}));
                 }
             } else {
                 //  If there was an error deleting the user ser message to error message.
-                response.writeHead(500, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
+                response.writeHead(200, {"Content-Type": "application/json"});  //  Status 500: Internal server error.
                 response.end(JSON.stringify({status: false, message: router.error}));
                 //  Log the error object.
                 console.error(error);
@@ -279,11 +286,10 @@ class Router {
                 response.end(JSON.stringify(result));
             } else {
                 //  If there was an error set message to error message.
-                router.message = router.error;
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(JSON.stringify({status: false, message: router.error}));
                 //  Log the error object.
                 console.error(error);
-                //  Then redirect to the same url to display the message.
-                response.redirect(request.url);
             }
         });
     }

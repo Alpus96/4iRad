@@ -81,7 +81,7 @@ class Users {
         //  as this Users class inside callback functions.
         const users = this;
 		//	Find the username in the database.
-		this.user.read(cridentials.username, (error, result) => {
+		this.user.read({username: cridentials.username}, (error, result) => {
 			//	Confirm that there was no error searching for the user.
 			if (!error) {
 				//	If there was no error searching for the user confirm a user was found.
