@@ -26,6 +26,7 @@ class Forms {
             data: data, //  Pass the input data parameter.
             dataType: "json",
             success: function (result) {
+                //  Returns the result as result through the callback function.
                 callback(null, result);
             },
             error: function (xhr, ajaxOptions, thrownError) {
