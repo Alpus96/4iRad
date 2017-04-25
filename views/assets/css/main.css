@@ -145,3 +145,13 @@ footer {
   text-align: center;
   
 }
+
+
+#rules{
+  padding-left: 5%;
+  padding-right: 10%;
+}
+
+.jumbotron h1{
+  text-align: center;
+}
