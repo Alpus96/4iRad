@@ -117,8 +117,11 @@ class Game {
 
 class Coin {
     constructor(owner) {
-        this.owner = owner; //  Must be a number of 1 or 2.
-        //this.color = owner == 1 ? 'yellow' || 'red';
+        if (owner === 1 || owner === 2) {
+            this.owner = owner;
+        } else {
+            throw new Error('invalid owner: ' + owner);
+        }
     }
 }
 
