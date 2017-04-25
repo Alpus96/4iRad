@@ -27,25 +27,25 @@ class Router {
         //  Compare the get request url to all valid requests.
         if (request.url === '/') {
             //  If the root url / index was requested call index function.
-            index(request, response);
+            this.index(request, response);
         } else if (request.url === '/register') {
             //  If register page was requested call the register get function.
-            registerGet(request, response);
+            this.registerGet(request, response);
         } else if (request.url === '/login') {
             //  If login page was requested call the login get function.
-            loginGet(request, response);
+            this.loginGet(request, response);
         } else if (request.url === '/update') {
             //  If update page was requested call the update get function.
-            updateGet(request, response);
+            this.updateGet(request, response);
         } else if (request.url === '/unregister') {
             //  If unregister page was requested call the unregister get function.
-            unregisterGet(request, response);
+            this.unregisterGet(request, response);
         } else if (request.url === '/highscore') {
             //  If the highscore page was requested call the highscore get function.
-            highscoreGet(request, response);
+            this.highscoreGet(request, response);
         } else {
             //  If the request did not match any of the above default to index.
-            index(request, response);
+            this.index(request, response);
         }
     }
 
@@ -59,25 +59,25 @@ class Router {
         //  Compare the post request url to all valid requests.
         if (request.url === '/register') {
             //  If register was post requested call the register post function.
-            registerPost(request, response);
+            this.registerPost(request, response);
         } else if (request.url === '/login') {
             //  If login was post requested call the login post function.
-            loginPost(request, response);
+            this.loginPost(request, response);
         } else if (request.url === '/update') {
             //  If update was post requested call the update post function.
-            updatePost(request, response);
+            this.updatePost(request, response);
         } else if (request.url === '/logout') {
             //  If logout was post requested call the logout post function.
-            logout(request, response);
+            this.logout(request, response);
         } else if (request.url === '/unregister') {
             //  If unregister was post requested call the unregister post function.
-            unregisterPost(request, response);
+            this.unregisterPost(request, response);
         } else if (request.url === '/highscore') {
             //  If highscore was post requested call the highscore post function.
-            highscorePost(request, response);
+            this.highscorePost(request, response);
         } else {
             //  If the request did not match any of the above default to index.
-            index(request, response);
+            this.index(request, response);
         }
     }
 
@@ -121,7 +121,7 @@ class Router {
             'register.ejs',
             {
                 //  Pass eventual message to be displayed.
-                message: this.message;
+                message: this.message
             }
         );
         //  Reset the messaeg to an empty string.
@@ -179,7 +179,7 @@ class Router {
             'login.ejs',
             {
                 //  Pass eventual message to be displayed.
-                message: this.message;
+                message: this.message
             }
         );
         //  Reset the messaeg to an empty string.
@@ -244,7 +244,7 @@ class Router {
             'update.ejs',
             {
                 //  Pass eventual message to be displayed.
-                message: this.message;
+                message: this.message
             }
         );
         //  Reset the messaeg to an empty string.
@@ -330,7 +330,7 @@ class Router {
             'unregister.ejs',
             {
                 //  Pass eventual message to be displayed.
-                message: this.message;
+                message: this.message
             }
         );
         //  Reset the messaeg to an empty string.
@@ -376,17 +376,68 @@ class Router {
     }
 
     /*
+    *   A function to handle highscore list requests responing with json.
     *
+    *   @params     request: An object containing data about the request.
+    *                         response: An object to handle response data to the client.
     * */
     highscoreGet (request, response) {
-
+        //  Save class this in variable as this is not defiend
+        //  as this router class inside callback functions.
+        const router = this;
+        //  Request the controller to get the highscore list.
+        this.highscores.getHighscores((error, result) => {
+            //  Confirm there was no error getting the highscore list.
+            if (!error) {
+                //  If there was no error respond with the result converted to json.
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(JSON.stringify(result));
+            } else {
+                //  If there was an error set message to error message.
+                router.message = router.error;
+                //  Log the error object.
+                console.error(error);
+                //  Then redirect to the same url to display the message.
+                response.redirect(request.url);
+            }
+        });
     }
 
     /*
+    *   A function to handle saving new highscore received as json from a player.
     *
+    *   @params     request: An object containing data about the request.
+    *                         response: An object to handle response data to the client.
     * */
     highscorePost (request, response) {
-
+        //  Save class this in variable as this is not defiend
+        //  as this router class inside callback functions.
+        const router = this;
+        //  Request the controller to add the new score to the highscore list.
+        this.highscores.addNew(request.body.highscore, (error, qualified) => {
+            //  Confirm there was no error handling the request.
+            if (!error) {
+                //  If there was no error handling the request check
+                //  if the user qualified for the highscore list.
+                if (qualified) {
+                    //  If the players score was qualified for the highscore
+                    //  list respond with congratulation converted to json.
+                    response.writeHead(200, {"Content-Type": "application/json"});
+                    response.end(JSON.stringify({message: 'You have qualified for the highscore list!'}));
+                } else {
+                    //  If the players score did not qualify for the highscore
+                    //  list respond with condolence message converted to json.
+                    response.writeHead(200, {"Content-Type": "application/json"});
+                    response.end(JSON.stringify({message: 'You did not qualify, sorry.'}));
+                }
+            } else {
+                //  If there was an error handeling the request log the error object.
+                console.error(error);
+                //  Respond with the default error message converted to json.
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(JSON.stringify({message: router.error}));
+            }
+        });
     }
 
 }
