@@ -1,34 +1,25 @@
-<div class="page" id="spel">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 center">
-            <img src="img/images.jpg" class="img-responsive">
-            </div>
-        </div>
+<div class="page" id="play">
+    <div class="container" >
+        <div class="row kant">
+            <div class="col-xs-8 col-md-6">
+                <div id="Bord"></div>
 
-        <div class="row">
-            <div class="col-md-5">
+                <button class="btn btn-primary" id="restart">Spel igen</button>
+                <br>
+                <div class="padding">
+                    <button class="btn btn-primary" id="cancel">Avbryt spelet</button> <button class="btn btn-primary" id="pause">Stoppa musiken</button>
+                </div>
             </div>
-            <div class="col-md-2">
-                <form>
-                    <div class="form-group">
-                        <label>Spelare 1:</label>
-                        <input type="text" name="Spelare1" class="form-control" id="Player1">
-                    </div>
-                    <div class="form-group">
-                        <label>Spelare 2:</label>
-                        <input type="text" name="Spelare2" class="form-control" id="Player2">
-                    </div>
-                    <div class="form-group">
-                        <select id="selectedVal">
-                            <option value="Spelare på samma dator">Spelare på samma dator</option>
-                            <option value="Spelare på annan dator">Spelare på annan dator</option>
-                            <option value="Dator">Spela mot datorn</option>
-                        </select>
-                    </div>
-                    <input type="button"id="startBtn"  name="submit" class="btn btn-danger" value="Start">
-                </form>
+            <div class="col-xs-4 col-md-6 player">
+            <div id="p1" class="well-sm floatright ">
+            <h5 >Spelare1</h5>
+            <p> Coins left:</p>
+            </div>
+            <div id="p2" class="well-sm floatright">
+            <h5>Spelare2</h5>
+            <p> Coins left:</p>
+            </div>
             </div>
         </div>
     </div>
-</div><!-- Här slutar spel -->
+</div>
