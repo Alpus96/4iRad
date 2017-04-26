@@ -99,8 +99,9 @@ class Game {
                         console.log('diagonal 4 loop');
                     }
                     k = 0;
-                    this.inARowCheck(player, inARow);
+                    const ret = this.inARowCheck(player, inARow);
                     inARow = 1;
+                    return ret;
                 }
             }
         }
@@ -108,11 +109,10 @@ class Game {
 
     inARowCheck (player, inARow) {
         if (inARow > 3) {
-            //player.wins();
+            return true;
             console.log('Player ' + player.id + ' won');
         }
     }
-
 }
 
 class Coin {
