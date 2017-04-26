@@ -72,17 +72,6 @@ $("#mydiv").width(width);*/
         }
     }*/
 
-
-    /*addCoin(coin, column) {
-        if (!this.gameBoard[column].length > 6 && coin instanceof Coin) {
-            //  If the column is not ful place a Coin in it and return tue.
-            this.gameBoard[column].push(coin);
-            return true;
-        } else {
-            //  If the column was ful or the coin was not a Coin return false.
-            return false;
-        }
-    }*/
      function runComp(){
         if(turn===false && selected==="Dator"){
             setTimeout(function(){
@@ -283,11 +272,35 @@ $("#mydiv").width(width);*/
 
     function vinstKoll(id,column){
        game.addCoin(new Coin(id), Number(column));
-       if (game.checkForWinner({id: id, coins: player1.coins})) {
-           console.log('Winner found!');
-       } else {
-           console.log('no winner yet');
+       if (game.checkForWinner({id: id})) {
+           $('#winner-modal').modal('show');
+           const winner = id == player2.id ? player2 : player1;
+           $('#modal-title').html(winner.name + ' vinner!');
+           if (id == 1) {
+               $('#modal-message').html('Dina poäng kommer sparas till toplistan.');
+               saveScore(winner);
+           } else {
+               $('#modal-message').html('Hur lyckades du förlora mot datorn?');
+           }
        }
+   }
+
+   function saveScore (winner) {
+       const ajax = new Ajax();
+       const cookies = new Cookies();
+       let userid = null;
+       if (cookies.read('loggedIn')) {
+           userid = cookies.read('id');
+       }
+       console.log('userid: ' + userid);
+       const score = 22 - winner.coins;
+       ajax.post('/highscore', {name: winner.name, score: score, userid: userid}, function (error, result) {
+           if (!error) {
+               console.log('HS result:', result);
+           } else {
+               console.log('HS error:', error);
+           }
+       });
    }
 
     function speladeCoins(){
