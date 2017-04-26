@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>4 I Rad</title>
+
+		<!--    Bootstrap, jQuery and other assets    -->
+		<!--script src="assets/lib/jquery.js"></script-->
+    	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    	<script src="http://www.google.com/jsapi" ></script>
+      <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script-->
+		<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css">
+
+		<!--    CSS document link    -->
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    	<link rel="stylesheet" type="text/css" href="assets/css/spelPlan.css">
+    	<link rel="stylesheet" type="text/css" href="assets/css/styles.min.css" >
+      <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+  		<!--    CSS document link    -->
+    	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+		<!--    JS document link    -->
+
+	    <script src="assets/js/staticScripts.js"></script>
+	    <script src="assets/js/games/4irad/highScoreClass.js"></script>
+	    <script src="assets/js/games/4irad/playerClass.js"></script>
+       <script src="assets/js/games/4irad/ljud.js"></script>
+	    <script src="assets/js/games/4irad/coinAnimation.js"></script>
+	    <script src="assets/js/games/4irad/run-sql-query.js"></script>
+	    <script src="assets/js/games/4irad/sqlFunctions.js"></script>
+	     <script src="assets/js/games/4irad/getHighScore.js"></script>
+	    <script src="assets/js/games/4irad/game.js"></script>
+	    <script src="assets/js/games/4irad/cancle.js"></script>
+	    <script src="assets/js/games/4irad/register.js"></script>
+	    <script src="assets/js/games/4irad/login.js"></script>
+
+		<!--    Meta page settings    -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	</head>
+
+  <body>
+
+    <header>
+      <nav class="navbar farga">
+        <div class="container-fluid"> 
+          
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+               <span class="glyphicon glyphicon-menu-hamburger"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#home"><img src="assets/img/icon.jpg" class="scale-brand-img"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+              <li class="active"><a href="#home">Hem</a></li>
+              <li class="active"><a href="#log">Login</a></li>
+              <li><a href="#spel">Spela</a></li>
+              <li><a href="#rules">Regler</a></li>
+              <li><a href="#highscore">Topplista</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              </ul>
+            </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="page" id="home">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-8 noPadding">
+              <img class="center-block" src="assets/img/image1.jpg" style="width:100%">
+            </div>
+            <br></br>
+            <div class="col-xs-4">
+              <form>
+                <div class="form-group">
+                  <label for="inputUsername" class="control-label">AnvändareNamn</label>
+                  <input type="text" class="form-control" id="inputUsername" placeholder="AnvändareNamn">
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail" class="control-label">Epost</label>
+                  <input type="email" class="form-control" id="inputEmail" placeholder="Epost">
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword" class="control-label">Lösenord</label>
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Lösenord">
+                </div>
+                <button class="btn btn-primary btn-lg noPadding" type="spela" id="Reg">Register</button>
+              </form><!-- Close previous form before opening a new  -->
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <a href="https://www.miniclip.com/games/agar-io/en/" class="utanstrek">
+                <h1>Agar.io</h1>
+                  <p>Agario är ett spel inom genren casual game och action.</p>
+                <img src="assets/img/icee.jpg" alt="imgs/icee.jpg" class="you img-rounded">
+              </a>
+            </div>
+
+            <div class="col-sm-4">
+              <a href="http://www.games-4-free.com/elvenar/?c=2840">
+                <h1>Elvenar</h1>
+                  <p>Elvenar är en stad-byggnad strategi MMO där spelare hantera resurser och utbildning upp en armé för att växa en stor ny imperium.</p>
+                <img src="assets/img/elv1.jpg" alt="imgs/elv1.jpg" class="you img-rounded">
+              </a>
+            </div>
+
+            <div class="col-sm-4">
+              <a href="https://www.miniclip.com/games/ice-temple/en/#t-w-c-H">
+                <h1>Ice Empire</h1>
+                  <p>The Ice Temple, förde en gratis online äventyrsspel till dig av Armor Games. Hjälp FireBoy och Watergirl i detta nya äventyr! kontroll både</p>
+                <img src="assets/img/ice1.jpg" alt="imgs/ice1.jpg" class="you img-circle">
+              </a>
+            </div>
+          </div>
+        </div><!-- end of container -->
+      </div> <!-- #home ends here -->
+
+       <div class="page" id="log">
+        <div class="container">
+          <div class="row">
+              <div class="col-xs-8 noPadding">
+                <img class="center-block" src="assets/img/log.jpg" style="width:100%">
+              </div>
+              <br></br>
+              <div class="col-sm-4">
+                <form>
+                  <div class="form-group">
+                    <label for="inputUsername" class="control-label">AnvändareNamn/Epost</label>
+                    <input type="text" class="form-control" id="inputUsername" placeholder="AnvändareNamn/Epost">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputPassword" class="control-label">Lösenord</label>
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Lösenord">
+                  </div>
+                  <button class="btn btn-primary btn-lg noPadding" type="spela" id="login">Login</button>
+                  <button class="btn btn-primary btn-lg noPadding" type="spela" id="logout">Logout</button>
+                </form><!-- Close previous form before opening a new  -->
+              </div>
+             </div>
+            </div>
+          </div>
+          </div>
+
+    <div class="page" id="spel">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 center">
+              <img src="assets/img/images.jpg" class="img-responsive">
+            </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-5">
+            </div>
+            <div class="col-md-2">
+              <form>
+                <div class="form-group">
+                  <label>Spelare 1:</label>
+                  <input type="text" name="Spelare1" class="form-control" id="Player1">
+                </div>
+				      <div class="form-group">
+                  <label>Spelare 2:</label>
+                  <input type="text" name="Spelare2" class="form-control" id="Player2">
+              </div>
+                <div class="form-group">
+                  <select id="selectedVal">
+                    <option value="Spelare på samma dator">Spelare på samma dator</option>
+					         <option value="Spelare på annan dator">Spelare på annan dator</option>
+                    <option value="Dator">Spela mot datorn</option>
+                  </select>
+                </div>
+                <input type="button"id="startBtn"  name="submit" class="btn btn-danger" value="Start">
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- Här slutar spel -->
+
+
+
+    <div class="page" id="play">
+      <div class="container" >
+        <div class="row kant">
+          <div class="col-xs-8 col-md-6">
+            <div id="Bord"></div>
+            <button class="btn btn-primary" id="restart">Spel igen</button>
+              <br>
+              <div class="padding">
+                <button class="btn btn-primary" id="cancel">Avbryt spelet</button> <button class="btn btn-primary" id="pause">Stoppa musiken</button>
+              </div>
+              
+          </div>
+            <div class="col-xs-4 col-md-6 player">
+              <div id="p1" class="well-sm floatright ">
+                  <h5 >Spelare1</h5>
+                  <p> Coins left:</p>
+              </div>
+              <div id="p2" class="well-sm floatright">
+                  <h5>Spelare2</h5>
+                  <p> Coins left:</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+	<div class="page" id="rules">
+		<div class="row">
+            <div class="col-md-8">
+                <div class="jumbotron">
+                    <h1>Regler</h1>
+
+                    <ul style="list-style-type: square;">
+						<p><li>Om du letar efter ett enkelt strategispel som kan spelas med bara om någon, inklusive barn,
+						är Connect Four för dig. Connect Four är ett enkelt spel som liknar Tre i rad. Endast i stället för tre
+						i rad, måste vinnaren ansluta fyra i rad.</li></p>
+
+						<p><li>För att vinna Connect Four måste du vara den första spelaren att få fyra av dina färgade pjäser
+						i rad antingen horisontellt , vertikalt eller diagonalt.</li></p>
+
+						<p><li>Kom ihåg att den officiella Connect Four barns regler och instruktioner kan vara olika beroende
+						på spelet version du har. Reglerna nedan är några av de exakta anvisningar om hur man spelar Connect Four.</li></p>
+
+						<p><li>Om du får ansluta fyra och inte ser det eller ring det och sedan motståndaren får ansluta fyra
+						nästa vem som vinner.</li></p>
+
+						<p><li>Anslut Four (även känd som kapten Mistress, fyra upp, Plot fyra, hitta fyra, Fourplay [stämningen
+						behövde], Fyra i rad, Fyra i en linje och Gravitrips (i Sovjetunionen )) är en två-spelare anslutning spel
+						där spelarna först välja en färg och sedan turas släppa färgade skivor uppifrån i en sju-kolonn, sex rader
+						vertikalt upphängda nätet.</li></p>
+
+                        <p><li>Bitarna faller rakt ner, ockuperar nästa tillgängliga utrymmet i kolonnen. Målet med spelet är att vara
+						den första att bilda en horisontell, vertikal eller diagonal linje av fyra av sina egna skivor. Connect Four är
+						ett löst spel. Den första spelaren kan alltid vinna genom att spela rätt drag.</li></p>
+                     </ul>
+              	</div>
+          	</div>
+
+          	<div class="col-md-4">
+              	<a href="#" class="thumbnail">
+                  	<img src="assets/img/4irad.jpg" class="img-responsive 4irad-img">
+              	</a>
+          	</div>
+
+          	<div class="col-md-4">
+              	<a href="#" class="thumbnail">
+                  	<img src="assets/img/fyra-1.jpg" class="img-responsive 4row-img">
+              	</a>
+          	</div>
+      	</div>
+  	</div>
+
+    <div class="page" id="highscore">
+      <div class="container" >
+        <div class="row kant">
+            <div class="col-xs-12 col-md-12">
+              <h2 class="centerText gold">High Score</h2>
+              <div id="hs"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="page" id="faq">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Hur man spelar?</h3>
+              <h4>För att göra en rad med fyra skivor i rad horisontellt , vertikalt eller diagonalt. Spelkonsol med bas, 21 röda skivor och 21 gröna diskar, instruktioner. Montera ramen och basen och placera konsolen mellan spelarna.</h4>
+              <div class="col-xs-4">
+                <div class="col-xs-12">
+                  <img src="assets/img/Connect_Four.gif">
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <h3>Kan jag installera det här spelet från App Stores?</h3>
+                <h4>Nej,inte just nu.</h4>
+                <h3> Kan detta spel inkluderar fler än två spelare?</h3>
+                <h4>Det här spelet kan spelas av två spelare minimum.If du vill välja en eller flera spelare då de spelar som partner.</h4>
+
+                <h3>Lämna gärna dina frågor här</h3>
+                <div class="col-md-12">
+                  <input type = "text" placeholder = "Enter your Queries" name = "Quest">
+                 <br></br>
+                <a href="#"><input type="submit" name="dsubmit" id="commentSubmit" value="Skicka förfrågan"></a>
+                <input style="width: 30px" type="checkbox" value="1" name="subscribe" id="subscribe" checked="checked">
+                <p1><b>Meddela mig för nya fråga.</b></p1>
+                 </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    <footer class="container-fluid bg-primary">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Adress</h4>
+            <p>Mälardalsvägen 21</p>
+            <p>312 22 Småstad</p>
+          </div>
+
+          <div class="col-md-4">
+            <h4>E-post</h4>
+            <p>info@fourinarow.se</p>
+            <p>support@fourinarow.se</p>
+          </div>
+
+          <div class="col-md-4">
+            <h4>Telefon</h4>
+            <p>HjälpDesk: 095-12 34 56</p>
+            <p>Service: 096-13 14 15</p>
+          </div>
+        </div>
+    </footer>
+    <div class="modal fade" tabindex="-1" role="dialog" id="who-won-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title title">Vinnare</h4>
+          </div>
+          <div class="modal-body">
+            <p class="message"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    </div>
+    </div>
+  </div>
+   <script src="assets/js/games/4irad/coinAnimation.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <!--/main>
+=======
+		<header class="container">
+		    <nav class="navbar navbar-default">
+		      <div class="container-fluid">
+		        <!-- Brand and toggle get grouped for better mobile display -->
+		        <!--div class="navbar-header">
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <a class="navbar-brand" href="#">4irad</a>
+		        </div>
+
+		        <!-- Collect the nav links, forms, and other content for toggling -->
+		        <!--div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		          <ul class="nav navbar-nav">
+		            <li class="active"><a href="#">4iRad <span class="sr-only">(current)</span></a></li>
+		            <li><a href="#">Spel</a></li>
+		            <li><a href="#">Spelregler</a></li>
+		            <li><a href="#">HighScore</a></li>
+		          </ul>
+		        </div><!-- /.navbar-collapse -->
+		      <!--/div><!-- /.container-fluid -->
+		    <!--/nav>
+		</header>
+
+ 		<main class="container">
+    		<div class="row">
+				<div class="col-md-8">
+          			<h1>Välkomen!</h1>
+          			<p>Spela det klassik spela 4irad.</p>
+          			<p><a class="btn btn-primary btn-lg" href="#" role="button">Berätta mer</a></p>
+        		</div>
+      		</div>
+		</main>
+	</body>
+
+</html-->

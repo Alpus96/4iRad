@@ -9,9 +9,7 @@ $(document).ready(function(){
     cancelClick();
     stopMusic();
 
-   /* $(window).load(function () {
-     window.location.replace("index.html");
-    });*/
+
 
     const game = new Game();
 
