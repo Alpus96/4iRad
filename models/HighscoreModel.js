@@ -1,7 +1,9 @@
-//	Require the database class to send queries through the connection.
-const DB = require('./dbConn');
-
 class Highscore{
+
+    constructor () {
+        //	Require the database class to send queries through the connection.
+        this.DB = require('./dbConn');
+    }
 
     /*
     *   A function to write a new highscore to the database.
@@ -10,8 +12,9 @@ class Highscore{
     *                         callback: (error, result) => {...}, a function to call when done.
     * */
     create (data, callback) {
+        console.log(data);
         //  Send the data to the database.
-        DB.connection.query('INSERT INTO highscore SET ?', data, (error, result) => {
+        this.DB.connection.query('INSERT INTO highscore SET ?', data, (error, result) => {
             //  Confirm there was no error.
             if (!error) {
                 //  If there was no error return the result
@@ -32,7 +35,7 @@ class Highscore{
     * */
     read (callback) {
         //  Read all the highscores sorted in ascending order by score.
-        DB.connection.query('SELECT * FROM highscore ORDER BY score ASC', function (error, result) {
+        this.DB.connection.query('SELECT * FROM highscore ORDER BY score ASC', function (error, result) {
             //  Confirm there was no error reading from the database.
             if (!error) {
                 //  If there was no error reading from the database return
@@ -54,7 +57,7 @@ class Highscore{
     * */
     delete (id, callback) {
         //  Delete highscore by id.
-        DB.connection.query('DELETE FROM highscore WHERE ?', [{id: id}], function (error, result) {
+        this.DB.connection.query('DELETE FROM highscore WHERE ?', [{id: id}], function (error, result) {
             //  Confirm there was no error deleting row from teh database.
             if (!error) {
                 //  If there was no error return the result

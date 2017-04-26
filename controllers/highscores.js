@@ -37,12 +37,13 @@ class Highscores {
     *                         callback: (error, result) => {...}, a function to call when done.
     * */
     addNew (data, callback) {
+        console.log(data);
         // Read the current highscore list.
         this.highscoreList.read((error, result) => {
             //  Confirm there was no error reading the highscore list.
             if (!error) {
                 //  Check if the list is shorter than 10 items.
-                if (result.legth < 10) {
+                if (result.length < 10) {
                     //  If the list is shorter than 10 items create new item.
                     this.highscoreList.create(data, (error, result) => {
                         //  Confirm there was no error creating new highscore item.
@@ -114,3 +115,5 @@ class Highscores {
         });
     }
 }
+
+module.exports = new Highscores();
