@@ -3,6 +3,10 @@ class Forms {
         //  Set default error message.
         this.error = 'Ett fel upstod, vänligen försök igen senare.';
 
+        this.cookie = new Cookies();
+
+        this.ajax = new Ajax();
+
         this.update();
 
         //  Hide the message boxes by default.
@@ -41,6 +45,12 @@ class Forms {
         });
     }
 
+    update () {
+        if (!this.cookie.read('loggedIn')) {
+            $('#logout').hide();
+        }
+    }
+
     register (form) {
         let data = {};
         for (let input of form) {
@@ -51,7 +61,7 @@ class Forms {
             delete data.confPass;
             forms.validate(data, (error, result) => {
                 if (!error) {
-                    forms.ajaxPost('/register', result, (error, result) => {
+                    forms.ajax.post('/register', result, (error, result) => {
                         if (!error) {
                             if (result.status) {
                                 forms.showMessage('regForm', 'alert-success', 'Success!', result.message, true);
@@ -79,11 +89,14 @@ class Forms {
         const forms = this;
         forms.validate(data, (error, result) => {
             if (!error) {
-                forms.ajaxPost('/login', result, (error, result) => {
+                forms.ajax.post('/login', result, (error, result) => {
                     if (!error) {
                         if (result.status) {
                             forms.showMessage('loginForm', 'alert-success', '', result.message, true);
-                            forms.createCookie('loggedIn', true, 10);
+                            for (let value in result.cookie[0]) {
+                                forms.cookie.create(value, result.cookie[0][value], (10 * 60 * 1000));
+                            }
+                            forms.cookie.create('loggedIn', true, (10 * 60 * 1000));
                             $('#logout').show();
                         } else {
                             forms.showMessage('loginForm', 'alert-warning', data.username + ':', result.message, true);
@@ -100,10 +113,12 @@ class Forms {
 
     logout () {
         const forms = this;
-        this.ajaxPost('/logout', {}, (error, result) => {
+        this.ajax.post('/logout', {}, (error, result) => {
             if (!error) {
                 if (result.status) {
-                    forms.deleteCookie('loggedIn');
+                    forms.cookie.delete('loggedIn');
+                    $('#logout').hide();
+                    //forms.update();
                     forms.showMessage('logout', 'alert-success', '', result.message);
                 } else {
                     forms.showMessage('#logout', 'alert-warning', 'Varning!', result.message);
@@ -114,13 +129,13 @@ class Forms {
         });
     }
 
-    update (form) {
+    /*update (form) {
 
     }
 
     delete (form) {
 
-    }
+    }*/
 
     validate (data, callback) {
         let aproved = true;
@@ -157,76 +172,6 @@ class Forms {
         if (clear) {
             $(`#${formId}`).trigger("reset");
         }
-    }
-
-    /*
-    *   A function to send ajax requests with json data to the server.
-    *
-    *   @params     url: '/example', a string containing the url where to send the post request.
-    *                         data: {username: "", password: ""}, an object containing
-    *                         the information to send to the server.
-    *                         callback: (error, result) => {...}, a function to call when done.
-    * */
-    ajaxPost (url, data, callback) {
-        //  Ajax json post request.
-        $.ajax({
-            url: url,   //  Pass the input url parameter.
-            type: "POST",
-            data: data, //  Pass the input data parameter.
-            dataType: "json",
-            success: function (result) {
-                //  Returns the result as result through the callback function.
-                callback(null, result);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                //  If there was an error log it.
-                console.error(xhr.status);
-                console.error(ajaxOptions);
-                console.error(thrownError);
-                //  Then return error true through the callback.
-                callback(true, null);
-            }
-        });
-    }
-
-    //  Cookie handlers here.
-
-    createCookie (name, value, mins) {
-        var expires;
-        if (mins) {
-            var date = new Date();
-            date.setTime(date.getTime() + (mins * 60 * 1000));
-            expires = "; expires=" + date.toGMTString();
-        } else {
-            expires = "";
-        }
-        document.cookie = name + "=" + value + expires + "; path=/";
-    }
-
-    readCookie(name,c,C,i){
-        if(this.cookies){ return this.cookies[name]; }
-
-        c = document.cookie.split('; ');
-        this.cookies = {};
-
-        for(i=c.length-1; i>=0; i--){
-           C = c[i].split('=');
-           this.cookies[C[0]] = C[1];
-        }
-
-        return this.cookies[name];
-    }
-
-    update () {
-        this.readCookie();
-        if (!this.readCookie('loggedIn')) {
-            $('#logout').hide();
-        }
-    }
-
-    deleteCookie (name) {
-        this.createCookie(name, '', -1);
-        this.update();
     }
 
 }
