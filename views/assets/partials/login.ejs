@@ -6,19 +6,22 @@
             </div>
             <br></br>
             <div class="col-xs-4">
-                <form>
+                <form id="loginForm" name="loginForm" method="post">
+                    <div id="msg" class="">
+                    </div>
                     <div class="form-group">
-                        <label for="inputUsername" class="control-label">AnvändareNamn/Epost</label>
-                        <input type="text" class="form-control" id="inputUsername" placeholder="AnvändareNamn/Epost">
+                        <label for="username" class="control-label">Användarnamn:</label>
+
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Användarnamn">
                     </div>
 
                     <div class="form-group">
-                        <label for="inputPassword" class="control-label">Lösenord</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Lösenord">
+                        <label for="passoword" class="control-label">Lösenord:</label>
+
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Lösenord">
                     </div>
 
-                    <button class="btn btn-primary btn-lg noPadding" type="spela" id="login">Login</button>
-                    <button class="btn btn-primary btn-lg noPadding" type="spela" id="logout">Logout</button>
+                    <input class="btn btn-primary btn-lg noPadding" type="submit" name="login" value="Logga in!">
                 </form>
             </div>
         </div>

@@ -1,18 +1,12 @@
 //  Static js script main file.
 $(document).ready(function(){
     //  Run start when pahe is loaded.
-$(switchPage);
+    switchPage();
 
-//  When the hash part of the url changes
-//  run switchPage to update content.
-window.onhashchange = switchPage;
-
+    //  When the hash part of the url changes
+    //  run switchPage to update content.
+    window.onhashchange = switchPage;
 });
-
-
-
-
-let won;
 
 //  Will update the page content
 //  depending on the url.
@@ -28,9 +22,8 @@ function switchPage() {
     if(!l){
     l = '#start';
   }
-   
+
     $(l).show();
-    console.log(l);
     menuItemActive(l);
 }
 
@@ -66,12 +59,8 @@ function menuItemActive (l) {
     });
 }
 
-function showWhoWon(){
-    let winningPlayerName = "Justa Test";
-    $('#who-won-modal .title').text(winningPlayerName + ' vann...');
-    $('#who-won-modal .message').text('Grattis ' + winningPlayerName + '! Du vann!');
-    $('#who-won-modal').modal('show'); 
+function showWinner(player = 'Test Player'){
+    $('#who-won-modal .title').text(player + ' vann...');
+    $('#who-won-modal .message').text('Grattis ' + player + '! Du vann!');
+    $('#who-won-modal').modal('show');
 }
-
-    
-
