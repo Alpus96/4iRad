@@ -9,6 +9,10 @@ $(document).ready(function(){
     cancelClick();
     stopMusic();
 
+   /* $(window).load(function () {
+     window.location.replace("index.html");
+    });*/
+
     const game = new Game();
 
     // create the board
@@ -100,10 +104,10 @@ $("#mydiv").width(width);*/
             for(let i =0; i<=k; i++){
                if(!$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id")){
                     k--;
-
+               
                 $(".row-"+i+"-col-"+column).find('.white-and-round').effect("highlight",{color: player2.colore},300);
                 }
-
+                
             }
         }
         else if(turn===false ){
@@ -113,7 +117,7 @@ $("#mydiv").width(width);*/
                     $(".row-"+i+"-col-"+column).find('.white-and-round').effect("highlight",{color: player1.colore},300);
                 }
             }
-
+          
 
         }
 
@@ -126,7 +130,7 @@ $("#mydiv").width(width);*/
         audio.play();
         let coinColor;
         let id;
-
+        
         if(turn===true)
         {
 
@@ -139,7 +143,7 @@ $("#mydiv").width(width);*/
             "border-width": "5px"
             }, 500);
              $("#p1").css('border','');
-
+              
 
         }
          else if(turn===false){
@@ -152,20 +156,22 @@ $("#mydiv").width(width);*/
             "border-width": "5px"
             }, 500);
             $("#p2").css('border','');
-
+            
 
         }
+        vinstKoll(id, column);
 
             if(i ===5 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
-
+               
                 val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
+               
                speladeCoins();
                animateCoin(column);
                runComp();
-
+               
             }
             else if(i===5){
                  i--;
@@ -176,10 +182,11 @@ $("#mydiv").width(width);*/
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
+               
                speladeCoins();
                 animateCoin(column);
                runComp();
-
+              
             }
             else if(i===4){
                  i--;
@@ -190,10 +197,11 @@ $("#mydiv").width(width);*/
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
+               
                speladeCoins();
                 animateCoin(column);
                runComp();
-
+               
             }
             else if(i===3){
                  i--;
@@ -203,10 +211,11 @@ $("#mydiv").width(width);*/
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
+               
                speladeCoins();
                animateCoin(column);
                runComp();
-
+               
             }
             else if(i===2){
                  i--;
@@ -217,10 +226,11 @@ $("#mydiv").width(width);*/
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
+               
                speladeCoins();
                animateCoin(column);
                runComp();
-
+               
             }
             else if(i===1){
                  i--;
@@ -230,10 +240,11 @@ $("#mydiv").width(width);*/
                  val=i+column+id;
                $(".row-"+i+"-col-"+column).find('.white-and-round').css('background-color',coinColor).attr("id",val);
                i=5;
+               
                speladeCoins();
                animateCoin(column);
                runComp();
-
+               
 
             }
             else if(i===0 && selected==="Dator"){
@@ -264,24 +275,20 @@ $("#mydiv").width(width);*/
                 }
                 i=5;
             }
+            
 
-            game.addCoin(new Coin(id), Number(column));
-            if (game.checkForWinner({id: id})) {
-                if (id === 1) {
-                    showWinner(player1.name);
-                } else {
-                    showWinner(player2.name);
+    }
+
+     function vinstKoll(id,column){
+                game.addCoin(new Coin(id), Number(column));
+                if(id===1){
+                
+                    game.checkForWinner({id: id, name: player1.name, coins: player1.coins});
+                }
+                else{
+                    game.checkForWinner({id: id, name: player2.name, coins: player2.coins});
                 }
             }
-
-    }
-
-    function showWinner(player = 'Test Player'){
-        $('#who-won-modal .title').text(player + ' vann...');
-        $('#who-won-modal .message').text('Grattis ' + player + '! Du vann!');
-        $('#who-won-modal').modal('show');
-    }
-
     function speladeCoins(){
                 if(turn===false){
                 player2.coins--;
