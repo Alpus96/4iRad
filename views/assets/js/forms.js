@@ -4,7 +4,7 @@ class Forms {
         this.error = 'Ett fel upstod, vänligen försök igen senare.';
 
         this.update();
-        
+
         //  Hide the message boxes by default.
         $("#regForm-msg").hide();
         $("#loginForm-msg").hide();
@@ -63,7 +63,7 @@ class Forms {
                         }
                     });
                 } else {
-                    forms.showMessage('regForm', 'alert-warning', 'Invalid:', error.message);
+                    forms.showMessage('regForm', 'alert-warning', 'Invalid:', error);
                 }
             });
         } else {
