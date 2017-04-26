@@ -132,7 +132,7 @@ class Forms {
             }
             if (data[val].length <= 6) {
                 aproved = false;
-                callback('användarnamn och lösenord måste vara minst 6 karaktärer långa.', null);
+                callback('Användarnamn och lösenord måste vara minst 6 karaktärer långa.', null);
                 break;
             }
         }

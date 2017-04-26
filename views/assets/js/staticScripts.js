@@ -30,11 +30,12 @@ function switchPage() {
 //  Changes the active menu item after
 //  the page content has been changed.
 function menuItemActive (l) {
-    $(`header nav a#names`).html("Spela").attr('href', '#start');
+    $(`header nav a#names`).html("Spela").attr('href', '#spel');
 
     $('header nav li').removeClass('active');
 
-    if (l === "#start" || l === "#play") {
+    console.log(l);
+    if (l === "#spel" || l === "#play") {
         $('header nav a#names').html("Avbryt").attr('href', '#home');
         $('header nav a#names').parent().addClass('active');
     } else {
