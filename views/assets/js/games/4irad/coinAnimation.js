@@ -157,7 +157,7 @@ $("#mydiv").width(width);*/
             
 
         }
-        vinstKoll(id, column);
+        
 
             if(i ===5 && !$(".row-"+i+"-col-"+column).find(".white-and-round").attr("id"))
             {
@@ -168,6 +168,7 @@ $("#mydiv").width(width);*/
                
                speladeCoins();
                animateCoin(column);
+               vinstKoll(id, column);
                runComp();
                
             }
@@ -183,6 +184,7 @@ $("#mydiv").width(width);*/
                
                speladeCoins();
                 animateCoin(column);
+                vinstKoll(id, column);
                runComp();
               
             }
@@ -198,6 +200,7 @@ $("#mydiv").width(width);*/
                
                speladeCoins();
                 animateCoin(column);
+                vinstKoll(id, column);
                runComp();
                
             }
@@ -212,6 +215,7 @@ $("#mydiv").width(width);*/
                
                speladeCoins();
                animateCoin(column);
+               vinstKoll(id, column);
                runComp();
                
             }
@@ -227,6 +231,7 @@ $("#mydiv").width(width);*/
                
                speladeCoins();
                animateCoin(column);
+               vinstKoll(id, column);
                runComp();
                
             }
@@ -241,6 +246,7 @@ $("#mydiv").width(width);*/
                
                speladeCoins();
                animateCoin(column);
+               vinstKoll(id, column);
                runComp();
                
 
@@ -278,14 +284,17 @@ $("#mydiv").width(width);*/
     }
 
      function vinstKoll(id,column){
-                game.addCoin(new Coin(id), Number(column));
-                if(id===1){
                 
-                    game.checkForWinner({id: id, name: player1.name, coins: player1.coins});
-                }
-                else{
-                    game.checkForWinner({id: id, name: player2.name, coins: player2.coins});
-                }
+                
+                    game.addCoin(new Coin(id), Number(column));
+                    if(id===1){
+                    
+                        game.checkForWinner({id: id, name: player1.name, coins: player1.coins});
+                    }
+                    else{
+                        game.checkForWinner({id: id, name: player2.name, coins: player2.coins});
+                    }
+                 
             }
     function speladeCoins(){
                 if(turn===false){
