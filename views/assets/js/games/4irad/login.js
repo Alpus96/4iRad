@@ -4,24 +4,20 @@ $(document).ready(function(){
 
 function addClickHandlersForButtons(){
     
-    $('#login').click(function(){
-        let name = $('#inputUsername').val();
-        let mail = $('#inputEmail').val();
-        let password = $('#inputPassword').val();
+    $('#login1').click(function(){
+        let name = $("#iUsername").val();
+        let password = $('#iPassword').val();
         
         if(!isNaN(name)){
-              alert("Name is not valid");
-
+              alert("Name is not valid 11");
+              return false;
             }
         if(password.length<8 || !isNaN(password)){
-
             alert("Password is not valid");
-            }
-        if(!isNaN(mail)){
-
-            alert("Enter valid email-Id");
-           }     
-        
+            return false;
+         }
+         window.location.hash = '#spel';
+             
     });
 
     $('#logout').click(function() {
