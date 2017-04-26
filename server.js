@@ -38,7 +38,7 @@ Config.sessionsConf(function (error, result) {
 
 		//	Set server files configuration.
 		server.set('view engine', 'ejs');
-		server.set('views', './views/ejs'); // TODO: Mode ejs to './views'.
+		server.set('views', './views');
 		server.use(express.static('./views/assets'));
 		console.log(`Server framework files configuration set.`);
 
