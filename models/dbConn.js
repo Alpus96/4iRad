@@ -9,11 +9,11 @@ class DBConn {
         //this.connection.on('disconnect', this.connection = connect());
     }
 
-    connect () {
+    /*connect () {
         return MySQL.createConnection(dbConf);
-    }
+    }*/
 
-    /*connect() {
+    connect() {
         // Recreate the connection, since the old one cannot be reused.
         this.connection = MySQL.createConnection(dbConf);
 
@@ -39,7 +39,7 @@ class DBConn {
                 throw err;
             }
         });
-    }*/
+    }
 
 }
 
