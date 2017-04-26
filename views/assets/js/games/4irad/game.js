@@ -10,7 +10,6 @@ class Game {
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0]
         ];
-        console.log(this.gameBoard);
         this.players = [new Player(player1, 1), new Player(player2, 2)]
     }
 
@@ -36,12 +35,13 @@ class Game {
             console.log(column);
             for (let coin of column) {
                 if (coin instanceof Coin) {
-                    console.log(coin.owner;
+                    console.log(coin.owner);
                 } else {
                     console.log(coin);
                 }
             }
         }
+
         let inARow;
         let last;
         for (let column of this.gameBoard) {
@@ -55,7 +55,12 @@ class Game {
                         inARow = 1;
                     }
                     last = i;
-                    this.inARowCheck(player, inARow);
+                    if (inARow > 3) {
+                        console.log('vertical:', true, inARow);
+                        return true;
+                    } else {
+                        console.log('vertical:', false, inARow);
+                    }
                 }
             }
         }
@@ -70,7 +75,12 @@ class Game {
                         inARow = 1;
                     }
                     last = j;
-                    this.inARowCheck(player, inARow);
+                    if (inARow > 3) {
+                        console.log('horisontal:', true, inARow);
+                        return true;
+                    } else {
+                        console.log('horisontal:', false, inARow);
+                    }
                 }
             }
         }
@@ -78,44 +88,74 @@ class Game {
         for (let i = 0; i < this.gameBoard.length; i++) {
             for (let j = 0; j < this.gameBoard[i].length; j++) {
                 if (this.gameBoard[i][j].owner === player.id) {
+                    let last = '';
                     let k = 0;
                     let inARow = 1;
-                    while (i - k > 0 && j - k > 0 && this.gameBoard[i-k][j-k] instanceof Coin && this.gameBoard[i-k][j-k].owner === player.id) {
-                        inARow++;
+                    while (i - k > 0 && j - k > 0) {
+                        const comp = `${i-k+1}${j-k+1}`;
+                        if (this.gameBoard[i-k][j-k] instanceof Coin && this.gameBoard[i-k][j-k].owner === player.id && last = comp) {
+                            inARow++;
+                            last = `${i-k}${j-k}`;
+                        } else {
+                            inARow = 1;
+                        }
                         k++;
                     }
                     k = 0;
-                    while (i + k < 7 && j + k < 6 && this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i+k][j+k].owner === player.id) {
-                        inARow++;
+                    while (i + k < 7 && j + k < 6) {
+                        const comp = `${i+k-1}${j+k-1}`;
+                        if (this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i+k][j+k].owner === player.id && last == comp) {
+                            inARow++;
+                            last = `${i+k}${j+k}`;
+                        } else {
+                            inARow = 1;
+                        }
                         k++;
                     }
                     k = 0;
-                    this.inARowCheck(player, inARow);
-                    inARow = 1;
-                    while (i + k < 7 && j - k > 0 && this.gameBoard[i+k][j-k] instanceof Coin && this.gameBoard[i+k][j-k].owner === player.id) {
-                        inARow++;
+                    if (inARow > 3) {
+                        console.log('diagonal 1:', true, inARow);
+                        return true;
+                    } else {
+                        console.log('diagonal 1:', false, inARow);
+                        inARow = 1;
+                        last = '';
+                    }
+                    while (i + k < 7 && j - k > 0) {
+                        const comp = `${i+k-1}${j-k+1}`;
+                        if (this.gameBoard[i+k][j-k] instanceof Coin && this.gameBoard[i+k][j-k].owner === player.id && last === comp) {
+                            inARow++;
+                            last = `${i+k}${j-k}`;
+                        } else {
+                            inARow = 1;
+                        }
                         k++;
                     }
                     k = 0;
-                    while (i - k < 0 && j + k > 6 && this.gameBoard[i-k][j+k] instanceof Coin && this.gameBoard[i-k][j+k].owner === player.id) {
-                        inARow++;
+                    while (i - k < 0 && j + k > 6 && ) {
+                        const comp = `${i-k+1}${j+k-1}`;
+                        if (this.gameBoard[i-k][j+k] instanceof Coin && this.gameBoard[i-k][j+k].owner === player.id && last === comp) {
+                            inARow++;
+                            last = `${i-k}${j+k}`;
+                        } else {
+                            inARow = 1;
+                        }
                         k++;
                     }
                     k = 0;
-                    const ret = this.inARowCheck(player, inARow);
-                    inARow = 1;
-                    return ret;
+                    if (inARow > 3) {
+                        console.log('diagonal 2:', true, inARow);
+                        return true;
+                    } else {
+                        console.log('diagonal 2:', false, inARow);
+                        inARow = 1;
+                        return false;
+                    }
                 }
             }
         }
     }
 
-    inARowCheck (player, inARow) {
-        if (inARow > 3) {
-            return true;
-            console.log('Player ' + player.id + ' won');
-        }
-    }
 }
 
 class Coin {
