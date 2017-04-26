@@ -15,6 +15,7 @@ class Game {
     }
 
     addCoin(coin, column) {
+        console.log(coin.owner, column);
         if (coin instanceof Coin) {
             let res = false;
             for (let i = 0; i < this.gameBoard[column].length; i++) {
@@ -23,7 +24,6 @@ class Game {
                     res = true;
                     break;
                 }
-                console.log('addcoin loop');
             }
             return res;
         } else {
@@ -47,7 +47,6 @@ class Game {
                     last = i;
                     this.inARowCheck(player, inARow);
                 }
-                console.log('check winner vertical loop');
             }
         }
 
@@ -63,40 +62,34 @@ class Game {
                     last = j;
                     this.inARowCheck(player, inARow);
                 }
-                console.log('checkForWinner horizontal loop');
             }
         }
 
         for (let i = 0; i < this.gameBoard.length; i++) {
             for (let j = 0; j < this.gameBoard[i].length; j++) {
-                console.log('i: ', i, '\nj: ', j);
                 if (this.gameBoard[i][j].owner === player.id) {
                     let k = 0;
                     let inARow = 1;
                     while (this.gameBoard[i-k][j-k] instanceof Coin && this.gameBoard[i-k][j-k].owner === player.id) {
                         inARow++;
                         k++;
-                        console.log('diagonal 1 loop');
                     }
                     k = 0;
                     while (i+k < 7 && j + k < 6 && this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i+k][j+k].owner === player.id) {
                         inARow++;
                         k++;
-                        console.log('diagonal 2 loop');
                     }
                     k = 0;
                     this.inARowCheck(player, inARow);
                     inARow = 1;
-                    while (this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i+k][j-k].owner === player.id) {
+                    while (this.gameBoard[i+k][j-k] instanceof Coin && this.gameBoard[i+k][j-k].owner === player.id) {
                         inARow++;
                         k++;
-                        console.log('diagonal 3 loop');
                     }
                     k = 0;
-                    while (this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i-k][j+k].owner === player.id) {
+                    while (this.gameBoard[i-k][j+k] instanceof Coin && this.gameBoard[i-k][j+k].owner === player.id) {
                         inARow++;
                         k++;
-                        console.log('diagonal 4 loop');
                     }
                     k = 0;
                     const ret = this.inARowCheck(player, inARow);
