@@ -43,6 +43,8 @@ class Forms {
             event.preventDefault();
             form.delete($('#deleteForm').serializeArray());
         });
+
+        this.userCookies;
     }
 
     update () {
@@ -93,10 +95,13 @@ class Forms {
                     if (!error) {
                         if (result.status) {
                             forms.showMessage('loginForm', 'alert-success', '', result.message, true);
+                            forms.userCookies = forms.userCookies ? forms.userCookies : [];
+                            forms.userCookies.push('loggedIn');
+                            forms.cookie.create('loggedIn', true, (10 * 60 * 1000));
                             for (let value in result.cookie[0]) {
+                                forms.userCookies.push(value);
                                 forms.cookie.create(value, result.cookie[0][value], (10 * 60 * 1000));
                             }
-                            forms.cookie.create('loggedIn', true, (10 * 60 * 1000));
                             $('#logout').show();
                         } else {
                             forms.showMessage('loginForm', 'alert-warning', data.username + ':', result.message, true);
@@ -116,9 +121,10 @@ class Forms {
         this.ajax.post('/logout', {}, (error, result) => {
             if (!error) {
                 if (result.status) {
-                    forms.cookie.delete('loggedIn');
+                    for (let name in forms.userCookies) {
+                        forms.cookie.delete(name);
+                    }
                     $('#logout').hide();
-                    //forms.update();
                     forms.showMessage('logout', 'alert-success', '', result.message);
                 } else {
                     forms.showMessage('#logout', 'alert-warning', 'Varning!', result.message);
