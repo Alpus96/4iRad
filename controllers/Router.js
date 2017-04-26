@@ -147,7 +147,7 @@ class Router {
                         request.session.user = result;
                         //  Then send message back.
                         response.writeHead(200, {"Content-Type": "application/json"});
-                        response.end(JSON.stringify({status: true, message: 'You have been logged in!'}));
+                        response.end(JSON.stringify({status: true, message: 'You have been logged in!', cookie: result}));
                     } else {
                         //  If the authentication was not aproved set message to invalid message.
                         response.writeHead(200, {"Content-Type": "application/json"});
@@ -301,11 +301,12 @@ class Router {
     *                         response: An object to handle response data to the client.
     * */
     highscorePost (request, response) {
+        console.log(request.body);
         //  Save class this in variable as this is not defiend
         //  as this router class inside callback functions.
         const router = this;
         //  Request the controller to add the new score to the highscore list.
-        this.highscores.addNew(request.body.highscore, (error, qualified) => {
+        this.highscores.addNew(request.body, (error, qualified) => {
             //  Confirm there was no error handling the request.
             if (!error) {
                 //  If there was no error handling the request check
