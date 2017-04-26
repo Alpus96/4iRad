@@ -136,7 +136,7 @@ class Router {
         //  as this router class inside callback functions.
         const router = this;
         //
-        if (!request.session) {
+        if (!request.session.user) {
             //  Send the login cridentials to the user controller login.
             this.users.validate(request.body, (error, result) => {
                 //  Confirm there was no error authenticating the user.

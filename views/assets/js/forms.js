@@ -1,10 +1,14 @@
 class Forms {
     constructor() {
         //  Set default error message.
-        this.error = 'Sorry, an error ocurred, please try again later.';
+        this.error = 'Ett fel upstod, vänligen försök igen senare.';
 
-        //  Hide the message box by default.
-        $("#msg").hide();
+        this.update();
+        
+        //  Hide the message boxes by default.
+        $("#regForm-msg").hide();
+        $("#loginForm-msg").hide();
+        $("#logout-msg").hide();
 
         //  Save this is constant as this is not defined as
         //  Forms class inside event callback functions.
@@ -21,7 +25,7 @@ class Forms {
             form.login($('#loginForm').serializeArray());
         });
 
-        $('#logout').submit(function(event) {
+        $('#logout').on('click', function(event) {
             event.preventDefault();
             form.logout();
         });
@@ -50,24 +54,23 @@ class Forms {
                     forms.ajaxPost('/register', result, (error, result) => {
                         if (!error) {
                             if (result.status) {
-                                forms.showMessage('#regForm', 'alert-success', 'Success!', result.message, true);
+                                forms.showMessage('regForm', 'alert-success', 'Success!', result.message, true);
                             } else {
-                                forms.showMessage('#regForm', 'alert-info', data.username + ':', result.message);
+                                forms.showMessage('regForm', 'alert-info', data.username + ':', result.message);
                             }
                         } else {
-                            forms.showMessage('#regForm', 'alert-danger', 'Error!', error.message);
+                            forms.showMessage('regForm', 'alert-danger', 'Error!', error.message);
                         }
                     });
                 } else {
-                    forms.showMessage('#regForm', 'alert-warning', 'Invalid:', error.message);
+                    forms.showMessage('regForm', 'alert-warning', 'Invalid:', error.message);
                 }
             });
         } else {
-            forms.showMessage('#regForm', 'alert-warning', 'Invalid:', 'Lösenorden matchar inte.');
+            forms.showMessage('regForm', 'alert-warning', 'Invalid:', 'Lösenorden matchar inte.');
         }
     }
 
-    //  TODO: Show logout button.
     login (form) {
         let data = {};
         for (let input of form) {
@@ -79,22 +82,36 @@ class Forms {
                 forms.ajaxPost('/login', result, (error, result) => {
                     if (!error) {
                         if (result.status) {
-                            forms.showMessage('#loginForm', 'alert-success', '', result.message, true);
+                            forms.showMessage('loginForm', 'alert-success', '', result.message, true);
+                            forms.createCookie('loggedIn', true, 10);
+                            $('#logout').show();
                         } else {
-                            forms.showMessage('#loginForm', 'alert-warning', data.username + ':', result.message, true);
+                            forms.showMessage('loginForm', 'alert-warning', data.username + ':', result.message, true);
                         }
                     } else {
-                        forms.showMessage('#loginForm', 'alert-danger', 'Error!', error.message);
+                        forms.showMessage('loginForm', 'alert-danger', 'Error!', error.message);
                     }
                 });
             } else {
-                forms.showMessage('#loginForm', 'alert-warning', 'Ogiltigt:', error.message);
+                forms.showMessage('loginForm', 'alert-warning', 'Ogiltigt:', error.message);
             }
         });
     }
 
     logout () {
-
+        const forms = this;
+        this.ajaxPost('/logout', {}, (error, result) => {
+            if (!error) {
+                if (result.status) {
+                    forms.deleteCookie('loggedIn');
+                    forms.showMessage('logout', 'alert-success', '', result.message);
+                } else {
+                    forms.showMessage('#logout', 'alert-warning', 'Varning!', result.message);
+                }
+            } else {
+                forms.showMessage('#logout', 'alert-danger', 'Error!', forms.error);
+            }
+        });
     }
 
     update (form) {
@@ -125,7 +142,7 @@ class Forms {
     }
 
     showMessage (formId, type, title, text, clear = false) {
-        const msg = $(`${formId} > #msg`);
+        const msg = $(`#${formId}-msg`);
         msg.text('');
         msg.removeClass();
         msg.show();
@@ -136,13 +153,11 @@ class Forms {
             msg.hide();
             msg.text('');
             msg.removeClass();
-        }, 15000);
+        }, 10000);
         if (clear) {
-            $(`${formId}`).trigger("reset");
+            $(`#${formId}`).trigger("reset");
         }
     }
-
-    //  Add form handlers here.
 
     /*
     *   A function to send ajax requests with json data to the server.
@@ -172,6 +187,46 @@ class Forms {
                 callback(true, null);
             }
         });
+    }
+
+    //  Cookie handlers here.
+
+    createCookie (name, value, mins) {
+        var expires;
+        if (mins) {
+            var date = new Date();
+            date.setTime(date.getTime() + (mins * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    readCookie(name,c,C,i){
+        if(this.cookies){ return this.cookies[name]; }
+
+        c = document.cookie.split('; ');
+        this.cookies = {};
+
+        for(i=c.length-1; i>=0; i--){
+           C = c[i].split('=');
+           this.cookies[C[0]] = C[1];
+        }
+
+        return this.cookies[name];
+    }
+
+    update () {
+        this.readCookie();
+        if (!this.readCookie('loggedIn')) {
+            $('#logout').hide();
+        }
+    }
+
+    deleteCookie (name) {
+        this.createCookie(name, '', -1);
+        this.update();
     }
 
 }
