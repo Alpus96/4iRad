@@ -93,7 +93,7 @@ class Forms {
                     }
                 });
             } else {
-                forms.showMessage('loginForm', 'alert-warning', 'Ogiltigt:', error.message);
+                forms.showMessage('loginForm', 'alert-warning', 'Ogiltigt:', error);
             }
         });
     }
