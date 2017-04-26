@@ -15,6 +15,7 @@ class Game {
     }
 
     addCoin(coin, column) {
+        console.log(coin.owner, column);
         if (coin instanceof Coin) {
             let res = false;
             for (let i = 0; i < this.gameBoard[column].length; i++) {
@@ -23,7 +24,6 @@ class Game {
                     res = true;
                     break;
                 }
-                console.log('addcoin loop');
             }
             return res;
         } else {
@@ -31,89 +31,91 @@ class Game {
         }
     }
 
-    checkForWinner(Player) {
+    checkForWinner(player) {
+        for (let column of this.gameBoard) {
+            console.log(column);
+            for (let coin of column) {
+                if (coin instanceof Coin) {
+                    console.log(coin.owner;
+                } else {
+                    console.log(coin);
+                }
+            }
+        }
         let inARow;
         let last;
         for (let column of this.gameBoard) {
             inARow = 1;
             last = 0;
             for (let i = 0; i < column.length; i++) {
-                if (column[i].owner === Player.id) {
+                if (column[i].owner === player.id) {
                     if (last === i - 1) {
                         inARow++;
                     } else {
                         inARow = 1;
                     }
                     last = i;
-                    this.inARowCheck(Player, inARow);
+                    this.inARowCheck(player, inARow);
                 }
-                console.log('check winner vertical loop');
             }
         }
 
         for (let i = 0; i < 6; i++) {
             last = 0;
             for (let j = 0; j < this.gameBoard.length ; j++) {
-                if (this.gameBoard[i][j] instanceof Coin && this.gameBoard[j][i].owner === Player.id) {
+                if (this.gameBoard[i][j] instanceof Coin && this.gameBoard[j][i].owner === player.id) {
                     if (last = j -1) {
                         inARow++;
                     } else {
                         inARow = 1;
                     }
                     last = j;
-                    this.inARowCheck(Player, inARow);
+                    this.inARowCheck(player, inARow);
                 }
-                console.log('checkForWinner horizontal loop');
             }
         }
 
         for (let i = 0; i < this.gameBoard.length; i++) {
             for (let j = 0; j < this.gameBoard[i].length; j++) {
-                console.log('i: ', i, '\nj: ', j);
-                if (this.gameBoard[i][j].owner === Player.id) {
+                if (this.gameBoard[i][j].owner === player.id) {
                     let k = 0;
                     let inARow = 1;
-                    while (this.gameBoard[i-k][j-k] instanceof Coin && this.gameBoard[i-k][j-k].owner === Player.id) {
+                    while (i - k > 0 && j - k > 0 && this.gameBoard[i-k][j-k] instanceof Coin && this.gameBoard[i-k][j-k].owner === player.id) {
                         inARow++;
                         k++;
-                        console.log('diagonal 1 loop');
                     }
                     k = 0;
-                    while (i+k < 7 && j + k < 6 && this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i+k][j+k].owner === Player.id) {
+                    while (i + k < 7 && j + k < 6 && this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i+k][j+k].owner === player.id) {
                         inARow++;
                         k++;
-                        console.log('diagonal 2 loop');
                     }
                     k = 0;
-                    this.inARowCheck(Player, inARow);
+                    this.inARowCheck(player, inARow);
                     inARow = 1;
-                    while (this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i+k][j+k].owner === Player.id) {
+                    while (i + k < 7 && j - k > 0 && this.gameBoard[i+k][j-k] instanceof Coin && this.gameBoard[i+k][j-k].owner === player.id) {
                         inARow++;
                         k++;
-                        console.log('diagonal 3 loop');
                     }
                     k = 0;
-                    while (this.gameBoard[i+k][j+k] instanceof Coin && this.gameBoard[i-k][j+k].owner === Player.id) {
+                    while (i - k < 0 && j + k > 6 && this.gameBoard[i-k][j+k] instanceof Coin && this.gameBoard[i-k][j+k].owner === player.id) {
                         inARow++;
                         k++;
-                        console.log('diagonal 4 loop');
                     }
                     k = 0;
-                    this.inARowCheck(Player, inARow);
+                    const ret = this.inARowCheck(player, inARow);
                     inARow = 1;
+                    return ret;
                 }
             }
         }
     }
 
-    inARowCheck (Player, inARow) {
+    inARowCheck (player, inARow) {
         if (inARow > 3) {
-            alert("Player"+Player.name+"won");
-            //player.wins();
-            console.log('Player ' + Player.id + ' won');
+            return true;
+            console.log('Player ' + player.id + ' won');
         }
     }
-
 }
 
 class Coin {
