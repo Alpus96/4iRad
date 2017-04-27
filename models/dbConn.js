@@ -30,6 +30,7 @@ class DBConn {
         this.connection.on('error', function(err) {
             console.log('Database error:', err);
             if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+                console.log('You fixed it!');
                 // Connection to the MySQL server is usually
                 // lost due to either server restart, or a
                 // connnection idle timeout (the wait_timeout
