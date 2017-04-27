@@ -37,7 +37,6 @@ class Highscores {
     *                         callback: (error, result) => {...}, a function to call when done.
     * */
     addNew (data, callback) {
-        console.log(data);
         // Read the current highscore list.
         this.highscoreList.read((error, result) => {
             //  Confirm there was no error reading the highscore list.

@@ -12,7 +12,6 @@ class Highscore{
     *                         callback: (error, result) => {...}, a function to call when done.
     * */
     create (data, callback) {
-        console.log(data);
         //  Send the data to the database.
         this.DB.connection.query('INSERT INTO highscore SET ?', data, (error, result) => {
             //  Confirm there was no error.

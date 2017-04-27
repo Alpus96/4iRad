@@ -301,7 +301,6 @@ class Router {
     *                         response: An object to handle response data to the client.
     * */
     highscorePost (request, response) {
-        console.log(request.body);
         //  Save class this in variable as this is not defiend
         //  as this router class inside callback functions.
         const router = this;
