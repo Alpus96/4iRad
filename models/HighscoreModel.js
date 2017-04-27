@@ -41,8 +41,6 @@ class Highscore{
                 //  If there was no error reading from the database return
                 //  the result as result through the callback function.
                 callback(null, result);
-                 writeHighScore(result);
-                 console.log(result);
             } else {
                 //  If there was an error reading from the database return
                 //  the error as error through the callback function.
