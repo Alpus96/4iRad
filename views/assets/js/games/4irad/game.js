@@ -81,34 +81,30 @@ class Game {
                     let k = 0;
                     let inARow = 0;
 
-                    let jk = 0;
-                    while (i + k < 7 && jk < 7) {
-                        jk = j + k  < 5 ? j + k : 5;
-                        if (this.gameBoard[i+k][jk].owner == player.id) {
+                    while (i + k < 7 && j + k < 6) {
+                        if (this.gameBoard[i+k][j+k].owner == player.id) {
                             inARow++;
                             if (inARow == 4) {
                                 this.newBoard();
                                 return true;
                             }
                         } else {
-                            inARow = 1;
+                            inARow = 0;
                         }
                         k++;
                     }
 
                     k = 0;
-                    jk = 5;
                     inARow = 0;
-                    while (i + k < 7 && jk > 0) {
-                        jk = j - k  > 0 ? j - k : 0;
-                        if (this.gameBoard[i+k][jk].owner == player.id) {
+                    while (i + k < 7 && j - k > 0) {
+                        if (this.gameBoard[i+k][j-k].owner == player.id) {
                             inARow++;
                             if (inARow == 4) {
                                 this.newBoard();
                                 return true;
                             }
                         } else {
-                            inARow = 1;
+                            inARow = 0;
                         }
                         k++;
                     }
