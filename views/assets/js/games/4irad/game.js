@@ -57,7 +57,7 @@ class Game {
         }
 
         for (let i = 0; i < 6; i++) {
-            last = -2;
+            last = null;
             inARow = 1;
             for (let j = 0; j < this.gameBoard.length ; j++) {
                 if (this.gameBoard[j][i].owner == player.id) {

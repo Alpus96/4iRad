@@ -278,6 +278,7 @@ $("#mydiv").width(width);*/
            $('#modal-title').html(winner.name + ' vinner!');
            if (selected != 'Dator') {
                $('#modal-message').html('Dina poäng kommer sparas till toplistan.');
+               replayClick();
                saveScore(winner);
            } else {
                $('#modal-message').html('Hur lyckades du förlora mot datorn?');
