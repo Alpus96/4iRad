@@ -20,6 +20,8 @@ function switchPage () {
         ajax.get('/highscore', (response) => {
             displayHighScore(response);
         });
+    } else if (l != '#play') {
+        $('#pause').trigger('click');
     }
 
     $(l).show();
@@ -43,12 +45,13 @@ function switchMenuItem (l) {
 }
 
 function displayHighScore(hsList){
+    $('.hsItem').remove();
 	let counter = 0;
     for(let hs in hsList){
     	counter++;
         let propertyValeu = hsList[hs];
         $('#hs').append(
-            ' <div class="centerText"><div class="well-sm"><h4>Ranking: '
+            ' <div class="centerText hsItem"><div class="well-sm"><h4>Ranking: '
             + counter + ' <b>' + propertyValeu.name + '</b>  Antal drag: '
             + propertyValeu.score + ' </h4></div></div>'
         );

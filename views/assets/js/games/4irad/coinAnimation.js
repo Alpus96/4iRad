@@ -276,7 +276,7 @@ $("#mydiv").width(width);*/
            $('#winner-modal').modal('show');
            const winner = id == player2.id ? player2 : player1;
            $('#modal-title').html(winner.name + ' vinner!');
-           if (id == 1) {
+           if (selected != 'Dator') {
                $('#modal-message').html('Dina poäng kommer sparas till toplistan.');
                saveScore(winner);
            } else {
