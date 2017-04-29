@@ -151,7 +151,7 @@ class Forms {
                 aproved = false;
                 break;
             }
-            if (data[val].length <= 6) {
+            if (data[val].length < 6) {
                 aproved = false;
                 callback('Användarnamn och lösenord måste vara minst 6 karaktärer långa.', null);
                 break;
